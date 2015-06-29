@@ -83,19 +83,19 @@ Conj<compu> red::computadoras() const {
     return compus;
 };
 
-Nat red::cantCompus() const;
+Nat red::cantCompus() const{
     return compus.Cardinal();
-}
+};
 
 Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
     return losDeLong(c, minimaLong(c));
 };
 
 Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
-    Conj<Lista<compu> >::Iterador it = c.CrearIt();
-    Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
+    Conj<Lista<compu> >::const_Iterador it = c.CrearIt();
+    Conj<Lista<compu> > res = Conj<Lista<compu> >();
     while (it.HaySiguiente()) {
-        if (it.Siguiente().Longitud() = k) {
+        if (it.Siguiente().Longitud() == k) {
             res.Agregar(it.Siguiente());
         }
         it.Avanzar();
@@ -104,7 +104,7 @@ Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
 
 Nat red::minimaLong(const Conj<Lista<compu> > c) const {
     Nat min = 0;
-    Conj<Lista<compu> >::Iterador it = c.CrearIt();
+    Conj<Lista<compu> >::const_Iterador it = c.CrearIt();
     if (it.HaySiguiente()) {
         min = it.Siguiente().Longitud();
     }
@@ -119,7 +119,7 @@ Nat red::minimaLong(const Conj<Lista<compu> > c) const {
 
 Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
     Lista<compu> res = Lista<compu>();
-    Conj<compu>::Iterador it = c.CrearIt();
+    Conj<compu>::const_Iterador it = c.CrearIt();
     while (it.HaySiguiente()) {
         res.AgregarAtras(it.Siguiente());
     }
@@ -130,8 +130,10 @@ Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l,
     if (candidatos.EsVacia()) {
         return Conj<Lista<compu> >();
     } else {
-        if (l.Ultimo() = c2) {
-            return Conj<Lista<compu> >().Agregar(l);
+        if (l.Ultimo() == c2) {
+            Conj<Lista<compu> > res = Conj<Lista<compu> >();
+            res.Agregar(l);
+            return res;
         } else {
             if (!(candidatos.Primero().Esta(l))) {
                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));

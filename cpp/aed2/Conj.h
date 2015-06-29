@@ -51,6 +51,10 @@ class Conj
     //la representación.  Sino, no haria falta.
     bool operator == (const Conj<T>& otro) const;
 
+    // Esta la agregamos nosotros
+
+    Conj<T> Union(const Conj<T>&);
+
     /************************************
     * Iterador de Conjunto, modificable *
     ************************************/
@@ -403,6 +407,17 @@ std::ostream& operator<<(std::ostream& os, const Conj<T>& c)
   return Mostrar(os, c, '{', '}');
 }
 
+// Esta la agregamos nosotros
+
+template<class T>
+Conj<T> Conj<T>::Union(const Conj<T>& otro) {
+  Conj<T> res = Conj<T>(this);
+  Conj<T>::const_Iterador it = otro.CrearIt();
+  while (it.HaySiguiente()) {
+    res.Agregar(it.Siguiente());
+    it.Avanzar();
+  }
+  return res;
 }
 
 #endif	//AED2_CONJ_H_INCLUDED

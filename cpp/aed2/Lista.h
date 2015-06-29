@@ -75,6 +75,9 @@ class Lista
   const_Iterador CrearIt() const;
   const_Iterador CrearItUlt() const;
 
+  // Esta la agregamos nosotros
+  bool Esta(const T&) const;
+
   /**********************************
    * Iterador de Lista, modificable *
    **********************************/
@@ -673,6 +676,16 @@ bool operator == (const Lista<T>& l1, const Lista<T>& l2)
   }
 
   return not it1.HaySiguiente() and not it2.HaySiguiente();
+}
+
+// Esta la agregamos nosotros
+template<class T>
+bool Lista<T>::Esta(const T& elem) const {
+  Lista<T>::const_Iterador it = CrearIt();
+  while (it.HaySiguiente() && it.Siguiente() != elem) {
+    it.Avanzar();
+  }
+  return it.HaySiguiente();
 }
 
 }

@@ -13,7 +13,15 @@ typedef aed2::Nat interfaz;
 struct compu {
     ip IP;
     Conj<interfaz> interfaces;
+    bool operator==(const compu& otra) const {
+        return (IP == otra.IP) && (interfaces == otra.interfaces);
+    }
 };
+
+// bool operator==(const compu& c1, const compu& c2) {
+//     return c1.operator==(c2);
+// }
+
 
 class red {
 private:
