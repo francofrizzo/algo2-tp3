@@ -420,4 +420,6 @@ Conj<T> Conj<T>::Union(const Conj<T>& otro) {
   return res;
 }
 
+}
+
 #endif	//AED2_CONJ_H_INCLUDED

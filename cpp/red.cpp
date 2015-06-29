@@ -143,4 +143,3 @@ Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l,
         }
     }
 };
-}

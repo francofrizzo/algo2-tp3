@@ -1,880 +1,866 @@
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:163:15: error: ‘bidirectional_iterator_tag’ does not name a type
-       typedef bidirectional_iterator_tag iterator_category;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:164:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t                  difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘_Tp* aed2::std::_Rb_tree_iterator<_Tp>::operator->() const’:
-/usr/include/c++/4.8/bits/stl_tree.h:183:16: error: ‘__addressof’ is not a member of ‘aed2::std’
-       { return std::__addressof(static_cast<_Link_type>
-                ^
-/usr/include/c++/4.8/bits/stl_tree.h:183:16: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:236:15: error: ‘bidirectional_iterator_tag’ does not name a type
-       typedef bidirectional_iterator_tag iterator_category;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:237:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t                  difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘const _Tp* aed2::std::_Rb_tree_const_iterator<_Tp>::operator->() const’:
-/usr/include/c++/4.8/bits/stl_tree.h:264:16: error: ‘__addressof’ is not a member of ‘aed2::std’
-       { return std::__addressof(static_cast<_Link_type>
-                ^
-/usr/include/c++/4.8/bits/stl_tree.h:264:16: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:332:49: error: expected type-specifier before ‘allocator’
-            typename _Compare, typename _Alloc = allocator<_Val> >
-                                                 ^
-/usr/include/c++/4.8/bits/stl_tree.h:332:49: error: expected ‘>’ before ‘allocator’
-/usr/include/c++/4.8/bits/stl_tree.h:352:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t    difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:571:15: error: ‘reverse_iterator’ in namespace ‘aed2::std’ does not name a type
-       typedef std::reverse_iterator<iterator>       reverse_iterator;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:572:15: error: ‘reverse_iterator’ in namespace ‘aed2::std’ does not name a type
-       typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:575:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:578:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:581:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:585:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:706:7: error: ‘reverse_iterator’ does not name a type
-       reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:710:7: error: ‘const_reverse_iterator’ does not name a type
-       const_reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:714:7: error: ‘reverse_iterator’ does not name a type
-       reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:718:7: error: ‘const_reverse_iterator’ does not name a type
-       const_reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:771:7: error: ‘pair’ does not name a type
-       pair<iterator, bool>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:893:7: error: ‘pair’ does not name a type
-       pair<iterator, iterator>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:896:7: error: ‘pair’ does not name a type
-       pair<const_iterator, const_iterator>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree_node<_Val>* aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_create_node(const value_type&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:383:9: error: ‘__addressof’ is not a member of ‘aed2::std’
-        (std::__addressof(__tmp->_M_value_field), __x); }
-         ^
-/usr/include/c++/4.8/bits/stl_tree.h:383:9: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘void aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_destroy_node(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_Link_type)’:
-/usr/include/c++/4.8/bits/stl_tree.h:395:26: error: ‘__addressof’ is not a member of ‘aed2::std’
-  get_allocator().destroy(std::__addressof(__p->_M_value_field));
-                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:395:26: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In function ‘bool aed2::std::operator==(const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:911:10: error: ‘equal’ is not a member of ‘aed2::std’
-       && std::equal(__x.begin(), __x.end(), __y.begin());
-          ^
-/usr/include/c++/4.8/bits/stl_tree.h:911:10: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/char_traits.h:39:0,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_algobase.h:1053:5: note:   ‘std::equal’
-     equal(_IIter1 __first1, _IIter1 __last1,
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In function ‘bool aed2::std::operator<(const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:920:14: error: ‘lexicographical_compare’ is not a member of ‘aed2::std’
-       return std::lexicographical_compare(__x.begin(), __x.end(), 
-              ^
-/usr/include/c++/4.8/bits/stl_tree.h:920:14: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/char_traits.h:39:0,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_algobase.h:1120:5: note:   ‘std::lexicographical_compare’
-     lexicographical_compare(_II1 __first1, _II1 __last1,
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1198:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1229:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘void aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::swap(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1304:7: error: ‘__alloc_swap’ is not a member of ‘aed2::std’
-       std::__alloc_swap<_Node_allocator>::
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1304:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/string:41:0,
-                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
-                 from /usr/include/c++/4.8/bits/ios_base.h:41,
-                 from /usr/include/c++/4.8/ios:42,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/allocator.h:160:12: note:   ‘std::__alloc_swap’
-     struct __alloc_swap
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1304:40: error: expected primary-expression before ‘>’ token
-       std::__alloc_swap<_Node_allocator>::
+red.cpp: In member function ‘aed2::Conj<aed2::Lista<tp3::compu> > tp3::red::caminos(tp3::compu, tp3::compu, aed2::Lista<tp3::compu>, aed2::Lista<tp3::compu>) const’:
+red.cpp:138:40: error: ‘struct tp3::compu’ has no member named ‘Esta’
+             if (!(candidatos.Primero().Esta(l))) {
                                         ^
-/usr/include/c++/4.8/bits/stl_tree.h:1304:41: error: ‘::_S_do_it’ has not been declared
-       std::__alloc_swap<_Node_allocator>::
-                                         ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1310:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1342:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1366:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_equal(const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1400:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1400:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
+red.cpp:139:129: error: no matching function for call to ‘tp3::red::caminos(const tp3::compu&, const tp3::compu&, aed2::Lista<tp3::compu>::Iterador, aed2::Lista<tp3::compu>) const’
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
+                                                                                                                                 ^
+red.cpp:139:129: note: candidate is:
+red.cpp:129:21: note: aed2::Conj<aed2::Lista<tp3::compu> > tp3::red::caminos(tp3::compu, tp3::compu, aed2::Lista<tp3::compu>, aed2::Lista<tp3::compu>) const
+ Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                      ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1407:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_unique_(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::const_iterator, const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1477:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1477:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1488:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_equal_(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::const_iterator, const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1554:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1554:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::size_type aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::erase(const _Key&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1769:7: error: ‘pair’ was not declared in this scope
-       pair<iterator, iterator> __p = equal_range(__x);
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1769:20: error: expected primary-expression before ‘,’ token
-       pair<iterator, iterator> __p = equal_range(__x);
-                    ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:30: error: expected primary-expression before ‘>’ token
-       pair<iterator, iterator> __p = equal_range(__x);
-                              ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:32: error: ‘__p’ was not declared in this scope
-       pair<iterator, iterator> __p = equal_range(__x);
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::size_type aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::count(const _Key&) const’:
-/usr/include/c++/4.8/bits/stl_tree.h:1817:7: error: ‘pair’ was not declared in this scope
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1817:26: error: expected primary-expression before ‘,’ token
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:42: error: expected primary-expression before ‘>’ token
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:44: error: ‘__p’ was not declared in this scope
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                                            ^
-/usr/include/c++/4.8/bits/stl_tree.h:1818:29: error: ‘distance’ is not a member of ‘aed2::std’
-       const size_type __n = std::distance(__p.first, __p.second);
-                             ^
-/usr/include/c++/4.8/bits/stl_tree.h:1818:29: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:66:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_iterator_base_funcs.h:114:5: note:   ‘std::distance’
-     distance(_InputIterator __first, _InputIterator __last)
-     ^
-In file included from /usr/include/c++/4.8/map:61:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from main.cpp:1:
-/usr/include/c++/4.8/bits/stl_map.h: At global scope:
-/usr/include/c++/4.8/bits/stl_map.h:94:62: error: expected type-specifier
-   template <typename _Key, typename _Tp, typename _Compare = std::less<_Key>,
-                                                              ^
-/usr/include/c++/4.8/bits/stl_map.h:94:62: error: expected ‘>’
-/usr/include/c++/4.8/bits/stl_map.h:101:15: error: ‘pair’ in namespace ‘aed2::std’ does not name a type
-       typedef std::pair<const _Key, _Tp>                    value_type;
-               ^
-/usr/include/c++/4.8/bits/stl_map.h:103:15: error: ‘_Alloc’ does not name a type
-       typedef _Alloc                                        allocator_type;
-               ^
-/usr/include/c++/4.8/bits/stl_map.h:107:24: error: ‘_Alloc’ has not been declared
-       typedef typename _Alloc::value_type                   _Alloc_value_type;
-                        ^
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected template-name before ‘<’ token
-       : public std::binary_function<value_type, value_type, bool>
-                                    ^
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected ‘{’ before ‘<’ token
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected unqualified-id before ‘<’ token
-main.cpp:5:1: error: expected ‘}’ at end of input
- }
- ^
-main.cpp:5:1: error: expected unqualified-id at end of input
-main.cpp:5:1: error: expected ‘}’ at end of input
-main.cpp:5:1: error: expected ‘}’ at end of input
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:163:15: error: ‘bidirectional_iterator_tag’ does not name a type
-       typedef bidirectional_iterator_tag iterator_category;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:164:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t                  difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘_Tp* aed2::std::_Rb_tree_iterator<_Tp>::operator->() const’:
-/usr/include/c++/4.8/bits/stl_tree.h:183:16: error: ‘__addressof’ is not a member of ‘aed2::std’
-       { return std::__addressof(static_cast<_Link_type>
-                ^
-/usr/include/c++/4.8/bits/stl_tree.h:183:16: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:236:15: error: ‘bidirectional_iterator_tag’ does not name a type
-       typedef bidirectional_iterator_tag iterator_category;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:237:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t                  difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘const _Tp* aed2::std::_Rb_tree_const_iterator<_Tp>::operator->() const’:
-/usr/include/c++/4.8/bits/stl_tree.h:264:16: error: ‘__addressof’ is not a member of ‘aed2::std’
-       { return std::__addressof(static_cast<_Link_type>
-                ^
-/usr/include/c++/4.8/bits/stl_tree.h:264:16: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:332:49: error: expected type-specifier before ‘allocator’
-            typename _Compare, typename _Alloc = allocator<_Val> >
-                                                 ^
-/usr/include/c++/4.8/bits/stl_tree.h:332:49: error: expected ‘>’ before ‘allocator’
-/usr/include/c++/4.8/bits/stl_tree.h:352:15: error: ‘ptrdiff_t’ does not name a type
-       typedef ptrdiff_t    difference_type;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:571:15: error: ‘reverse_iterator’ in namespace ‘aed2::std’ does not name a type
-       typedef std::reverse_iterator<iterator>       reverse_iterator;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:572:15: error: ‘reverse_iterator’ in namespace ‘aed2::std’ does not name a type
-       typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-               ^
-/usr/include/c++/4.8/bits/stl_tree.h:575:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:578:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:581:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:585:7: error: ‘pair’ does not name a type
-       pair<_Base_ptr, _Base_ptr>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:706:7: error: ‘reverse_iterator’ does not name a type
-       reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:710:7: error: ‘const_reverse_iterator’ does not name a type
-       const_reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:714:7: error: ‘reverse_iterator’ does not name a type
-       reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:718:7: error: ‘const_reverse_iterator’ does not name a type
-       const_reverse_iterator
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:771:7: error: ‘pair’ does not name a type
-       pair<iterator, bool>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:893:7: error: ‘pair’ does not name a type
-       pair<iterator, iterator>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:896:7: error: ‘pair’ does not name a type
-       pair<const_iterator, const_iterator>
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree_node<_Val>* aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_create_node(const value_type&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:383:9: error: ‘__addressof’ is not a member of ‘aed2::std’
-        (std::__addressof(__tmp->_M_value_field), __x); }
-         ^
-/usr/include/c++/4.8/bits/stl_tree.h:383:9: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘void aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_destroy_node(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_Link_type)’:
-/usr/include/c++/4.8/bits/stl_tree.h:395:26: error: ‘__addressof’ is not a member of ‘aed2::std’
-  get_allocator().destroy(std::__addressof(__p->_M_value_field));
-                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:395:26: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_pair.h:59:0,
-                 from /usr/include/c++/4.8/bits/stl_algobase.h:64,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/move.h:47:5: note:   ‘std::__addressof’
-     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In function ‘bool aed2::std::operator==(const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:911:10: error: ‘equal’ is not a member of ‘aed2::std’
-       && std::equal(__x.begin(), __x.end(), __y.begin());
-          ^
-/usr/include/c++/4.8/bits/stl_tree.h:911:10: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/char_traits.h:39:0,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_algobase.h:1053:5: note:   ‘std::equal’
-     equal(_IIter1 __first1, _IIter1 __last1,
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: In function ‘bool aed2::std::operator<(const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:920:14: error: ‘lexicographical_compare’ is not a member of ‘aed2::std’
-       return std::lexicographical_compare(__x.begin(), __x.end(), 
-              ^
-/usr/include/c++/4.8/bits/stl_tree.h:920:14: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/char_traits.h:39:0,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_algobase.h:1120:5: note:   ‘std::lexicographical_compare’
-     lexicographical_compare(_II1 __first1, _II1 __last1,
-     ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1198:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1229:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘void aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::swap(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1304:7: error: ‘__alloc_swap’ is not a member of ‘aed2::std’
-       std::__alloc_swap<_Node_allocator>::
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1304:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/string:41:0,
-                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
-                 from /usr/include/c++/4.8/bits/ios_base.h:41,
-                 from /usr/include/c++/4.8/ios:42,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/allocator.h:160:12: note:   ‘std::__alloc_swap’
-     struct __alloc_swap
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1304:40: error: expected primary-expression before ‘>’ token
-       std::__alloc_swap<_Node_allocator>::
-                                        ^
-/usr/include/c++/4.8/bits/stl_tree.h:1304:41: error: ‘::_S_do_it’ has not been declared
-       std::__alloc_swap<_Node_allocator>::
-                                         ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1310:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1342:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1366:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_equal(const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1400:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1400:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1400:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1407:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_unique_(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::const_iterator, const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1477:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1477:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1477:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: At global scope:
-/usr/include/c++/4.8/bits/stl_tree.h:1488:5: error: ‘pair’ does not name a type
-     pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
-     ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::iterator aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_M_insert_equal_(aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::const_iterator, const _Val&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1554:7: error: ‘pair’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1554:21: error: expected primary-expression before ‘,’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                     ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:32: error: expected primary-expression before ‘>’ token
-       pair<_Base_ptr, _Base_ptr> __res
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h:1554:34: error: ‘__res’ was not declared in this scope
-       pair<_Base_ptr, _Base_ptr> __res
-                                  ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::size_type aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::erase(const _Key&)’:
-/usr/include/c++/4.8/bits/stl_tree.h:1769:7: error: ‘pair’ was not declared in this scope
-       pair<iterator, iterator> __p = equal_range(__x);
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1769:20: error: expected primary-expression before ‘,’ token
-       pair<iterator, iterator> __p = equal_range(__x);
-                    ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:30: error: expected primary-expression before ‘>’ token
-       pair<iterator, iterator> __p = equal_range(__x);
-                              ^
-/usr/include/c++/4.8/bits/stl_tree.h:1769:32: error: ‘__p’ was not declared in this scope
-       pair<iterator, iterator> __p = equal_range(__x);
-                                ^
-/usr/include/c++/4.8/bits/stl_tree.h: In member function ‘aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::size_type aed2::std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::count(const _Key&) const’:
-/usr/include/c++/4.8/bits/stl_tree.h:1817:7: error: ‘pair’ was not declared in this scope
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-       ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:7: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_pair.h:96:12: note:   ‘std::pair’
-     struct pair
-            ^
-In file included from /usr/include/c++/4.8/map:60:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_tree.h:1817:26: error: expected primary-expression before ‘,’ token
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:42: error: expected primary-expression before ‘>’ token
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                                          ^
-/usr/include/c++/4.8/bits/stl_tree.h:1817:44: error: ‘__p’ was not declared in this scope
-       pair<const_iterator, const_iterator> __p = equal_range(__k);
-                                            ^
-/usr/include/c++/4.8/bits/stl_tree.h:1818:29: error: ‘distance’ is not a member of ‘aed2::std’
-       const size_type __n = std::distance(__p.first, __p.second);
-                             ^
-/usr/include/c++/4.8/bits/stl_tree.h:1818:29: note: suggested alternative:
-In file included from /usr/include/c++/4.8/bits/stl_algobase.h:66:0,
-                 from /usr/include/c++/4.8/bits/char_traits.h:39,
-                 from /usr/include/c++/4.8/ios:40,
-                 from /usr/include/c++/4.8/ostream:38,
-                 from /usr/include/c++/4.8/iostream:39,
-                 from aed2/TiposBasicos.h:5,
-                 from aed2.h:14,
-                 from red.h:4,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_iterator_base_funcs.h:114:5: note:   ‘std::distance’
-     distance(_InputIterator __first, _InputIterator __last)
-     ^
-In file included from /usr/include/c++/4.8/map:61:0,
-                 from dicc_trie.h:5,
-                 from red.h:5,
-                 from red.cpp:1:
-/usr/include/c++/4.8/bits/stl_map.h: At global scope:
-/usr/include/c++/4.8/bits/stl_map.h:94:62: error: expected type-specifier
-   template <typename _Key, typename _Tp, typename _Compare = std::less<_Key>,
-                                                              ^
-/usr/include/c++/4.8/bits/stl_map.h:94:62: error: expected ‘>’
-/usr/include/c++/4.8/bits/stl_map.h:101:15: error: ‘pair’ in namespace ‘aed2::std’ does not name a type
-       typedef std::pair<const _Key, _Tp>                    value_type;
-               ^
-/usr/include/c++/4.8/bits/stl_map.h:103:15: error: ‘_Alloc’ does not name a type
-       typedef _Alloc                                        allocator_type;
-               ^
-/usr/include/c++/4.8/bits/stl_map.h:107:24: error: ‘_Alloc’ has not been declared
-       typedef typename _Alloc::value_type                   _Alloc_value_type;
-                        ^
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected template-name before ‘<’ token
-       : public std::binary_function<value_type, value_type, bool>
-                                    ^
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected ‘{’ before ‘<’ token
-/usr/include/c++/4.8/bits/stl_map.h:115:36: error: expected unqualified-id before ‘<’ token
+red.cpp:129:21: note:   no known conversion for argument 3 from ‘aed2::Lista<tp3::compu>::Iterador’ to ‘aed2::Lista<tp3::compu>’
+red.cpp:139:167: error: invalid use of void expression
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
+                                                                                                                                                                       ^
+red.cpp:139:168: error: ‘Union’ was not declared in this scope
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
+                                                                                                                                                                        ^
+red.cpp:141:59: error: invalid use of void expression
+                 return caminos(c1, c2, l, candidatos.Fin());
+                                                           ^
+red.cpp: At global scope:
 red.cpp:145:2: error: expected ‘}’ at end of input
  };
   ^
-red.cpp:145:2: error: expected unqualified-id at end of input
-red.cpp:145:2: error: expected ‘}’ at end of input
-red.cpp:145:2: error: expected ‘}’ at end of input
+In file included from red.h:5:0,
+                 from red.cpp:1:
+dicc_trie.h: In instantiation of ‘DiccString<T> DiccString<T>::operator=(const DiccString<T>&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >]’:
+red.cpp:7:16:   required from here
+dicc_trie.h:112:43: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘std::vector<std::basic_string<char> > DiccString<T>::claves() [with T = aed2::Dicc<unsigned int, std::basic_string<char> >]’ discards qualifiers [-fpermissive]
+         vector<string> keys = otro.claves();
+                                           ^
+In file included from dicc_trie.h:3:0,
+                 from red.h:5,
+                 from red.cpp:1:
+dicc_trie.h: In instantiation of ‘T* DiccString<T>::obtener(const string&) const [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’:
+red.cpp:21:29:   required from here
+dicc_trie.h:137:30: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘bool DiccString<T>::definido(const string&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
+         assert(definido(clave));
+                              ^
+In file included from red.h:5:0,
+                 from red.cpp:1:
+dicc_trie.h:138:32: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘T* DiccString<T>::_obtener(const string&, int) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
+         return _obtener(clave,0);
+                                ^
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::const_Iterador aed2::Dicc<K, S>::Buscar(const K&) const [with K = tp3::compu; S = bool]’:
+aed2/Dicc.h:223:22:   required from ‘bool aed2::Dicc<K, S>::Definido(const K&) const [with K = tp3::compu; S = bool]’
+aed2/Conj.h:180:28:   required from ‘bool aed2::Conj<T>::Pertenece(const T&) const [with T = tp3::compu]’
+red.cpp:63:33:   required from here
+aed2/Dicc.h:567:50: error: no match for ‘operator!=’ (operand types are ‘const tp3::compu’ and ‘const tp3::compu’)
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h:567:50: note: candidates are:
+In file included from /usr/include/c++/4.9/iosfwd:40:0,
+                 from /usr/include/c++/4.9/ios:38,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.9/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::fpos<_StateT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::pair<_T1, _T2>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   mismatched types ‘const _CharT*’ and ‘tp3::compu’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.9/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.9/ios:44,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/vector:64:0,
+                 from dicc_trie.h:4,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:61:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:62:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Buscar(const K&) [with K = aed2::Lista<tp3::compu>; S = bool]’:
+aed2/Dicc.h:196:29:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Definir(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Conj.h:160:43:   required from ‘aed2::Conj<T>::Iterador aed2::Conj<T>::Agregar(const T&) [with T = aed2::Lista<tp3::compu>]’
+red.cpp:67:22:   required from here
+aed2/Dicc.h:557:50: error: no match for ‘operator!=’ (operand types are ‘const aed2::Lista<tp3::compu>’ and ‘const aed2::Lista<tp3::compu>’)
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h:557:50: note: candidates are:
+In file included from /usr/include/c++/4.9/iosfwd:40:0,
+                 from /usr/include/c++/4.9/ios:38,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.9/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::fpos<_StateT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::pair<_T1, _T2>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   mismatched types ‘const _CharT*’ and ‘aed2::Lista<tp3::compu>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.9/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.9/ios:44,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/vector:64:0,
+                 from dicc_trie.h:4,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:61:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:62:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::const_Iterador aed2::Dicc<K, S>::Buscar(const K&) const [with K = aed2::Lista<tp3::compu>; S = bool]’:
+aed2/Dicc.h:223:22:   required from ‘bool aed2::Dicc<K, S>::Definido(const K&) const [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Dicc.h:211:3:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::DefinirRapido(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Dicc.h:201:42:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Definir(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Conj.h:160:43:   required from ‘aed2::Conj<T>::Iterador aed2::Conj<T>::Agregar(const T&) [with T = aed2::Lista<tp3::compu>]’
+red.cpp:67:22:   required from here
+aed2/Dicc.h:567:50: error: no match for ‘operator!=’ (operand types are ‘const aed2::Lista<tp3::compu>’ and ‘const aed2::Lista<tp3::compu>’)
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h:567:50: note: candidates are:
+In file included from /usr/include/c++/4.9/iosfwd:40:0,
+                 from /usr/include/c++/4.9/ios:38,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.9/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::fpos<_StateT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::pair<_T1, _T2>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:304:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.9/bits/char_traits.h:39,
+                 from /usr/include/c++/4.9/ios:40,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_iterator.h:354:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:41:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.9/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2551:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2563:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   mismatched types ‘const _CharT*’ and ‘aed2::Lista<tp3::compu>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/string:52:0,
+                 from /usr/include/c++/4.9/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.9/bits/ios_base.h:41,
+                 from /usr/include/c++/4.9/ios:42,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.9/bits/basic_string.h:2575:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.9/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.9/ios:44,
+                 from /usr/include/c++/4.9/ostream:38,
+                 from /usr/include/c++/4.9/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.9/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/vector:64:0,
+                 from dicc_trie.h:4,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.9/bits/stl_vector.h:1535:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:329:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_tree.h:990:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:61:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_map.h:1024:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.9/map:62:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.9/bits/stl_multimap.h:927:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
