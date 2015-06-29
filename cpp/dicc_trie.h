@@ -132,7 +132,7 @@ public:
         return _definido(clave,0);
     }
 
-    T* obtener(const string &clave)
+    T* obtener(const string &clave) const
     {
         assert(definido(clave));
         return _obtener(clave,0);

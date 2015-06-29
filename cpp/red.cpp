@@ -1,17 +1,14 @@
 #include "red.h"
 
-
 namespace tp3 {
 
 red::red() {
     compus = Conj<compu>();
     conexiones = DiccString<diccConexiones>();
 }; 
-red::red(const red& r) {
+red::red(red& r) { // Sacamos un const
     compus = Conj<compu>(r.compus);
-    // conexiones = DiccString<diccConexiones>(r.conexiones);
-    // DiccString<diccConexiones>::Iterador it = conexiones.CrearIt;
-    // while ()
+    conexiones = DiccString<diccConexiones>(r.conexiones);
 };
 
 void red::agregarCompu(const compu c) {
@@ -27,7 +24,7 @@ void red::conectar(const compu c1, const interfaz i1, const compu c2, const inte
 
 bool red::conectadas(const compu c1, const compu c2) const {
     Dicc<interfaz, ip>* d = conexiones.obtener(c1.IP);
-    Dicc<interfaz, ip>::Iterador it = d.CrearIt();
+    Dicc<interfaz, ip>::Iterador it = d->CrearIt();
     while (it.HaySiguiente() && it.SiguienteSignificado() != c2.IP) {
         it.Avanzar();
     }
@@ -36,19 +33,19 @@ bool red::conectadas(const compu c1, const compu c2) const {
 
 interfaz red::interfazUsada(const compu c1, const compu c2) const {
     Dicc<interfaz, ip>* d = conexiones.obtener(c1.IP);
-    Dicc<interfaz, ip>::Iterador it = d.CrearIt();
+    Dicc<interfaz, ip>::Iterador it = d->CrearIt();
     while (it.SiguienteSignificado() != c2.IP) {
         it.Avanzar();
     }
     return it.SiguienteClave();
 };
 
-Conj<compu> red::vecinos(const compu c) const {
+Conj<compu> red::vecinos(const compu c) const { 
     Dicc<interfaz, ip>* d = conexiones.obtener(c.IP);
-    Dicc<interfaz, ip>::Iterador it1 = d.CrearIt();
+    Dicc<interfaz, ip>::Iterador it1 = d->CrearIt();
     Conj<compu> res = Conj<compu>();
     while (it1.HaySiguiente()) {
-        Conj<compu> it2 = compus.CrearIt();
+        Conj<compu>::const_Iterador it2 = compus.CrearIt();
         while (it2.Siguiente().IP != it1.SiguienteSignificado()) {
             it2.Avanzar();
         }
@@ -57,21 +54,29 @@ Conj<compu> red::vecinos(const compu c) const {
     return res;
 };
 
-bool red::usaInterfaz(const compu c; const interfaz i) const {
-    return conexiones.obtener(c.IP).Definido(i);
+bool red::usaInterfaz(const compu c, const interfaz i) const {
+    return conexiones.obtener(c.IP)->Definido(i);
 };
 
 Conj<Lista<compu> > red::caminosMinimos(const compu c1, const compu c2) const {
     Conj<Lista<compu> > res = Conj<Lista<compu> >();
-    if (Vecinos(c1).Pertenece(c2)) {
-        res.Agregar(Lista<compu>().AgregarAtras(c1).AgregarAtras(c2));
+    if (vecinos(c1).Pertenece(c2)) {
+        Lista<compu> l = Lista<compu>();
+        l.AgregarAtras(c1);
+        l.AgregarAtras(c2);
+        res.Agregar(l);
     } else {
-        res = DameMinimos(Caminos(c1, c2, Lista<compu>().AgregarAtras(c1), PasarConjASecu(Vecinos(c1)));
+        Lista<compu> l = Lista<compu>();
+        l.AgregarAtras(c1);
+        res = dameMinimos(caminos(c1, c2, l, pasarConjASecu(vecinos(c1))));
     }
 };
 
 bool red::hayCamino(const compu c1, const compu c2) const {
-    return !(caminos(c1, c2, Lista<compu>().AgregarAtras(c1), Vecinos(c1)).EsVacio());
+    Lista<compu> l = Lista<compu>();
+    l.AgregarAtras(c1);
+    bool res = !(caminos(c1, c2, l, pasarConjASecu(vecinos(c1))).EsVacio());
+    return res;
 };
 
 Conj<compu> red::computadoras() const {
@@ -83,7 +88,7 @@ Nat red::cantCompus() const;
 }
 
 Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
-    return LosDeLong(c, MinimaLong(c));
+    return losDeLong(c, minimaLong(c));
 };
 
 Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
@@ -129,9 +134,9 @@ Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l,
             return Conj<Lista<compu> >().Agregar(l);
         } else {
             if (!(candidatos.Primero().Esta(l))) {
-                return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+                return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
             } else {
-                return Caminos(c1, c2, l, candidatos.Fin());
+                return caminos(c1, c2, l, candidatos.Fin());
             }
         }
     }

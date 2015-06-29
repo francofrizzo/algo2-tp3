@@ -1,431 +1,376 @@
-red.cpp: In member function ‘bool tp3::red::conectadas(tp3::compu, tp3::compu) const’:
-red.cpp:29:53: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘T* DiccString<T>::obtener(const string&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
-     Dicc<interfaz, ip>* d = conexiones.obtener(c1.IP);
-                                                     ^
-red.cpp:30:41: error: request for member ‘CrearIt’ in ‘d’, which is of pointer type ‘aed2::Dicc<unsigned int, std::basic_string<char> >*’ (maybe you meant to use ‘->’ ?)
-     Dicc<interfaz, ip>::Iterador it = d.CrearIt();
-                                         ^
-red.cpp: In member function ‘tp3::interfaz tp3::red::interfazUsada(tp3::compu, tp3::compu) const’:
-red.cpp:38:53: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘T* DiccString<T>::obtener(const string&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
-     Dicc<interfaz, ip>* d = conexiones.obtener(c1.IP);
-                                                     ^
-red.cpp:39:41: error: request for member ‘CrearIt’ in ‘d’, which is of pointer type ‘aed2::Dicc<unsigned int, std::basic_string<char> >*’ (maybe you meant to use ‘->’ ?)
-     Dicc<interfaz, ip>::Iterador it = d.CrearIt();
-                                         ^
-red.cpp: In member function ‘aed2::Conj<tp3::compu> tp3::red::vecinos(tp3::compu) const’:
-red.cpp:47:52: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘T* DiccString<T>::obtener(const string&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
-     Dicc<interfaz, ip>* d = conexiones.obtener(c.IP);
-                                                    ^
-red.cpp:48:42: error: request for member ‘CrearIt’ in ‘d’, which is of pointer type ‘aed2::Dicc<unsigned int, std::basic_string<char> >*’ (maybe you meant to use ‘->’ ?)
-     Dicc<interfaz, ip>::Iterador it1 = d.CrearIt();
-                                          ^
-red.cpp:51:42: error: conversion from ‘aed2::Conj<tp3::compu>::const_Iterador’ to non-scalar type ‘aed2::Conj<tp3::compu>’ requested
-         Conj<compu> it2 = compus.CrearIt();
-                                          ^
-red.cpp:52:20: error: ‘class aed2::Conj<tp3::compu>’ has no member named ‘Siguiente’
-         while (it2.Siguiente().IP != it1.SiguienteSignificado()) {
-                    ^
-red.cpp:53:17: error: ‘class aed2::Conj<tp3::compu>’ has no member named ‘Avanzar’
-             it2.Avanzar();
-                 ^
-red.cpp:55:31: error: ‘class aed2::Conj<tp3::compu>’ has no member named ‘Siguiente’
-         res.AgregarRapido(it2.Siguiente());
-                               ^
-red.cpp: At global scope:
-red.cpp:60:36: error: expected ‘)’ before ‘;’ token
- bool red::usaInterfaz(const compu c; const interfaz i) const {
-                                    ^
-red.cpp:60:6: error: prototype for ‘bool tp3::red::usaInterfaz(tp3::compu)’ does not match any in class ‘tp3::red’
- bool red::usaInterfaz(const compu c; const interfaz i) const {
-      ^
-In file included from red.cpp:1:0:
-red.h:40:10: error: candidate is: bool tp3::red::usaInterfaz(tp3::compu, tp3::interfaz) const
-     bool usaInterfaz(const compu c, const interfaz i) const;
-          ^
-red.cpp:60:54: error: expected initializer before ‘)’ token
- bool red::usaInterfaz(const compu c; const interfaz i) const {
-                                                      ^
-red.cpp: In member function ‘aed2::Conj<aed2::Lista<tp3::compu> > tp3::red::caminosMinimos(tp3::compu, tp3::compu) const’:
-red.cpp:66:19: error: ‘Vecinos’ was not declared in this scope
-     if (Vecinos(c1).Pertenece(c2)) {
-                   ^
-red.cpp:67:53: error: ‘class aed2::Lista<tp3::compu>::Iterador’ has no member named ‘AgregarAtras’
-         res.Agregar(Lista<compu>().AgregarAtras(c1).AgregarAtras(c2));
-                                                     ^
-red.cpp:69:102: error: ‘PasarConjASecu’ was not declared in this scope
-         res = DameMinimos(Caminos(c1, c2, Lista<compu>().AgregarAtras(c1), PasarConjASecu(Vecinos(c1)));
-                                                                                                      ^
-red.cpp:69:103: error: ‘Caminos’ was not declared in this scope
-         res = DameMinimos(Caminos(c1, c2, Lista<compu>().AgregarAtras(c1), PasarConjASecu(Vecinos(c1)));
-                                                                                                       ^
-red.cpp: In member function ‘bool tp3::red::hayCamino(tp3::compu, tp3::compu) const’:
-red.cpp:74:73: error: ‘Vecinos’ was not declared in this scope
-     return !(caminos(c1, c2, Lista<compu>().AgregarAtras(c1), Vecinos(c1)).EsVacio());
-                                                                         ^
-red.cpp: At global scope:
-red.cpp:81:23: error: declaration of ‘aed2::Nat tp3::red::cantCompus() const’ outside of class is not definition [-fpermissive]
+red.cpp:86:23: error: declaration of ‘aed2::Nat tp3::red::cantCompus() const’ outside of class is not definition [-fpermissive]
  Nat red::cantCompus() const;
                        ^
-red.cpp:82:5: error: expected unqualified-id before ‘return’
+red.cpp:87:5: error: expected unqualified-id before ‘return’
      return compus.Cardinal();
      ^
-red.cpp:85:12: error: ‘compu’ was not declared in this scope
+red.cpp:90:12: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
             ^
-red.cpp:85:12: note: suggested alternative:
+red.cpp:90:12: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:85:17: error: template argument 1 is invalid
+red.cpp:90:17: error: template argument 1 is invalid
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                  ^
-red.cpp:85:19: error: template argument 1 is invalid
+red.cpp:90:19: error: template argument 1 is invalid
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                    ^
-red.cpp:85:21: error: ‘red’ has not been declared
+red.cpp:90:21: error: ‘red’ has not been declared
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                      ^
-red.cpp:85:55: error: ‘compu’ was not declared in this scope
+red.cpp:90:55: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                                                        ^
-red.cpp:85:55: note: suggested alternative:
+red.cpp:90:55: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:85:60: error: template argument 1 is invalid
+red.cpp:90:60: error: template argument 1 is invalid
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                                                             ^
-red.cpp:85:62: error: template argument 1 is invalid
+red.cpp:90:62: error: template argument 1 is invalid
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                                                               ^
-red.cpp:85:67: error: non-member function ‘int dameMinimos(int)’ cannot have cv-qualifier
+red.cpp:90:67: error: non-member function ‘int dameMinimos(int)’ cannot have cv-qualifier
  Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> > c) const {
                                                                    ^
 red.cpp: In function ‘int dameMinimos(int)’:
-red.cpp:86:37: error: ‘MinimaLong’ was not declared in this scope
-     return LosDeLong(c, MinimaLong(c));
+red.cpp:91:37: error: ‘minimaLong’ was not declared in this scope
+     return losDeLong(c, minimaLong(c));
                                      ^
-red.cpp:86:38: error: ‘LosDeLong’ was not declared in this scope
-     return LosDeLong(c, MinimaLong(c));
+red.cpp:91:38: error: ‘losDeLong’ was not declared in this scope
+     return losDeLong(c, minimaLong(c));
                                       ^
 red.cpp: At global scope:
-red.cpp:89:12: error: ‘compu’ was not declared in this scope
+red.cpp:94:12: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
             ^
-red.cpp:89:12: note: suggested alternative:
+red.cpp:94:12: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:89:17: error: template argument 1 is invalid
+red.cpp:94:17: error: template argument 1 is invalid
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                  ^
-red.cpp:89:19: error: template argument 1 is invalid
+red.cpp:94:19: error: template argument 1 is invalid
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                    ^
-red.cpp:89:21: error: ‘red’ has not been declared
+red.cpp:94:21: error: ‘red’ has not been declared
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                      ^
-red.cpp:89:53: error: ‘compu’ was not declared in this scope
+red.cpp:94:53: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                                                      ^
-red.cpp:89:53: note: suggested alternative:
+red.cpp:94:53: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:89:58: error: template argument 1 is invalid
+red.cpp:94:58: error: template argument 1 is invalid
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                                                           ^
-red.cpp:89:60: error: template argument 1 is invalid
+red.cpp:94:60: error: template argument 1 is invalid
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                                                             ^
-red.cpp:89:72: error: non-member function ‘int losDeLong(int, aed2::Nat)’ cannot have cv-qualifier
+red.cpp:94:72: error: non-member function ‘int losDeLong(int, aed2::Nat)’ cannot have cv-qualifier
  Conj<Lista<compu> > red::losDeLong(const Conj<Lista<compu> > c, Nat k) const {
                                                                         ^
 red.cpp: In function ‘int losDeLong(int, aed2::Nat)’:
-red.cpp:90:16: error: ‘compu’ was not declared in this scope
+red.cpp:95:16: error: ‘compu’ was not declared in this scope
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                 ^
-red.cpp:90:16: note: suggested alternative:
+red.cpp:95:16: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:90:21: error: template argument 1 is invalid
+red.cpp:95:21: error: template argument 1 is invalid
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                      ^
-red.cpp:90:23: error: template argument 1 is invalid
+red.cpp:95:23: error: template argument 1 is invalid
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                        ^
-red.cpp:90:35: error: expected initializer before ‘it’
+red.cpp:95:35: error: expected initializer before ‘it’
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                                    ^
-red.cpp:91:21: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
+red.cpp:96:21: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                      ^
-red.cpp:91:21: error:   expected a type, got ‘compu’
-red.cpp:91:23: error: template argument 1 is invalid
+red.cpp:96:21: error:   expected a type, got ‘compu’
+red.cpp:96:23: error: template argument 1 is invalid
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                        ^
-red.cpp:91:29: error: invalid type in declaration before ‘=’ token
+red.cpp:96:29: error: invalid type in declaration before ‘=’ token
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                              ^
-red.cpp:91:31: error: ‘ConjConj’ was not declared in this scope
+red.cpp:96:31: error: ‘ConjConj’ was not declared in this scope
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                                ^
-red.cpp:91:51: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
+red.cpp:96:51: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                                                    ^
-red.cpp:91:51: error:   expected a type, got ‘compu’
-red.cpp:91:55: error: expected primary-expression before ‘)’ token
+red.cpp:96:51: error:   expected a type, got ‘compu’
+red.cpp:96:55: error: expected primary-expression before ‘)’ token
      Conj<Lista<compu> > res = ConjConj<Lista<compu> >();
                                                        ^
-red.cpp:92:12: error: ‘it’ was not declared in this scope
+red.cpp:97:12: error: ‘it’ was not declared in this scope
      while (it.HaySiguiente()) {
             ^
-red.cpp:94:17: error: request for member ‘Agregar’ in ‘res’, which is of non-class type ‘int’
+red.cpp:99:17: error: request for member ‘Agregar’ in ‘res’, which is of non-class type ‘int’
              res.Agregar(it.Siguiente());
                  ^
 red.cpp: At global scope:
-red.cpp:100:5: error: ‘red’ has not been declared
+red.cpp:105:5: error: ‘red’ has not been declared
  Nat red::minimaLong(const Conj<Lista<compu> > c) const {
      ^
-red.cpp:100:38: error: ‘compu’ was not declared in this scope
+red.cpp:105:38: error: ‘compu’ was not declared in this scope
  Nat red::minimaLong(const Conj<Lista<compu> > c) const {
                                       ^
-red.cpp:100:38: note: suggested alternative:
+red.cpp:105:38: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:100:43: error: template argument 1 is invalid
+red.cpp:105:43: error: template argument 1 is invalid
  Nat red::minimaLong(const Conj<Lista<compu> > c) const {
                                            ^
-red.cpp:100:45: error: template argument 1 is invalid
+red.cpp:105:45: error: template argument 1 is invalid
  Nat red::minimaLong(const Conj<Lista<compu> > c) const {
                                              ^
-red.cpp:100:50: error: non-member function ‘aed2::Nat minimaLong(int)’ cannot have cv-qualifier
+red.cpp:105:50: error: non-member function ‘aed2::Nat minimaLong(int)’ cannot have cv-qualifier
  Nat red::minimaLong(const Conj<Lista<compu> > c) const {
                                                   ^
 red.cpp: In function ‘aed2::Nat minimaLong(int)’:
-red.cpp:102:16: error: ‘compu’ was not declared in this scope
+red.cpp:107:16: error: ‘compu’ was not declared in this scope
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                 ^
-red.cpp:102:16: note: suggested alternative:
+red.cpp:107:16: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:102:21: error: template argument 1 is invalid
+red.cpp:107:21: error: template argument 1 is invalid
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                      ^
-red.cpp:102:23: error: template argument 1 is invalid
+red.cpp:107:23: error: template argument 1 is invalid
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                        ^
-red.cpp:102:35: error: expected initializer before ‘it’
+red.cpp:107:35: error: expected initializer before ‘it’
      Conj<Lista<compu> >::Iterador it = c.CrearIt();
                                    ^
-red.cpp:103:9: error: ‘it’ was not declared in this scope
+red.cpp:108:9: error: ‘it’ was not declared in this scope
      if (it.HaySiguiente()) {
          ^
-red.cpp:106:12: error: ‘it’ was not declared in this scope
+red.cpp:111:12: error: ‘it’ was not declared in this scope
      while (it.HaySiguiente()) {
             ^
 red.cpp: At global scope:
-red.cpp:115:7: error: ‘compu’ was not declared in this scope
+red.cpp:120:7: error: ‘compu’ was not declared in this scope
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
        ^
-red.cpp:115:7: note: suggested alternative:
+red.cpp:120:7: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:115:12: error: template argument 1 is invalid
+red.cpp:120:12: error: template argument 1 is invalid
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
             ^
-red.cpp:115:14: error: ‘red’ has not been declared
+red.cpp:120:14: error: ‘red’ has not been declared
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
               ^
-red.cpp:115:45: error: ‘compu’ was not declared in this scope
+red.cpp:120:45: error: ‘compu’ was not declared in this scope
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
                                              ^
-red.cpp:115:45: note: suggested alternative:
+red.cpp:120:45: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:115:50: error: template argument 1 is invalid
+red.cpp:120:50: error: template argument 1 is invalid
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
                                                   ^
-red.cpp:115:55: error: non-member function ‘int pasarConjASecu(int)’ cannot have cv-qualifier
+red.cpp:120:55: error: non-member function ‘int pasarConjASecu(int)’ cannot have cv-qualifier
  Lista<compu> red::pasarConjASecu(const Conj<compu> c) const {
                                                        ^
 red.cpp: In function ‘int pasarConjASecu(int)’:
-red.cpp:116:11: error: ‘compu’ was not declared in this scope
+red.cpp:121:11: error: ‘compu’ was not declared in this scope
      Lista<compu> res = Lista<compu>();
            ^
-red.cpp:116:11: note: suggested alternative:
+red.cpp:121:11: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:116:16: error: template argument 1 is invalid
+red.cpp:121:16: error: template argument 1 is invalid
      Lista<compu> res = Lista<compu>();
                 ^
-red.cpp:116:22: error: invalid type in declaration before ‘=’ token
+red.cpp:121:22: error: invalid type in declaration before ‘=’ token
      Lista<compu> res = Lista<compu>();
                       ^
-red.cpp:116:35: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
+red.cpp:121:35: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Lista’
      Lista<compu> res = Lista<compu>();
                                    ^
-red.cpp:116:35: error:   expected a type, got ‘compu’
-red.cpp:117:15: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Conj’
+red.cpp:121:35: error:   expected a type, got ‘compu’
+red.cpp:122:15: error: type/value mismatch at argument 1 in template parameter list for ‘template<class T> class aed2::Conj’
      Conj<compu>::Iterador it = c.CrearIt();
                ^
-red.cpp:117:15: error:   expected a type, got ‘compu’
-red.cpp:117:27: error: expected initializer before ‘it’
+red.cpp:122:15: error:   expected a type, got ‘compu’
+red.cpp:122:27: error: expected initializer before ‘it’
      Conj<compu>::Iterador it = c.CrearIt();
                            ^
-red.cpp:118:12: error: ‘it’ was not declared in this scope
+red.cpp:123:12: error: ‘it’ was not declared in this scope
      while (it.HaySiguiente()) {
             ^
-red.cpp:119:13: error: request for member ‘AgregarAtras’ in ‘res’, which is of non-class type ‘int’
+red.cpp:124:13: error: request for member ‘AgregarAtras’ in ‘res’, which is of non-class type ‘int’
          res.AgregarAtras(it.Siguiente());
              ^
 red.cpp: At global scope:
-red.cpp:124:12: error: ‘compu’ was not declared in this scope
+red.cpp:129:12: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
             ^
-red.cpp:124:12: note: suggested alternative:
+red.cpp:129:12: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:124:17: error: template argument 1 is invalid
+red.cpp:129:17: error: template argument 1 is invalid
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                  ^
-red.cpp:124:19: error: template argument 1 is invalid
+red.cpp:129:19: error: template argument 1 is invalid
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                    ^
-red.cpp:124:21: error: ‘red’ has not been declared
+red.cpp:129:21: error: ‘red’ has not been declared
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                      ^
-red.cpp:124:40: error: ‘compu’ does not name a type
+red.cpp:129:40: error: ‘compu’ does not name a type
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                         ^
-red.cpp:124:46: error: ISO C++ forbids declaration of ‘c1’ with no type [-fpermissive]
+red.cpp:129:46: error: ISO C++ forbids declaration of ‘c1’ with no type [-fpermissive]
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                               ^
-red.cpp:124:56: error: ‘compu’ does not name a type
+red.cpp:129:56: error: ‘compu’ does not name a type
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                         ^
-red.cpp:124:62: error: ISO C++ forbids declaration of ‘c2’ with no type [-fpermissive]
+red.cpp:129:62: error: ISO C++ forbids declaration of ‘c2’ with no type [-fpermissive]
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                               ^
-red.cpp:124:72: error: ‘compu’ was not declared in this scope
+red.cpp:129:72: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                                         ^
-red.cpp:124:72: note: suggested alternative:
+red.cpp:129:72: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:124:77: error: template argument 1 is invalid
+red.cpp:129:77: error: template argument 1 is invalid
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                                              ^
-red.cpp:124:88: error: ‘compu’ was not declared in this scope
+red.cpp:129:88: error: ‘compu’ was not declared in this scope
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                                                         ^
-red.cpp:124:88: note: suggested alternative:
+red.cpp:129:88: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:124:93: error: template argument 1 is invalid
+red.cpp:129:93: error: template argument 1 is invalid
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                                                              ^
-red.cpp:124:107: error: non-member function ‘int caminos(int, int, int, int)’ cannot have cv-qualifier
+red.cpp:129:107: error: non-member function ‘int caminos(int, int, int, int)’ cannot have cv-qualifier
  Conj<Lista<compu> > red::caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const {
                                                                                                            ^
 red.cpp: In function ‘int caminos(int, int, int, int)’:
-red.cpp:125:20: error: request for member ‘EsVacia’ in ‘candidatos’, which is of non-class type ‘int’
+red.cpp:130:20: error: request for member ‘EsVacia’ in ‘candidatos’, which is of non-class type ‘int’
      if (candidatos.EsVacia()) {
                     ^
-red.cpp:126:27: error: ‘compu’ was not declared in this scope
+red.cpp:131:27: error: ‘compu’ was not declared in this scope
          return Conj<Lista<compu> >();
                            ^
-red.cpp:126:27: note: suggested alternative:
+red.cpp:131:27: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:126:32: error: template argument 1 is invalid
+red.cpp:131:32: error: template argument 1 is invalid
          return Conj<Lista<compu> >();
                                 ^
-red.cpp:126:34: error: template argument 1 is invalid
+red.cpp:131:34: error: template argument 1 is invalid
          return Conj<Lista<compu> >();
                                   ^
-red.cpp:128:15: error: request for member ‘Ultimo’ in ‘l’, which is of non-class type ‘int’
+red.cpp:133:15: error: request for member ‘Ultimo’ in ‘l’, which is of non-class type ‘int’
          if (l.Ultimo() = c2) {
                ^
-red.cpp:129:31: error: ‘compu’ was not declared in this scope
+red.cpp:134:31: error: ‘compu’ was not declared in this scope
              return Conj<Lista<compu> >().Agregar(l);
                                ^
-red.cpp:129:31: note: suggested alternative:
+red.cpp:134:31: note: suggested alternative:
 In file included from red.cpp:1:0:
 red.h:13:8: note:   ‘tp3::compu’
  struct compu {
         ^
-red.cpp:129:36: error: template argument 1 is invalid
+red.cpp:134:36: error: template argument 1 is invalid
              return Conj<Lista<compu> >().Agregar(l);
                                     ^
-red.cpp:129:38: error: template argument 1 is invalid
+red.cpp:134:38: error: template argument 1 is invalid
              return Conj<Lista<compu> >().Agregar(l);
                                       ^
-red.cpp:131:30: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
+red.cpp:136:30: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
              if (!(candidatos.Primero().Esta(l))) {
                               ^
-red.cpp:132:48: error: request for member ‘AgregarAtras’ in ‘l’, which is of non-class type ‘int’
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:48: error: request for member ‘AgregarAtras’ in ‘l’, which is of non-class type ‘int’
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                 ^
-red.cpp:132:72: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:72: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                                         ^
-red.cpp:132:118: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:118: error: request for member ‘Primero’ in ‘candidatos’, which is of non-class type ‘int’
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                                                                                       ^
-red.cpp:132:127: error: ‘Vecinos’ was not declared in this scope
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:127: error: ‘vecinos’ was not declared in this scope
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                                                                                                ^
-red.cpp:132:128: error: ‘PasarConjASecu’ was not declared in this scope
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
-                                                                                                                                ^
-red.cpp:132:129: error: ‘Caminos’ was not declared in this scope
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
-                                                                                                                                 ^
-red.cpp:132:162: error: request for member ‘Fin’ in ‘candidatos’, which is of non-class type ‘int’
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:162: error: request for member ‘Fin’ in ‘candidatos’, which is of non-class type ‘int’
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                                                                                                                                   ^
-red.cpp:132:168: error: ‘Union’ was not declared in this scope
-                 return Union(Caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), PasarConjASecu(Vecinos(candidatos.Primero()))), Caminos(c1, c2, l, candidatos.Fin()));
+red.cpp:137:168: error: ‘Union’ was not declared in this scope
+                 return Union(caminos(c1, c2, l.AgregarAtras(candidatos.Primero()), pasarConjASecu(vecinos(candidatos.Primero()))), caminos(c1, c2, l, candidatos.Fin()));
                                                                                                                                                                         ^
-red.cpp:134:54: error: request for member ‘Fin’ in ‘candidatos’, which is of non-class type ‘int’
-                 return Caminos(c1, c2, l, candidatos.Fin());
+red.cpp:139:54: error: request for member ‘Fin’ in ‘candidatos’, which is of non-class type ‘int’
+                 return caminos(c1, c2, l, candidatos.Fin());
                                                       ^
-red.cpp:134:59: error: ‘Caminos’ was not declared in this scope
-                 return Caminos(c1, c2, l, candidatos.Fin());
-                                                           ^
+In file included from red.h:5:0,
+                 from red.cpp:1:
+dicc_trie.h: In instantiation of ‘DiccString<T> DiccString<T>::operator=(const DiccString<T>&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >]’:
+red.cpp:7:16:   required from here
+dicc_trie.h:112:43: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘std::vector<std::basic_string<char> > DiccString<T>::claves() [with T = aed2::Dicc<unsigned int, std::basic_string<char> >]’ discards qualifiers [-fpermissive]
+         vector<string> keys = otro.claves();
+                                           ^
+In file included from dicc_trie.h:3:0,
+                 from red.h:5,
+                 from red.cpp:1:
+dicc_trie.h: In instantiation of ‘T* DiccString<T>::obtener(const string&) const [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’:
+red.cpp:21:29:   required from here
+dicc_trie.h:137:30: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘bool DiccString<T>::definido(const string&) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
+         assert(definido(clave));
+                              ^
+In file included from red.h:5:0,
+                 from red.cpp:1:
+dicc_trie.h:138:32: error: passing ‘const DiccString<aed2::Dicc<unsigned int, std::basic_string<char> > >’ as ‘this’ argument of ‘T* DiccString<T>::_obtener(const string&, int) [with T = aed2::Dicc<unsigned int, std::basic_string<char> >; std::string = std::basic_string<char>]’ discards qualifiers [-fpermissive]
+         return _obtener(clave,0);
+                                ^
 In file included from aed2.h:18:0,
                  from red.h:4,
                  from red.cpp:1:
 aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::const_Iterador aed2::Dicc<K, S>::Buscar(const K&) const [with K = tp3::compu; S = bool]’:
 aed2/Dicc.h:223:22:   required from ‘bool aed2::Dicc<K, S>::Definido(const K&) const [with K = tp3::compu; S = bool]’
-aed2/Dicc.h:211:3:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::DefinirRapido(const K&, const S&) [with K = tp3::compu; S = bool]’
-aed2/Conj.h:161:49:   required from ‘aed2::Conj<T>::Iterador aed2::Conj<T>::AgregarRapido(const T&) [with T = tp3::compu]’
-red.cpp:18:27:   required from here
+aed2/Conj.h:176:28:   required from ‘bool aed2::Conj<T>::Pertenece(const T&) const [with T = tp3::compu]’
+red.cpp:63:33:   required from here
 aed2/Dicc.h:567:50: error: no match for ‘operator!=’ (operand types are ‘const tp3::compu’ and ‘const tp3::compu’)
    while(it.HaySiguiente() && it.SiguienteClave() != clave){
                                                   ^
@@ -692,5 +637,551 @@ In file included from aed2.h:18:0,
                  from red.h:4,
                  from red.cpp:1:
 aed2/Dicc.h:567:50: note:   ‘const tp3::compu’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Buscar(const K&) [with K = aed2::Lista<tp3::compu>; S = bool]’:
+aed2/Dicc.h:196:29:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Definir(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Conj.h:156:43:   required from ‘aed2::Conj<T>::Iterador aed2::Conj<T>::Agregar(const T&) [with T = aed2::Lista<tp3::compu>]’
+red.cpp:67:22:   required from here
+aed2/Dicc.h:557:50: error: no match for ‘operator!=’ (operand types are ‘const aed2::Lista<tp3::compu>’ and ‘const aed2::Lista<tp3::compu>’)
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h:557:50: note: candidates are:
+In file included from /usr/include/c++/4.8/iosfwd:40:0,
+                 from /usr/include/c++/4.8/ios:38,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.8/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::fpos<_StateT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.8/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::pair<_T1, _T2>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_iterator.h:303:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_iterator.h:303:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_iterator.h:353:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_iterator.h:353:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:41:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.8/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:41:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.8/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2532:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2532:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2544:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2544:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   mismatched types ‘const _CharT*’ and ‘aed2::Lista<tp3::compu>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2556:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2556:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.8/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8/ios:44,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.8/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/vector:64:0,
+                 from dicc_trie.h:4,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_vector.h:1428:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.8/bits/stl_vector.h:1428:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_tree.h:316:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_tree.h:316:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_tree.h:927:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_tree.h:927:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:61:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_map.h:986:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_map.h:986:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:62:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_multimap.h:888:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_multimap.h:888:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:557:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h: In instantiation of ‘aed2::Dicc<K, S>::const_Iterador aed2::Dicc<K, S>::Buscar(const K&) const [with K = aed2::Lista<tp3::compu>; S = bool]’:
+aed2/Dicc.h:223:22:   required from ‘bool aed2::Dicc<K, S>::Definido(const K&) const [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Dicc.h:211:3:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::DefinirRapido(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Dicc.h:201:42:   required from ‘aed2::Dicc<K, S>::Iterador aed2::Dicc<K, S>::Definir(const K&, const S&) [with K = aed2::Lista<tp3::compu>; S = bool]’
+aed2/Conj.h:156:43:   required from ‘aed2::Conj<T>::Iterador aed2::Conj<T>::Agregar(const T&) [with T = aed2::Lista<tp3::compu>]’
+red.cpp:67:22:   required from here
+aed2/Dicc.h:567:50: error: no match for ‘operator!=’ (operand types are ‘const aed2::Lista<tp3::compu>’ and ‘const aed2::Lista<tp3::compu>’)
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+aed2/Dicc.h:567:50: note: candidates are:
+In file included from /usr/include/c++/4.8/iosfwd:40:0,
+                 from /usr/include/c++/4.8/ios:38,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/postypes.h:221:5: note: template<class _StateT> bool std::operator!=(const std::fpos<_StateT>&, const std::fpos<_StateT>&)
+     operator!=(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)
+     ^
+/usr/include/c++/4.8/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::fpos<_StateT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_pair.h:227:5: note: template<class _T1, class _T2> bool std::operator!=(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+     operator!=(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)
+     ^
+/usr/include/c++/4.8/bits/stl_pair.h:227:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::pair<_T1, _T2>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_iterator.h:303:5: note: template<class _Iterator> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator!=(const reverse_iterator<_Iterator>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_iterator.h:303:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8/ios:40,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_iterator.h:353:5: note: template<class _IteratorL, class _IteratorR> bool std::operator!=(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator!=(const reverse_iterator<_IteratorL>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_iterator.h:353:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:41:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/allocator.h:138:5: note: template<class _T1, class _T2> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_T2>&)
+     operator!=(const allocator<_T1>&, const allocator<_T2>&)
+     ^
+/usr/include/c++/4.8/bits/allocator.h:138:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:41:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/allocator.h:143:5: note: template<class _Tp> bool std::operator!=(const std::allocator<_CharT>&, const std::allocator<_CharT>&)
+     operator!=(const allocator<_Tp>&, const allocator<_Tp>&)
+     ^
+/usr/include/c++/4.8/bits/allocator.h:143:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::allocator<_CharT>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2532:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2532:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2544:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator!=(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2544:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   mismatched types ‘const _CharT*’ and ‘aed2::Lista<tp3::compu>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/string:52:0,
+                 from /usr/include/c++/4.8/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8/ios:42,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/basic_string.h:2556:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator!=(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator!=(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^
+/usr/include/c++/4.8/bits/basic_string.h:2556:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.8/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8/ios:44,
+                 from /usr/include/c++/4.8/ostream:38,
+                 from /usr/include/c++/4.8/iostream:39,
+                 from aed2/TiposBasicos.h:5,
+                 from aed2.h:14,
+                 from red.h:4,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/streambuf_iterator.h:210:5: note: template<class _CharT, class _Traits> bool std::operator!=(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)
+     operator!=(const istreambuf_iterator<_CharT, _Traits>& __a,
+     ^
+/usr/include/c++/4.8/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/vector:64:0,
+                 from dicc_trie.h:4,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_vector.h:1428:5: note: template<class _Tp, class _Alloc> bool std::operator!=(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)
+     operator!=(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)
+     ^
+/usr/include/c++/4.8/bits/stl_vector.h:1428:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::vector<_Tp, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_tree.h:316:5: note: template<class _Val> bool std::operator!=(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)
+     operator!=(const _Rb_tree_iterator<_Val>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_tree.h:316:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree_iterator<_Tp>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:60:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_tree.h:927:5: note: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator!=(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)
+     operator!=(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_tree.h:927:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:61:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_map.h:986:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const map<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_map.h:986:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::map<_Key, _Tp, _Compare, _Alloc>’
+   while(it.HaySiguiente() && it.SiguienteClave() != clave){
+                                                  ^
+In file included from /usr/include/c++/4.8/map:62:0,
+                 from dicc_trie.h:5,
+                 from red.h:5,
+                 from red.cpp:1:
+/usr/include/c++/4.8/bits/stl_multimap.h:888:5: note: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator!=(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)
+     operator!=(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,
+     ^
+/usr/include/c++/4.8/bits/stl_multimap.h:888:5: note:   template argument deduction/substitution failed:
+In file included from aed2.h:18:0,
+                 from red.h:4,
+                 from red.cpp:1:
+aed2/Dicc.h:567:50: note:   ‘const aed2::Lista<tp3::compu>’ is not derived from ‘const std::multimap<_Key, _Tp, _Compare, _Alloc>’
    while(it.HaySiguiente() && it.SiguienteClave() != clave){
                                                   ^

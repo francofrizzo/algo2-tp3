@@ -26,11 +26,11 @@ private:
     Conj<Lista<compu> > losDeLong(const Conj<Lista<compu> > c, Nat k) const;
     Nat minimaLong(const Conj<Lista<compu> > c) const;
     Lista<compu> pasarConjASecu(const Conj<compu> c) const;
-    Conj<Lista<compu> > caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> cantidatos) const;
+    Conj<Lista<compu> > caminos(const compu c1, const compu c2, Lista<compu> l, Lista<compu> candidatos) const;
 
 public:
     red();
-    red(const red& r);
+    red(red& r); // Sacamos un const del parámetro r
 
     void agregarCompu(const compu c);
     void conectar(const compu c1, const interfaz i1, const compu c2, const interfaz i2);
