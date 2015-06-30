@@ -1,31 +1,26 @@
 #ifndef DCNET_H
 #define DCNET_H
 
-#include "aed2.h"
-#include "dicc_trie.h"
+#include "./aed2.h"
+#include "./dicc_trie.h"
 
 using namespace aed2;
 
 namespace tp3 {
 
-
-
 typedef aed2::Nat Prioridad;
 typedef aed2::Nat ID;
 typedef aed2::String IP;
 
-struct Paquete
-{ID id;
+struct Paquete {
+    ID id;
     Prioridad prioridad;
     Compu origen;
     Compu destino;
 };
 
-
-
 class dcnet {
-private:
-  
+ private:
     red Red;
     DiccString<String, Nat> IDsCompusPorIP;
     Arreglo<Arreglo<Nat> > siguientesCompus;
@@ -34,24 +29,24 @@ private:
     Compu laQueMasEnvio;
     Arreglo<Compu> IPsCompusPorID;
 
-    struct colas
-    { Conj<Paquete> enConjunto;
+    struct colas {
+        Conj<Paquete> enConjunto;
         DiccString<ID, info> porID;
-        colaPrior<priorIt> porPrioridad;        
+        colaPrior<priorIt> porPrioridad;
     };
 
-    struct info
-    {Conj<Paquete>::Iterador iPaquete;
-    Nat codOrigen;
-    Nat codDestino;     
+    struct info {
+        Conj<Paquete>::Iterador iPaquete;
+        Nat codOrigen;
+        Nat codDestino;
     };
 
-    struct priorIt
-    {Prioridad Prior;
-    Conj<Paquete>::Iterador IterP;        
+    struct priorIt {
+        Prioridad Prior;
+        Conj<Paquete>::Iterador IterP;
     };
 
-public:
+ public:
     iniciarDCNet(const red &r);
     void crearPaquete(const Paquete p);
     void avanzarSegundo();
@@ -63,6 +58,6 @@ public:
     compu laQueMasEnvio();
 };
 
-}
+}  // namespace tp3
 
-#endif
+#endif  // DCNET_H
