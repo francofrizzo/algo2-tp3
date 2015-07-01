@@ -12,21 +12,22 @@ namespace tp3 {
 template<class T>
 class ab {
  private:
-    struct subarbol {
-        T valor;
-        ab<T> izq;
-        ab<T> der;
-
-        subarbol(const ab<T>& i, const T& v, const ab<T>& d) :
-            izq(i), valor(v), der(d) {}
-    };
-
-    subarbol* _raiz;
+    bool _esNil;
+    T valor;
+    ab<T>* _izq;
+    ab<T>* _der;
 
  public:
     ab();  // Constructor vacío (Nil)
     ab(const ab<T>&);  // Constructor por copia
-    ab(const ab<T>&, const T&, const ab<T>&);  // Constructor Bin
+
+    // Variantes del constructor Bin:
+    ab(const T&);
+    ab(ab<T>&, const T&);
+    ab(const T&, ab<T>&);
+    ab(ab<T>&, const T&, ab<T>&);
+
+    ~ab();
 
     ab<T>& operator=(const ab<T>&); // Operador de asignación
 
@@ -47,8 +48,32 @@ template<class T>
 ab<T>::ab(const ab<T>& otro) : _raiz(otro._raiz) {}
 
 template<class T>
-ab<T>::ab(const ab<T>& i, const T& r, const ab<T>& d) {
+ab<T>::ab(const T& r) {
+    ab<T>* i = new ab<T>();
+    ab<T>* d = new ab<T>();
+    _raiz = new subarbol(*i, r, *d);
+}
+
+template<class T>
+ab<T>::ab(ab<T>& i, const T& r) {
+    ab<T>* d = new ab<T>();
+    _raiz = new subarbol(i, r, *d);
+}
+
+template<class T>
+ab<T>::ab(const T& r, ab<T>& d) {
+    ab<T>* i = new ab<T>();
+    _raiz = new subarbol(*i, r, d);
+}
+
+template<class T>
+ab<T>::ab(ab<T>& i, const T& r, ab<T>& d) {
     _raiz = new subarbol(i, r, d);
+}
+
+template<class T>
+ab<T>::~ab() {
+    delete _raiz;
 }
 
 template<class T>
@@ -71,13 +96,13 @@ T& ab<T>::raiz() const {
 template<class T>
 ab<T>& ab<T>::izq() const {
     assert(!esNil());
-    return _raiz->izq;
+    return *(_raiz->izq);
 }
 
 template<class T>
 ab<T>& ab<T>::der() const {
     assert(!esNil());
-    return _raiz->der;
+    return *(_raiz->der);
 }
 
 template<class T>

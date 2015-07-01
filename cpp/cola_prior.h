@@ -1,7 +1,7 @@
 #ifndef COLA_PRIOR_H
 #define COLA_PRIOR_H
 
-#include "/aed2.h"
+#include "./aed2.h"
 
 using namespace aed2;
 
@@ -11,6 +11,18 @@ template<class T>
 class colaPrior{
  private:
     Vector<T> heap;
+
+    bool esHeapValido() {  // Función para hacer debugging que verifica
+                           // que se cumpla el invariante de representación
+        for (int i = 0; 2*i + 1 < heap.Longitud(); i++) {
+            if (heap[2*i + 1] > heap[i]) {
+                return false;
+            } else if (2*i + 2 < heap.Longitud() && heap[2*i + 2] > heap[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
  public:
     colaPrior();
@@ -26,21 +38,45 @@ colaPrior<T>::colaPrior() : heap(Vector<T>()) {}
 template<class T>
 void colaPrior<T>::encolar(const T& a) {
     heap.AgregarAtras(a);
-    Nat i = heap.Longitud();
-    while (i != 0 && heap[i] < heap[i / 2 - (i + 1) % 2]) {
-        heap.Swap(i, i / 2 - (i + 1) % 2);
-        i = i / 2 - (i + 1) % 2;
+    Nat i = heap.Longitud() - 1;
+    while (i != 0 && heap[i] > heap[(i + 1)/2 - 1]) {
+        heap.Swap(i, (i + 1)/2 - 1);
+        i = (i + 1)/2 - 1;
     }
+    assert(esHeapValido());
 }
 
 template<class T>
 bool colaPrior<T>::esVacia() const {
-    return heap.esVacio();
+    return heap.EsVacio();
 }
 
 template<class T>
 T colaPrior<T>::desencolar() {
-
+    assert(!esVacia());
+    T res = T(heap[0]);
+    heap.Swap(0, heap.Longitud() - 1);
+    heap.Comienzo();
+    Nat i = 0;
+    while ((2*i + 1 < heap.Longitud() &&
+        heap[i] < heap[2*i + 1]) ||
+        (2*i + 2 < heap.Longitud() &&
+        heap[i] < heap[2*i + 2])) {
+        if (2*i + 2 < heap.Longitud()) {
+            if (heap[2*i + 1] < heap[2*i + 2]) {
+                heap.Swap(i, 2*i + 2);
+                i = 2*i + 2;
+            } else {
+                heap.Swap(i, 2*i + 1);
+                i = 2*i + 1;
+            }
+        } else {
+            heap.Swap(i, 2*i + 1);
+            i = 2*i + 1;
+        }
+    }
+    assert(esHeapValido());
+    return res;
 }
 
 }  // namespace tp3

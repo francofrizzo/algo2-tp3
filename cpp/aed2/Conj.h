@@ -53,7 +53,7 @@ class Conj
 
     // Esta la agregamos nosotros
 
-    Conj<T> Union(const Conj<T>&);
+    Conj<T> Union(const Conj<T>&) const;
 
     /************************************
     * Iterador de Conjunto, modificable *
@@ -410,8 +410,8 @@ std::ostream& operator<<(std::ostream& os, const Conj<T>& c)
 // Esta la agregamos nosotros
 
 template<class T>
-Conj<T> Conj<T>::Union(const Conj<T>& otro) {
-  Conj<T> res = Conj<T>(this);
+Conj<T> Conj<T>::Union(const Conj<T>& otro) const {
+  Conj<T> res = Conj<T>(*this);
   Conj<T>::const_Iterador it = otro.CrearIt();
   while (it.HaySiguiente()) {
     res.Agregar(it.Siguiente());
@@ -422,4 +422,4 @@ Conj<T> Conj<T>::Union(const Conj<T>& otro) {
 
 }
 
-#endif	//AED2_CONJ_H_INCLUDED
+#endif  //AED2_CONJ_H_INCLUDED

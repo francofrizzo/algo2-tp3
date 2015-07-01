@@ -47,7 +47,7 @@ diccLog<K, S>::diccLog() :
     arbol(ab<entrada>()) {}
 
 template<class K, class S>
-diccLog<K, S>::diccLog(const diccLog<K, S>& otro) : 
+diccLog<K, S>::diccLog(const diccLog<K, S>& otro) :
     arbol(ab<entrada>(otro.arbol)) {}
 
 template<class K, class S>

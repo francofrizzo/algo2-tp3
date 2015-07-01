@@ -109,6 +109,7 @@ class Lista
       void EliminarSiguiente();
 
       bool operator == (const typename Lista<T>::Iterador& otro) const;
+      bool operator != (const typename Lista<T>::Iterador& otro) const;
 
   private:
 
@@ -189,6 +190,9 @@ std::ostream& operator << (std::ostream& os, const Lista<T>& l);
 
 template<class T>
 bool operator == (const Lista<T>& l1, const Lista<T>& k2);
+
+template<class T>
+bool operator != (const Lista<T>& l1, const Lista<T>& k2);
 
   //  Implementacion de Lista
 
@@ -679,6 +683,11 @@ bool operator == (const Lista<T>& l1, const Lista<T>& l2)
 }
 
 // Esta la agregamos nosotros
+template <typename T>
+bool operator != (const Lista<T>& l1, const Lista<T>& l2) {
+  return !(l1 == l2);
+}
+
 template<class T>
 bool Lista<T>::Esta(const T& elem) const {
   Lista<T>::const_Iterador it = CrearIt();
