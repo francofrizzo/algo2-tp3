@@ -2,6 +2,8 @@
 
 namespace tp3 {
 
+// Constructores
+
 red::red() :
     compus(Conj<compu>()),
     conexiones(DiccString<diccConexiones>()) {}
@@ -9,6 +11,8 @@ red::red() :
 red::red(const red& r) :
     compus(Conj<compu>(r.compus)),
     conexiones(DiccString<diccConexiones>(r.conexiones)) {}
+
+// Métodos públicos
 
 void red::agregarCompu(const compu& c) {
     compus.AgregarRapido(c);
@@ -87,6 +91,8 @@ const Conj<compu>& red::computadoras() const {
 Nat red::cantCompus() const {
     return compus.Cardinal();
 }
+
+// Métodos privados
 
 Conj<Lista<compu> > red::dameMinimos(const Conj<Lista<compu> >& c) const {
     return losDeLong(c, minimaLong(c));

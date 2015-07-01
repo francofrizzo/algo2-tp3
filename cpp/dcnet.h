@@ -2,60 +2,68 @@
 #define DCNET_H
 
 #include "./aed2.h"
-#include "./dicc_trie.h"
+// #include "./dicc_trie.h"
+// #include "./dicc_log.h"
+#include "./cola_prior.h"
+#include "./red.h"
 
 using namespace aed2;
 
 namespace tp3 {
 
-typedef aed2::Nat Prioridad;
-typedef aed2::Nat ID;
-typedef aed2::String IP;
+typedef Nat prioridad;
+typedef Nat id;
 
-struct Paquete {
-    ID id;
-    Prioridad prioridad;
-    Compu origen;
-    Compu destino;
+struct paquete {
+    id ID;
+    prioridad _prioridad;
+    compu origen;
+    compu destino;
 };
+
+template<class T>
+struct DiccString {};
+
+template<class K, class S>
+struct diccLog{};
 
 class dcnet {
  private:
-    red Red;
-    DiccString<String, Nat> IDsCompusPorIP;
-    Arreglo<Arreglo<Nat> > siguientesCompus;
-    Arreglo<colas> paquetesEnEspera;
-    Arreglo<Nat> cantPaqEnviados;
-    Compu laQueMasEnvio;
-    Arreglo<Compu> IPsCompusPorID;
-
-    struct colas {
-        Conj<Paquete> enConjunto;
-        DiccString<ID, info> porID;
-        colaPrior<priorIt> porPrioridad;
-    };
-
-    struct info {
-        Conj<Paquete>::Iterador iPaquete;
+    struct paqPorID {
+        Conj<paquete>::Iterador itPaquete;
         Nat codOrigen;
         Nat codDestino;
     };
 
-    struct priorIt {
-        Prioridad Prior;
-        Conj<Paquete>::Iterador IterP;
+    struct paqPorPrior {
+        prioridad _prioridad;
+        Conj<paquete>::Iterador itPaquete;
     };
 
+    struct colas {
+        Conj<paquete> enConjunto;
+        diccLog<id, paqPorID> porID;
+        colaPrior<paqPorPrior> porPrioridad;
+    };
+
+    red _red;
+    DiccString<Nat> IDsCompusPorIP;
+    Arreglo<Arreglo<Nat> > siguientesCompus;
+    Arreglo<colas> paquetesEnEspera;
+    Arreglo<Nat> cantPaqEnviados;
+    compu _laQueMasEnvio;
+    Arreglo<compu> IPsCompusPorID;
+
  public:
-    iniciarDCNet(const red &r);
-    void crearPaquete(const Paquete p);
+    explicit dcnet(const red& r);
+    void crearPaquete(const paquete& p);
     void avanzarSegundo();
-    red& Red();
-    lista<Compu> caminoRecorrido(const Paquete p);
-    Nat cantidadEnviados(const compu c);
-    Conj<Paquete>& enEspera(const compu c);
-    bool paqueteEnTransito(const Paquete p);
-    compu laQueMasEnvio();
+    const red& laRed() const;
+    Lista<compu> caminoRecorrido(const paquete& p) const;
+    Nat cantidadEnviados(const compu& c) const;
+    const Conj<paquete>& enEspera(const compu& c) const;
+    bool paqueteEnTransito(const paquete& p) const;
+    const compu& laQueMasEnvio() const;
 };
 
 }  // namespace tp3

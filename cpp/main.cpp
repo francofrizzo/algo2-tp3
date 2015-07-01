@@ -1,9 +1,11 @@
 #include <iostream>
-// #include "./red.h"
+// #include "./aed2.h"
 // #include "./dicc_trie.h"
 // #include "./ab.h"
 // #include "./dicc_log.h"
-#include "./cola_prior.h"
+// #include "./cola_prior.h"
+// #include "./red.h"
+#include "./dcnet.h"
 
 using namespace aed2;
 using namespace tp3;
@@ -50,25 +52,25 @@ void test_red() {
 }
 
 void test_heap() {
-    colaPrior<int> cola;
-    cola.encolar(4);
-    cola.encolar(1);
-    cola.encolar(6);
-    cola.encolar(-80);
-    cola.encolar(8);
-    cola.encolar(150);
-    cola.encolar(7);
-    cola.encolar(99);
-    cola.encolar(-12);
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
+    // colaPrior<int> cola;
+    // cola.encolar(4);
+    // cola.encolar(1);
+    // cola.encolar(6);
+    // cola.encolar(-80);
+    // cola.encolar(8);
+    // cola.encolar(150);
+    // cola.encolar(7);
+    // cola.encolar(99);
+    // cola.encolar(-12);
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
+    // cout << cola.desencolar() << endl;
 }
 
 int main() {
@@ -76,7 +78,7 @@ int main() {
     // test_red();
     // test_ab();
     // test_dicc_log();
-    test_heap();
+    // test_heap();
     
     return 0;
 }

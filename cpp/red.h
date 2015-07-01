@@ -8,8 +8,8 @@ using namespace aed2;
 
 namespace tp3 {
 
-typedef aed2::String ip;
-typedef aed2::Nat interfaz;
+typedef String ip;
+typedef Nat interfaz;
 struct compu {
     ip IP;
     Conj<interfaz> interfaces;
@@ -37,7 +37,7 @@ class red {
 
  public:
     red();
-    red(const red& r);  // Sacamos un const del parámetro r
+    red(const red& r);
 
     void agregarCompu(const compu& c);
     void conectar(const compu& c1, const interfaz& i1,

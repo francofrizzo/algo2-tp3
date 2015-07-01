@@ -2,48 +2,54 @@
 
 namespace tp3 {
 
-dcnet::iniciarDCNet(const red& r) {
-    red = r;
-    cantPaqEnviados = Arreglo(r.cantCompus());
-    IPsCompusPorID = Arreglo(r.cantCompus());
-    siguientesCompus = Arreglo(r.cantCompus());
-    paquetesEnEspera = Arreglo(r.cantCompus());
+// Constructores
+
+explicit dcnet::dcnet(const red& r) {
+    _red = r;
+    cantCompus = r.cantCompus();
+    cantPaqEnviados = Arreglo(cantCompus);
+    IPsCompusPorID = Arreglo(cantCompus);
+    siguientesCompus = Arreglo(cantCompus);
+    paquetesEnEspera = Arreglo(cantCompus);
     Conj<compu> c = r.computadoras();
     Conj<compu>::const_Iterador it1 = c.crearIt();
-    for (Nat j = 0; j < r.cantCompus(); j++) {
-        siguientesCompus[j] = Arreglo(r.cantCompus());
+    for (Nat j = 0; j < cantCompus; j++) {
+        siguientesCompus[j] = Arreglo(cantCompus);
         cantPaqEnviados[j] = 0;
         paquetesEnEspera[j] = colas();
-        paquetesEnEspera[j].enConjunto = Conj();
-        paquetesEnEspera[j].porID = vacio(); \\vacio de AVL
-        paquetesEnEspera[j].porPrioridad = vacio(); \\vacio de ColaPrior
+        paquetesEnEspera[j].enConjunto = Conj<paquete>();
+        paquetesEnEspera[j].porID = vacio();  \\ vacio de diccLog
+        paquetesEnEspera[j].porPrioridad = vacio();  \\ vacio de colaPrior
         IDsCompusPorIP.definir(j, it1.siguiente().IP);
         IPsCompusPorID[j] = it1.siguiente();
         it1.avanzar();
     }
-    for (Nat j = 0; j < r.cantCompus(); j++) {
-        for (Nat k = 0; k < r.cantCompus(); k++) {
+    for (Nat j = 0; j < cantCompus; j++) {
+        for (Nat k = 0; k < cantCompus; k++) {
             if (r.conectadas(IPsCompusPorID[j], IPsCompusPorID[k])) {
-                Conj<Lista<Compu> >::const_Iterador it2 = r.CaminosMinimos(
-                    IPsCompusPorID[j], IPsCompusPorID[k]).crearIt();
-                siguientesCompus[j][k] = it2.siguiente().fin().primero();
+                Conj<Lista<compu> >::const_Iterador it2 = r.CaminosMinimos(
+                    IPsCompusPorID[j], IPsCompusPorID[k]).CrearIt();
+                Lista<compu> camino = it2.Siguiente().Fin()
+                siguientesCompus[j][k] = camino.Primero();
             }
         }
     }
 }
 
-void crearPaquete(const Paquete p) {
+// Métodos públicos
+
+void crearPaquete(const paquete p) {
     Nat o = IDsCompusPorIP.obtener(p.origen);
     Nat dest = IDsCompusPorIP.obtener(p.destino);
     Conj<compu>::const_Iterador it = paquetesEnEspera[o].crearIt();
     it = paquetesEnEspera[o].enConjunto.Agregar(p);
-    info i;
-    i.iPaquete = it;
+    paqPorID i;
+    i.itPaquete = it;
     i.codOrigen = o;
     i.codDestino = dest;
     paquetesEnEspera[o].porID.definir(p.ID, i);
-    priorIt pi;
-    pi.Prior = p.prioridad;
+    paqPorPrior pi;
+    pi._prioridad = p._prioridad;
     pi.iter = it;
     paquetesEnEspera[o].porPrioridad.encolar(pi);
 }
@@ -51,31 +57,31 @@ void crearPaquete(const Paquete p) {
 void avanzarSegundo() {
     Nat o;
     Nat dest;
-    Paquete paq;
-    Conj<Paquete>::const_Iterador it;
+    paquete paq;
+    Conj<paquete>::const_Iterador it;
     for (Nat j = 0; j < red.cantCompus(); j++) {
-        if (!(paquetesEnEspera[j].enConjunto.esVacio())) {
+        if (!(paquetesEnEspera[j].enConjunto.EsVacio())) {
             paq = paquetesEnEspera[j].porPrioridad.desencolar().siguiente();
             o = paquetesEnEspera[j].porID.obtener(paq.ID).codOrigen;
             dest = paquetesEnEspera[j].porID.obtener(paq.ID).codDestino;
-            it = paquetesEnEspera[j].porID.obtener(paq.ID).iPaquete;
+            it = paquetesEnEspera[j].porID.obtener(paq.ID).itPaquete;
             paquetesEnEspera[j].porID.borrar(paq.ID);
-            it.eliminarSiguiente();
+            it.EliminarSiguiente();
             cantPaqEnviados[j]++;
             if (!(siguientesCompus[j][dest] = dest)) {
-                Conj<Paquete>::const_Iterador it =
+                Conj<paquete>::const_Iterador it =
                     paquetesEnEspera[siguientesCompus[j][dest]]
-                    .enConjunto.crearIt();
+                    .enConjunto.CrearIt();
                 it = paquetesEnEspera[siguientesCompus[j][dest]]
                     .enConjunto.AgregarRapido(p);
-                info i;
-                i.iPaquete = it;
+                paqPorID i = paqPorId();
+                i.itPaquete = it;
                 i.codOrigen = siguientesCompus[j][dest];
                 i.codDestino = dest;
                 paquetesEnEspera[siguientesCompus[j][dest]]
                     .porID.definir(p.ID, i);
-                priorIt pi;
-                pi.Prior = paq.prioridad;
+                paqPorPrior pi = paqPorPrior();
+                pi._prioridad = paq._prioridad;
                 pi.iter = it;
                 paquetesEnEspera[siguientesCompus[j][dest]]
                     .porPrioridad.encolar(pi);
@@ -88,17 +94,16 @@ void avanzarSegundo() {
             h = k;
         }
     }
-    laQueMasEnvio = IPsCompusPorID[h];
+    _laQueMasEnvio = IPsCompusPorID[h];
 }
 
-red& Red() {
-    return red;
+const red& laRed() const {
+    return _red;
 }
 
-lista<Compu> caminoRecorrido(const Paquete p) {
-    Nat j = 0;
-    Lista<Compu> res = vacia();
-    while (!(paquetesEnEspera[j].porID.definido(p.ID))) {
+Lista<compu> caminoRecorrido(const paquete p) const {
+    Lista<compu> res = vacia();
+    for (Nat j = 0; !(paquetesEnEspera[j].porID.definido(p.ID)); j++) {
         j++;
     }
     Nat o = paquetesEnEspera[j].porID.obtener(p.ID).codOrigen();
@@ -108,32 +113,30 @@ lista<Compu> caminoRecorrido(const Paquete p) {
         o = siguientesCompus[o][dest];
     }
     res.AgregarAtras(IPsCompusPorID[o]);
+    return res;
 }
 
-Nat cantidadEnviados(const compu c) {
+Nat cantidadEnviados(const compu c) const {
     Nat i = IDsCompusPorIP.obtener(c.IP);
     return cantPaqEnviados[i];
 }
 
-Conj<Paquete>& enEspera(const compu c) {
+const Conj<paquete>& enEspera(const compu c) const {
     Nat i = IDsCompusPorIP.obtener(c.IP);
     return paquetesEnEspera[i].enConjunto;
 }
 
-bool paqueteEnTransito(const Paquete p) {
-    bool res = false;
-    Nat i = 0;
-    while (i < paquetesEnEspera.Tamanho()) {
+bool paqueteEnTransito(const paquete p) const {
+    for (Nat i = 0; i < paquetesEnEspera.Tamanho(); i++) {
         if (paquetesEnEspera[i].porID.definido(p)) {
-            res = true;
+            return true;
         }
-        i++;
     }
-    return res;
+    return false;
 }
 
-compu laQueMasEnvio() {
-    return laQueMasEnvio;
+const &compu laQueMasEnvio() const {
+    return _laQueMasEnvio;
 }
 
 }  // namespace tp3
