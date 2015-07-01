@@ -39,11 +39,18 @@ class dcnet {
         prioridad _prioridad;
         Conj<paquete>::Iterador itPaquete;
     };
+    struct datosPaqAEnviar{
+        paquete paq;
+        Nat orig;
+        Nat desti;
+        bool vacio;
+    };
 
     struct colas {
         Conj<paquete> enConjunto;
         diccLog<id, paqPorID> porID;
         colaPrior<paqPorPrior> porPrioridad;
+        datosPaqAEnviar porEnviar;
     };
 
     red _red;

@@ -18,8 +18,8 @@ explicit dcnet::dcnet(const red& r) {
         cantPaqEnviados[j] = 0;
         paquetesEnEspera[j] = colas();
         paquetesEnEspera[j].enConjunto = Conj<paquete>();
-        paquetesEnEspera[j].porID = vacio();  \\ vacio de diccLog
-        paquetesEnEspera[j].porPrioridad = vacio();  \\ vacio de colaPrior
+        paquetesEnEspera[j].porID = vacio();  // vacio de diccLog
+        paquetesEnEspera[j].porPrioridad = vacio();  // vacio de colaPrior
         IDsCompusPorIP.definir(j, it1.siguiente().IP);
         IPsCompusPorID[j] = it1.siguiente();
         it1.avanzar();
@@ -38,12 +38,12 @@ explicit dcnet::dcnet(const red& r) {
 
 // Métodos públicos
 
-void crearPaquete(const paquete p) {
+void crearPaquete(const paquete &p) {
     Nat o = IDsCompusPorIP.obtener(p.origen);
     Nat dest = IDsCompusPorIP.obtener(p.destino);
-    Conj<compu>::const_Iterador it = paquetesEnEspera[o].crearIt();
-    it = paquetesEnEspera[o].enConjunto.Agregar(p);
-    paqPorID i;
+    Conj<paquete>::const_Iterador it = paquetesEnEspera[o].crearIt();
+    it = paquetesEnEspera[o].enConjunto.AgregarRapido(p);
+    paqPorID i = paqPorId();
     i.itPaquete = it;
     i.codOrigen = o;
     i.codDestino = dest;
@@ -61,32 +61,34 @@ void avanzarSegundo() {
     Conj<paquete>::const_Iterador it;
     for (Nat j = 0; j < red.cantCompus(); j++) {
         if (!(paquetesEnEspera[j].enConjunto.EsVacio())) {
-            paq = paquetesEnEspera[j].porPrioridad.desencolar().siguiente();
+            paq = paquetesEnEspera[j].porPrioridad.desencolar(); //.siguiente();
             o = paquetesEnEspera[j].porID.obtener(paq.ID).codOrigen;
             dest = paquetesEnEspera[j].porID.obtener(paq.ID).codDestino;
             it = paquetesEnEspera[j].porID.obtener(paq.ID).itPaquete;
             paquetesEnEspera[j].porID.borrar(paq.ID);
             it.EliminarSiguiente();
             cantPaqEnviados[j]++;
-            if (!(siguientesCompus[j][dest] = dest)) {
-                Conj<paquete>::const_Iterador it =
-                    paquetesEnEspera[siguientesCompus[j][dest]]
-                    .enConjunto.CrearIt();
-                it = paquetesEnEspera[siguientesCompus[j][dest]]
-                    .enConjunto.AgregarRapido(p);
-                paqPorID i = paqPorId();
-                i.itPaquete = it;
-                i.codOrigen = siguientesCompus[j][dest];
-                i.codDestino = dest;
-                paquetesEnEspera[siguientesCompus[j][dest]]
-                    .porID.definir(p.ID, i);
-                paqPorPrior pi = paqPorPrior();
-                pi._prioridad = paq._prioridad;
-                pi.iter = it;
-                paquetesEnEspera[siguientesCompus[j][dest]]
-                    .porPrioridad.encolar(pi);
-            }
+            paquetesEnEspera[siguientesCompus[j][dest]].porEnviar.paq = paq;
+            paquetesEnEspera[siguientesCompus[j][dest]].porEnviar.iter = it;
+            paquetesEnEspera[siguientesCompus[j][dest]].porEnviar.orig = o;
+            paquetesEnEspera[siguientesCompus[j][dest]].porEnviar.desti = dest;
         }
+    }
+    for (Nat j = 0; j < red.cantCompus(); j++) {
+		if (!(paquetesEnEspera[j].datosPaqAEnviar.vacio)) {
+            Conj<paquete>::const_Iterador it = paquetesEnEspera[siguientesCompus[j][paquetesEnEspera[j].datosPaqAEnviar.desti]].enConjunto.CrearIt();
+            it = paquetesEnEspera[siguientesCompus[j][paquetesEnEspera[j].datosPaqAEnviar.desti]].enConjunto.AgregarRapido(paquetesEnEspera[j].datosPaqAEnviar.paq);
+            paqPorID i = paqPorId();
+            i.itPaquete = it;
+            i.codOrigen = paquetesEnEspera[j].datosPaqAEnviar.orig;
+            i.codDestino = paquetesEnEspera[j].datosPaqAEnviar.desti;
+    		paquetesEnEspera[siguientesCompus[j][paquetesEnEspera[j].datosPaqAEnviar.desti]].porID.definir(p.ID, i);
+            paqPorPrior pi = paqPorPrior();
+            pi._prioridad = paquetesEnEspera[j].datosPaqAEnviar.paq._prioridad;
+            pi.iter = it;
+            paquetesEnEspera[siguientesCompus[j][paquetesEnEspera[j].datosPaqAEnviar.desti]].porPrioridad.encolar(pi);
+            paquetesEnEspera[j].datosPaqAEnviar.vacio = true;
+            }
     }
     Nat h = 0;
     for (Nat k = 0; k < red.cantCompus(); k++) {
@@ -101,7 +103,7 @@ const red& laRed() const {
     return _red;
 }
 
-Lista<compu> caminoRecorrido(const paquete p) const {
+Lista<compu> caminoRecorrido(const paquete &p) const {
     Lista<compu> res = vacia();
     for (Nat j = 0; !(paquetesEnEspera[j].porID.definido(p.ID)); j++) {
         j++;
@@ -116,26 +118,26 @@ Lista<compu> caminoRecorrido(const paquete p) const {
     return res;
 }
 
-Nat cantidadEnviados(const compu c) const {
+Nat cantidadEnviados(const compu &c) const {
     Nat i = IDsCompusPorIP.obtener(c.IP);
     return cantPaqEnviados[i];
 }
 
-const Conj<paquete>& enEspera(const compu c) const {
+const Conj<paquete>& enEspera(const compu &c) const {
     Nat i = IDsCompusPorIP.obtener(c.IP);
     return paquetesEnEspera[i].enConjunto;
 }
 
-bool paqueteEnTransito(const paquete p) const {
+bool paqueteEnTransito(const paquete &p) const {
     for (Nat i = 0; i < paquetesEnEspera.Tamanho(); i++) {
-        if (paquetesEnEspera[i].porID.definido(p)) {
+        if (paquetesEnEspera[i].porID.definido(p.ID)) {
             return true;
         }
     }
     return false;
 }
 
-const &compu laQueMasEnvio() const {
+const compu& laQueMasEnvio() const {
     return _laQueMasEnvio;
 }
 
