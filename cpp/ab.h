@@ -23,20 +23,13 @@ class ab {
         nodo(ab<T>* i, T v, ab<T>* d) :
             valor(v),
             _izq(i),
-            _der(d) {}
+            _der(d) {
+        }
 
         nodo(const nodo& otro) :
             valor(otro.valor) {
-            if (otro._izq != NULL) {
-                _izq = new ab<T>(*(otro._izq));
-            } else {
-                _izq = NULL;
-            }
-            if (otro._der != NULL) {
-                _der = new ab<T>(*(otro._der));
-            } else {
-                _der = NULL;
-            }
+            _izq = otro._izq == NULL ? NULL : new ab<T>(*(otro._izq));
+            _der = otro._der == NULL ? NULL : new ab<T>(*(otro._der));
         }
 
         ~nodo() {
@@ -67,11 +60,12 @@ class ab {
 // Implementación de métodos públicos
 
 template<class T>
-ab<T>::ab() : _raiz(NULL) {}
+ab<T>::ab() : _raiz(NULL) {
+}
 
 template<class T>
 ab<T>::ab(const ab<T>& otro) {
-    *this = otro;
+    _raiz = otro._raiz == NULL ? NULL : new nodo(*(otro._raiz));
 }
 
 template<class T>
@@ -81,25 +75,13 @@ ab<T>::ab(ab<T>* i, const T& r, ab<T>* d) {
 
 template<class T>
 ab<T>::~ab() {
-    // delete _raiz;
+    delete _raiz;
 }
 
 template<class T>
 ab<T>& ab<T>::operator=(const ab<T>& otro) {
     delete _raiz;
-    _raiz = NULL;
-    if (otro._raiz != NULL) {
-        ab<T>* izquierda, * derecha;
-        if (otro._raiz->_izq != NULL) {
-            izquierda = new ab<T>(*(otro._raiz->_izq));
-        }
-        if (otro._raiz->_der != NULL) {
-            derecha = new ab<T>(*(otro._raiz->_der));
-        }
-        _raiz = new nodo(izquierda, otro._raiz->valor, derecha);
-    } else {
-        _raiz = NULL;
-    }
+    _raiz = otro._raiz == NULL ? NULL : new nodo(*(otro._raiz));
     return *this;
 }
 

@@ -41,21 +41,13 @@ void test_ab() {
 
     ASSERT_EQ(A->raiz(), 8);
 
+    // *A = ab<int>(new ab<int>(), A->raiz(), A->der());
+
+    // ASSERT_EQ(A->cantNodos(), 2);
+    // ASSERT_EQ(C->cantNodos(), 3);
+
     delete(C);
     delete(A);
-
-    // cout << cc.raiz() << endl;
-    // cout << "Altura de cc: " << cc.altura() << endl;
-    // cout << "Cant de nodos de cc: " << cc.cantNodos() << endl;
-    // ab<int> nil5 = ab<int>();
-    // ab<int> nil6 = ab<int>();
-    // cc.izq()->izq() = ab<int>(nil5, 6, nil6);
-    // cout << "Altura de cc: " << cc.altura() << endl;
-    // cout << "Cant de nodos de cc: " << cc.cantNodos() << endl;
-    // ab<int> nuevo = cc;
-    // cout << nuevo.izq()->raiz() << endl;
-    // cc.izq()->raiz() = 80;
-    // cout << nuevo.izq()->raiz() << endl;
 }
 
 void test_dicc_log() {
