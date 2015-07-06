@@ -46,14 +46,14 @@ private:
             return es_final;
         if(siguiente.find(clave[index])==siguiente.end())
             return false;
-        return siguiente[clave[index]]->_definido(clave,index+1);
+        return siguiente.at(clave[index])->_definido(clave,index+1);
     }
 
     T* _obtener(const string &clave, int index) const
     {
         if(index == clave.size())
             return significado;
-        return siguiente[clave[index]]->_obtener(clave,index+1);
+        return siguiente.at(clave[index])->_obtener(clave,index+1);
     }
 
     void _borrar(const string &clave, int index)
@@ -235,7 +235,7 @@ public:
             int index = 0;
             while(index != clave.size())
             {
-                dicc = dicc->siguiente[clave[index]];
+                dicc = dicc->siguiente.at(clave[index]);
                 index++;
             }
         }
