@@ -19,6 +19,8 @@ struct paquete {
     prioridad _prioridad;
     compu origen;
     compu destino;
+    bool operator==(const paquete& otro) const;
+    bool operator!=(const paquete& otro) const;
 };
 
 
@@ -34,7 +36,10 @@ class dcnet {
     struct paqPorPrior {
         prioridad _prioridad;
         Conj<paquete>::const_Iterador itPaquete;
+        bool operator<(const paqPorPrior& otro) const;
+        bool operator>(const paqPorPrior& otro) const;
     };
+
     struct datosPaqAEnviar{
         paquete paq;
         Nat orig;

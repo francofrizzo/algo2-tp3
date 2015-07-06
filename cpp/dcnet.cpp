@@ -2,6 +2,23 @@
 
 namespace tp3 {
 
+bool paquete::operator==(const paquete& otro) const{
+	return ID == otro.ID && _prioridad == otro._prioridad && origen == otro.origen && destino == otro.destino;
+}
+
+bool paquete::operator!=(const paquete& otro) const{
+	return !(this->operator==(otro));
+}
+
+bool dcnet::paqPorPrior::operator<(const dcnet::paqPorPrior& otro) const{
+	return _prioridad < otro._prioridad;
+}
+
+
+
+bool dcnet::paqPorPrior::operator>(const dcnet::paqPorPrior& otro) const{
+	return _prioridad > otro._prioridad;
+}
 // Constructores
 
 dcnet::dcnet(const red& r) {
@@ -51,7 +68,7 @@ void dcnet::crearPaquete(const paquete &p) {
     paquetesEnEspera[o].porID.definir(p.ID, i);
     paqPorPrior pi;
     pi._prioridad = p._prioridad;
-    pi.iter = it;
+    pi.itPaquete = it;
     paquetesEnEspera[o].porPrioridad.encolar(pi);
 }
 /*
