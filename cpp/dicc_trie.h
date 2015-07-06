@@ -19,7 +19,7 @@ private:
     T* significado;
     int cant;
 
-    void _definir(const string &clave, T &_significado, int index)
+    void _definir(const string &clave, const T &_significado, int index)
     {
         cant++;
         if(index == clave.size())
@@ -40,7 +40,7 @@ private:
         }
     }
 
-    bool _definido(const string &clave, int index)
+    bool _definido(const string &clave, int index) const
     {
         if(index == clave.size())
             return es_final;
@@ -49,7 +49,7 @@ private:
         return siguiente[clave[index]]->_definido(clave,index+1);
     }
 
-    T* _obtener(const string &clave, int index)
+    T* _obtener(const string &clave, int index) const
     {
         if(index == clave.size())
             return significado;
@@ -85,7 +85,7 @@ public:
         palabra = "";
     }
 
-    DiccString(DiccString<T> &otro)
+    DiccString(const DiccString<T> &otro)
     {
         siguiente.clear();
         padre = NULL;
@@ -122,17 +122,17 @@ public:
         delete significado;
     }
 
-    void definir(const string &clave, T &_significado)
+    void definir(const string &clave, const T &_significado)
     {
         _definir(clave,_significado,0);
     }
 
-    bool definido(const string &clave)
+    bool definido(const string &clave) const
     {
         return _definido(clave,0);
     }
 
-    T* obtener(const string &clave)
+    T* obtener(const string &clave) const
     {
         assert(definido(clave));
         return _obtener(clave,0);
@@ -144,7 +144,7 @@ public:
         _borrar(clave,0);
     }
 
-    vector<string> claves()
+    vector<string> claves() const
     {
         vector<string> resultado;
         if(es_final)
@@ -152,7 +152,7 @@ public:
         for(int i=0;i<256;i++)
         if(siguiente.find(i) != siguiente.end())
         {
-            vector<string> aux = siguiente[i]->claves();
+            vector<string> aux = siguiente.at(i)->claves();
             for(int i=0;i<aux.size();i++)
                 resultado.push_back(aux[i]);
         }
@@ -245,12 +245,12 @@ public:
             return;
         }
 
-        string claveActual()
+        string claveActual() const
         {
             return dicc->palabra;
         }
 
-        T* valorActual()
+        T* valorActual() const
         {
             return dicc->significado;
         }

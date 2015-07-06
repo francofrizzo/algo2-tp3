@@ -1,19 +1,20 @@
 #include <iostream>
 // #include "./aed2.h"
-// #include "./dicc_trie.h"
-#include "./ab.h"
+#include "./dicc_trie.h"
+// #include "./ab.h"
 // #include "./dicc_log.h"
 // #include "./cola_prior.h"
 // #include "./red.h"
 // #include "./dcnet.h"
 #include "./mini_test.h"
 
-using namespace aed2;
-using namespace tp3;
+// using namespace aed2;
+// using namespace tp3;
 
 using std::cout;
 using std::endl;
 
+/*
 void test_ab() {
     ab<int>* nil1 = new ab<int>();
     ab<int>* nil2 = new ab<int>();
@@ -51,45 +52,55 @@ void test_ab() {
 }
 
 void test_dicc_log() {
-    // diccLog<int, int> dicc = diccLog<int, int>();
-    // dicc.definir(4, 100);
-    // cout << dicc.definido(4) << endl;
-    // dicc.definir(5, 100);
-    // dicc.definir(1, 25);
-    // dicc.definir(6, 41);
-    // dicc.definir(1, 16);
-    // cout << dicc.obtener(6) << endl;
-    // cout << dicc.obtener(4) << endl;
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 100);
+    cout << dicc.definido(4) << endl;
+    dicc.definir(5, 100);
+    dicc.definir(1, 25);
+    dicc.definir(6, 41);
+    dicc.definir(1, 16);
+    cout << dicc.obtener(6) << endl;
+    cout << dicc.obtener(4) << endl;
 }
 
 void test_red() {
-    // red r = red();
+    red r = red();
 }
 
 void test_heap() {
-    // colaPrior<int> cola;
-    // cola.encolar(4);
-    // cola.encolar(1);
-    // cola.encolar(6);
-    // cola.encolar(-80);
-    // cola.encolar(8);
-    // cola.encolar(150);
-    // cola.encolar(7);
-    // cola.encolar(99);
-    // cola.encolar(-12);
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
-    // cout << cola.desencolar() << endl;
+    colaPrior<int> cola;
+    cola.encolar(4);
+    cola.encolar(1);
+    cola.encolar(6);
+    cola.encolar(-80);
+    cola.encolar(8);
+    cola.encolar(150);
+    cola.encolar(7);
+    cola.encolar(99);
+    cola.encolar(-12);
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+    cout << cola.desencolar() << endl;
+}
+
+*/
+
+void test_trie() {
+    DiccString<int> trie;
+    std::vector<string> vacio;
+    std::vector<string> claves = trie.claves();
+    ASSERT(claves == vacio);
 }
 
 int main() {
-    RUN_TEST(test_ab);
-    
+    // RUN_TEST(test_ab);
+    RUN_TEST(test_trie);
+
     return 0;
 }
