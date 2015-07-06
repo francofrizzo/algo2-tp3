@@ -28,14 +28,14 @@ struct paquete {
 class dcnet {
  private:
     struct paqPorID {
-        Conj<paquete>::const_Iterador itPaquete;
+        Conj<paquete>::Iterador itPaquete;
         Nat codOrigen;
         Nat codDestino;
     };
 
     struct paqPorPrior {
         prioridad _prioridad;
-        Conj<paquete>::const_Iterador itPaquete;
+        Conj<paquete>::Iterador itPaquete;
         bool operator<(const paqPorPrior& otro) const;
         bool operator>(const paqPorPrior& otro) const;
     };
