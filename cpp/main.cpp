@@ -1,11 +1,11 @@
 #include <iostream>
 // #include "./aed2.h"
 // #include "./dicc_trie.h"
-#include "./ab.h"
+// #include "./ab.h"
 // #include "./dicc_log.h"
 // #include "./cola_prior.h"
 // #include "./red.h"
-// #include "./dcnet.h"
+#include "./dcnet.h"
 #include "./mini_test.h"
 
 using namespace aed2;
@@ -14,7 +14,7 @@ using namespace tp3;
 using std::cout;
 using std::endl;
 
-void test_ab() {
+/*void test_ab() {
     ab<int>* nil1 = new ab<int>();
     ab<int>* nil2 = new ab<int>();
     ab<int>* nil3 = new ab<int>();
@@ -87,9 +87,15 @@ void test_heap() {
     // cout << cola.desencolar() << endl;
     // cout << cola.desencolar() << endl;
 }
+*/
 
+/*void test_dcnet() {
+    dcnet d = dcnet();
+    ASSERT_EQ(d.laRed().cantCompus(), 0);
+}
+*/
 int main() {
-    RUN_TEST(test_ab);
-    
+    // RUN_TEST(test_ab);
+    //RUN_TEST(test_dcnet);
     return 0;
 }

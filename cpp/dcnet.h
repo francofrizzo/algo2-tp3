@@ -2,8 +2,8 @@
 #define DCNET_H
 
 #include "./aed2.h"
-// #include "./dicc_trie.h"
-// #include "./dicc_log.h"
+ #include "./dicc_trie.h"
+ #include "./dicc_log.h"
 #include "./cola_prior.h"
 #include "./red.h"
 
@@ -21,23 +21,19 @@ struct paquete {
     compu destino;
 };
 
-template<class T>
-struct DiccString {};
 
-template<class K, class S>
-struct diccLog{};
 
 class dcnet {
  private:
     struct paqPorID {
-        Conj<paquete>::Iterador itPaquete;
+        Conj<paquete>::const_Iterador itPaquete;
         Nat codOrigen;
         Nat codDestino;
     };
 
     struct paqPorPrior {
         prioridad _prioridad;
-        Conj<paquete>::Iterador itPaquete;
+        Conj<paquete>::const_Iterador itPaquete;
     };
     struct datosPaqAEnviar{
         paquete paq;
