@@ -88,15 +88,38 @@ void test_heap() {
     cout << cola.desencolar() << endl;
     cout << cola.desencolar() << endl;
 }
+*/
 
 void test_trie() {
     DiccString<int> trie;
     std::vector<string> vacio;
     std::vector<string> claves = trie.claves();
     ASSERT(claves == vacio);
+
+    trie.definir("hola", 4);
+    ASSERT(trie.definido("hola"));
+    ASSERT_EQ(trie.obtener("hola"), 4);
+
+    trie.definir("chau", 55);
+    ASSERT(trie.definido("hola"));
+    ASSERT(trie.definido("chau"));
+    ASSERT_EQ(trie.obtener("hola"), 4);
+    ASSERT_EQ(trie.obtener("chau"), 55);
+
+    claves = trie.claves();
+    ASSERT_EQ(claves.size(), 2);
+
+    trie.borrar("hola");
+    ASSERT(!trie.definido("hola"));
+    ASSERT(trie.definido("chau"));
+    ASSERT_EQ(trie.obtener("chau"), 55);
+
+    claves = trie.claves();
+    ASSERT_EQ(claves.size(), 1);
 }
 
-/*void test_dcnet() {
+/*
+void test_dcnet() {
     dcnet d = dcnet();
     ASSERT_EQ(d.laRed().cantCompus(), 0);
 }
@@ -105,6 +128,6 @@ void test_trie() {
 int main() {
     // RUN_TEST(test_ab);
     // RUN_TEST(test_dcnet);
-    // RUN_TEST(test_trie);
+    RUN_TEST(test_trie);
     return 0;
 }
