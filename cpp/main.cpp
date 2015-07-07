@@ -155,9 +155,8 @@ void test_dcnet() {
 
 int main() {
     RUN_TEST(test_ab);
-    // RUN_TEST(test_definir);
+    RUN_TEST(test_definir);
     // RUN_TEST(test_obtener);
-    RUN_TEST(test_recalcular_alturas);
     // RUN_TEST(test_dcnet);
     // RUN_TEST(test_trie);
     return 0;

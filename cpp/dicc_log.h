@@ -236,27 +236,27 @@ void diccLog<K, S>::rebalancearArbol(ab<entrada>* a) {
     std::cout << "Rebalanceando árbol" << std::endl;
     ab<entrada>* p = a;
     while (!(p->esNil())) {
-        recalcularAltura(p);
-        int fdb1 = factorDeBalanceo(p);
-        if (fdb1 == 2) {
-            ab<entrada>* q = p->der();
-            int fdb2 = factorDeBalanceo(q);
-            if (fdb2 == 1 || fdb2 == 0) {
-                rotarAIzquierda(p);
-            } else if (fdb2 == -1) {
-                rotarADerecha(q);
-                rotarAIzquierda(p);
-            }
-        } else if (fdb1 == -2) {
-            ab<entrada>* q = p->izq();
-            int fdb2 = factorDeBalanceo(q);
-            if (fdb2 == -1 || fdb2 == 0) {
-                rotarADerecha(p);
-            } else {
-                rotarAIzquierda(q);
-                rotarADerecha(p);
-            }
-        }
+        // recalcularAltura(p);
+        // int fdb1 = factorDeBalanceo(p);
+        // if (fdb1 == 2) {
+        //     ab<entrada>* q = p->der();
+        //     int fdb2 = factorDeBalanceo(q);
+        //     if (fdb2 == 1 || fdb2 == 0) {
+        //         rotarAIzquierda(p);
+        //     } else if (fdb2 == -1) {
+        //         rotarADerecha(q);
+        //         rotarAIzquierda(p);
+        //     }
+        // } else if (fdb1 == -2) {
+        //     ab<entrada>* q = p->izq();
+        //     int fdb2 = factorDeBalanceo(q);
+        //     if (fdb2 == -1 || fdb2 == 0) {
+        //         rotarADerecha(p);
+        //     } else {
+        //         rotarAIzquierda(q);
+        //         rotarADerecha(p);
+        //     }
+        // }
         p = p->raiz().padre;
     }
 }
