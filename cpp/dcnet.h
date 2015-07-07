@@ -3,7 +3,8 @@
 
 #include "./aed2.h"
  #include "./dicc_trie.h"
- #include "./dicc_log.h"
+// #include "./dicc_log.h"
+#include "./dicc_caca.h"
 #include "./cola_prior.h"
 #include "./red.h"
 

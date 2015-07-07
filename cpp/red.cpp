@@ -16,8 +16,8 @@ red::red(const red& r) :
 
 void red::agregarCompu(const compu& c) {
     compus.AgregarRapido(c);
-    diccConexiones* d = new diccConexiones();
-    conexiones.definir(c.IP, *d);
+    // diccConexiones* d = ;
+    conexiones.definir(c.IP, diccConexiones());
 }
 
 void red::conectar(const compu& c1, const interfaz& i1,
@@ -54,6 +54,7 @@ Conj<compu> red::vecinos(const compu& c) const {
             it2.Avanzar();
         }
         res.AgregarRapido(it2.Siguiente());
+        it1.Avanzar();
     }
     return res;
 }
@@ -75,6 +76,7 @@ Conj<Lista<compu> > red::caminosMinimos(const compu& c1, const compu& c2) const 
         Lista<compu> vec = pasarConjALista(vecinos(c1));
         res = dameMinimos(caminos(c1, c2, l, vec));
     }
+    return res;
 }
 
 bool red::hayCamino(const compu& c1, const compu& c2) const {
@@ -130,6 +132,7 @@ Lista<compu> red::pasarConjALista(const Conj<compu>& c) const {
     Conj<compu>::const_Iterador it = c.CrearIt();
     while (it.HaySiguiente()) {
         res.AgregarAtras(it.Siguiente());
+        it.Avanzar();
     }
     return res;
 }
@@ -144,7 +147,7 @@ Conj<Lista<compu> > red::caminos(const compu& c1, const compu& c2,
             res.Agregar(visitadas);
             return res;
         } else {
-            if (!(candidatos.Esta(visitadas.Primero()))) {
+            if (!(visitadas.Esta(candidatos.Primero()))) {
                 compu primerCandidato = candidatos.Primero();
                 Lista<compu> nuevosCandidatos = 
                     pasarConjALista(vecinos(primerCandidato));
