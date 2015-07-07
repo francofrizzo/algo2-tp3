@@ -45,6 +45,7 @@ class diccLog{
     Nat cantClaves() const;
 
     bool estaBalanceado() const;
+    Lista<K> clavesEnOrden() const;
 };
 
 template<class K, class S>
@@ -141,6 +142,7 @@ void diccLog<K, S>::borrar(const K& k) {
         }
         lugar->izq(NULL);
         delete lugar;
+        rebalancearArbol(padre);
     } else if (lugar->izq() == NULL || lugar->izq()->esNil()) {
         // El nodo tiene solo hijo derecho
         lugar->der()->raiz().padre = padre;
@@ -156,32 +158,74 @@ void diccLog<K, S>::borrar(const K& k) {
         }
         lugar->der(NULL);
         delete lugar;
+        rebalancearArbol(padre);
     } else {
+        // El nodo tiene ambos hijos
         ab<entrada>* reemplazo = lugar->der();
-        while (reemplazo->izq() != NULL && !(reemplazo->izq()->esNil())) {
-            reemplazo = reemplazo->izq();
+        if (reemplazo->izq() == NULL || reemplazo->izq()->esNil()) {
+            // Caso en el que el reemplazo es hijo directo del nodo a borrar
+            // Cuelgo al reemplazo de donde corresponde
+            if (padre == NULL) {
+                // Era la raíz del árbol. Ahora lo es el reemplazo
+                arbol = reemplazo;
+            } else if (padre->izq() == lugar) {
+                // Era hijo izquierdo de su padre
+                padre->izq(reemplazo);
+            } else {
+                // Era hijo derecho de su padre
+                padre->der(reemplazo);
+            }
+            // Cuelgo del reemplazo al hijo izquierdo del nodo a reemplazar
+            delete reemplazo->izq();
+            reemplazo->izq(lugar->izq());
+            if (reemplazo->izq() != NULL && !(reemplazo->izq()->esNil())) {
+                reemplazo->izq()->raiz().padre = reemplazo;
+            }
+            // Borro el nodo reemplazado
+            lugar->izq(NULL);
+            lugar->der(NULL);
+            delete lugar;
+            rebalancearArbol(reemplazo);
+        } else {
+            // Caso en el que el reemplazo NO es hijo directo del nodo a reemplazar
+            // Bajo hasta encontrar el mínimo del subárbol derecho
+            while (reemplazo->izq() != NULL && !(reemplazo->izq()->esNil())) {
+                reemplazo = reemplazo->izq();
+            }
+            ab<entrada>* padreReemplazo = reemplazo->raiz().padre;
+            // Arreglo link entre padre del reemplazo y su subárbol derecho
+            padreReemplazo->izq(reemplazo->der());
+            if (padreReemplazo->izq() != NULL && !(padreReemplazo->izq()->esNil())) {
+                padreReemplazo->izq()->raiz().padre = padreReemplazo;
+            }
+            // Cuelgo al reemplazo de donde corresponde
+            reemplazo->raiz().padre = padre;
+            if (padre == NULL) {
+                // Era la raíz del árbol. Ahora lo es el reemplazo
+                arbol = reemplazo;
+            } else if (padre->izq() == lugar) {
+                // Era hijo izquierdo de su padre
+                padre->izq(reemplazo);
+            } else {
+                // Era hijo derecho de su padre
+                padre->der(reemplazo);
+            }
+            // Le cuelgo al reemplazo los hijos del nodo a reemplazar
+            delete reemplazo->izq();
+            reemplazo->izq(lugar->izq());
+            if (reemplazo->izq() != NULL && !(reemplazo->izq()->esNil())) {
+                reemplazo->izq()->raiz().padre = reemplazo;
+            }
+            reemplazo->der(lugar->der());
+            if (reemplazo->der() != NULL && !(reemplazo->der()->esNil())) {
+                reemplazo->der()->raiz().padre = reemplazo;
+            }
+            // Borro el nodo reemplazado
+            lugar->izq(NULL);
+            lugar->der(NULL);
+            delete lugar;
+            rebalancearArbol(padreReemplazo);
         }
-        // ab<entrada>* padreReemplazo = reemplazo->raiz().padre;
-        // padreReemplazo->izq(reemplazo->der());
-        // if (padreReemplazo->izq() != NULL && !(padreReemplazo->izq()->esNil())) {
-        //     padreReemplazo->raiz().padre = padreReemplazo;
-        // }
-        // reemplazo->raiz().padre = padre;
-        // if (padre == NULL) {
-        //     // Era la raíz del árbol. Ahora lo es su hijo derecho
-        //     arbol = reemplazo;
-        // } else if (padre->izq() == lugar) {
-        //     // Era hijo izquierdo de su padre
-        //     padre->izq(reemplazo);
-        // } else {
-        //     // Era hijo derecho de su padre
-        //     padre->der(reemplazo);
-        // }
-        // reemplazo->izq(lugar->izq());
-        // reemplazo->der(lugar->der());
-        // lugar->izq(NULL);
-        // lugar->der(NULL);
-        // delete lugar;
     }
 }
 
@@ -332,6 +376,16 @@ bool diccLog<K, S>::estaBalanceado(ab<entrada>* a) const {
             << factorDeBalanceo(a) << " (no está balanceado)." << endl;
         cout << "Altura de subárbol: " << a->raiz().altSubarbol << endl;
     }
+}
+
+template<class K, class S>
+Lista<K> diccLog<K, S>::clavesEnOrden() const {
+    Lista<entrada> entradas = arbol->preorder();
+    Lista<K> res;
+    for (typename Lista<entrada>::Iterador it = entradas.CrearIt(); it.HaySiguiente(); it.Avanzar()) {
+        res.AgregarAtras(it.Siguiente().clave);
+    }
+    return res;
 }
 
 }  // namespace tp3

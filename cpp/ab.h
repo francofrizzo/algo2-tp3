@@ -52,9 +52,9 @@ class ab {
     bool esNil() const;       // Devuelve True si y solo si el árbol
                               //     no contiene nodos
     T& raiz() const;          // Devuelve el valor de la raíz del árbol
-    ab<T>* constIzq() const;  // Devuelve el subárbol izquierdo
+    ab<T>* izq() const;  // Devuelve el subárbol izquierdo
                               //     (no modifica la estructura interna)
-    ab<T>* constDer() const;  // Devuelve el subárbol derecho
+    ab<T>* der() const;  // Devuelve el subárbol derecho
                               //     (no modifica la estructura interna)
     ab<T>* izq();             // Devuelve el subárbol izquierdo
     ab<T>* der();             // Devuelve el subárbol derecho
@@ -62,6 +62,9 @@ class ab {
     void der(ab<T>*);         // Reemplaza el subárbol derecho (NO libera memoria)
     Nat altura() const;       // Devuelve la altura del árbol
     Nat cantNodos() const;    // Devuelve la cantidad de nodos del árbol
+    Lista<T> inorder() const;
+    Lista<T> preorder() const;
+    Lista<T> postorder() const;
 };
 
 // Implementación de métodos públicos
@@ -104,13 +107,13 @@ T& ab<T>::raiz() const {
 }
 
 template<class T>
-ab<T>* ab<T>::constIzq() const {
+ab<T>* ab<T>::izq() const {
     assert(!esNil());
     return _raiz->_izq;
 }
 
 template<class T>
-ab<T>* ab<T>::constDer() const {
+ab<T>* ab<T>::der() const {
     assert(!esNil());
     return _raiz->_der;
 }
@@ -146,7 +149,7 @@ Nat ab<T>::altura() const {
     if (esNil()) {
         return 0;
     } else {
-        return 1 + max(constIzq()->altura(), constDer()->altura());
+        return 1 + max(izq()->altura(), der()->altura());
     }
 }
 
@@ -155,7 +158,55 @@ Nat ab<T>::cantNodos() const {
     if (esNil()) {
         return 0;
     } else {
-        return 1 + constIzq()->cantNodos() + constDer()->cantNodos();
+        return 1 + izq()->cantNodos() + der()->cantNodos();
+    }
+}
+
+template<class T>
+Lista<T> ab<T>::inorder() const {
+    if (esNil()) {
+        return Lista<T>();
+    } else {
+        Lista<T> res = izq()->inorder();
+        res.AgregarAtras(raiz());
+        Lista<T> res2 = der()->inorder();
+        for (typename Lista<T>::Iterador it = res2.CrearIt();
+            it.HaySiguiente(); it.Avanzar()) {
+            res.AgregarAtras(it.Siguiente());
+        }
+        return res;
+    }
+}
+
+template<class T>
+Lista<T> ab<T>::preorder() const {
+    if (esNil()) {
+        return Lista<T>();
+    } else {
+        Lista<T> res = izq()->preorder();
+        res.AgregarAdelante(raiz());
+        Lista<T> res2 = der()->preorder();
+        for (typename Lista<T>::Iterador it = res2.CrearIt();
+            it.HaySiguiente(); it.Avanzar()) {
+            res.AgregarAtras(it.Siguiente());
+        }
+        return res;
+    }
+}
+
+template<class T>
+Lista<T> ab<T>::postorder() const {
+    if (esNil()) {
+        return Lista<T>();
+    } else {
+        Lista<T> res = izq()->postorder();
+        Lista<T> res2 = der()->postorder();
+        for (typename Lista<T>::Iterador it = res2.CrearIt();
+            it.HaySiguiente(); it.Avanzar()) {
+            res.AgregarAtras(it.Siguiente());
+        }
+        res.AgregarAtras(raiz());
+        return res;
     }
 }
 

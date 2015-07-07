@@ -204,15 +204,22 @@ void test_borrado_ambos_hijos() {
 void test_borrado_raiz() {
     diccLog<int, int> dicc = diccLog<int, int>();
     dicc.definir(4, 5);
-    dicc.definir(6, 25);
     dicc.definir(3, 7);
+    dicc.definir(6, 25);
+    dicc.definir(5, 44);
     dicc.definir(1, 36);
     dicc.definir(8, 0);
     ASSERT_EQ(dicc.definido(4), true);
-    ASSERT_EQ(dicc.cantClaves(), 5);
+    ASSERT_EQ(dicc.cantClaves(), 6);
+    cout << dicc.clavesEnOrden() << endl;
     dicc.borrar(4);
     ASSERT_EQ(dicc.definido(4), false);
-    ASSERT_EQ(dicc.cantClaves(), 4);
+    ASSERT_EQ(dicc.cantClaves(), 5);
+    cout << dicc.clavesEnOrden() << endl;
+    // dicc.borrar(6);
+    // ASSERT_EQ(dicc.definido(6), false);
+    // ASSERT_EQ(dicc.cantClaves(), 4);
+    // cout << dicc.clavesEnOrden() << endl;
 }
 
 /*
