@@ -1,10 +1,15 @@
 #include <iostream>
 // #include "./aed2.h"
-// #include "./dicc_trie.h"
+#include "./dicc_trie.h"
 // #include "./ab.h"
+<<<<<<< HEAD
 // #include "./dicc_log.h"
 // #include "./cola_prior.h"
 #include "./red.h"
+=======
+#include "./dicc_log.h"
+// #include "./red.h"
+>>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
 // #include "./dcnet.h"
 #include "./mini_test.h"
 
@@ -14,7 +19,6 @@ using namespace tp3;
 using std::cout;
 using std::endl;
 
-/*
 void test_ab() {
     ab<int>* nil1 = new ab<int>();
     ab<int>* nil2 = new ab<int>();
@@ -38,31 +42,68 @@ void test_ab() {
     ASSERT_EQ(A->altura(), 1);
     ASSERT_EQ(A->cantNodos(), 1);
 
+    A->izq(new ab<int>());
+
+    ASSERT(A->izq()->esNil());
+
     *A = *C;
 
     ASSERT_EQ(A->raiz(), 8);
 
-    // *A = ab<int>(new ab<int>(), A->raiz(), A->der());
+    A->der(new ab<int>());
 
-    // ASSERT_EQ(A->cantNodos(), 2);
-    // ASSERT_EQ(C->cantNodos(), 3);
+    ASSERT_EQ(A->cantNodos(), 2);
+    ASSERT_EQ(C->cantNodos(), 3);
 
     delete(C);
     delete(A);
 }
 
-void test_dicc_log() {
+// Diccionario logarítmico
+
+void test_definir() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    ASSERT_EQ(dicc.definido(4), false);
+    dicc.definir(4, 100);
+    ASSERT_EQ(dicc.cantClaves(), 1);
+    ASSERT_EQ(dicc.definido(4), true);
+    dicc.definir(5, 100);
+    ASSERT_EQ(dicc.cantClaves(), 2);
+    ASSERT_EQ(dicc.definido(4), true);
+    ASSERT_EQ(dicc.definido(5), true);
+    dicc.definir(1, 25);
+    dicc.definir(6, 41);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+    dicc.definir(1, 16);
+    ASSERT_EQ(dicc.definido(4), true);
+    ASSERT_EQ(dicc.definido(5), true);
+    ASSERT_EQ(dicc.definido(1), true);
+    ASSERT_EQ(dicc.definido(6), true);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+}
+
+void test_obtener() {
     diccLog<int, int> dicc = diccLog<int, int>();
     dicc.definir(4, 100);
-    cout << dicc.definido(4) << endl;
     dicc.definir(5, 100);
     dicc.definir(1, 25);
     dicc.definir(6, 41);
     dicc.definir(1, 16);
-    cout << dicc.obtener(6) << endl;
-    cout << dicc.obtener(4) << endl;
+    ASSERT_EQ(dicc.obtener(4), 100);
+    ASSERT_EQ(dicc.obtener(5), 100);
+    ASSERT_EQ(dicc.obtener(6), 41);
+    ASSERT_EQ(dicc.obtener(1), 16);
 }
 
+<<<<<<< HEAD
+=======
+/*
+
+void test_red() {
+    red r = red();
+}
+
+>>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
 void test_heap() {
     colaPrior<int> cola;
     cola.encolar(4);
@@ -84,7 +125,7 @@ void test_heap() {
     cout << cola.desencolar() << endl;
     cout << cola.desencolar() << endl;
 }
-*/
+
 
 void test_trie() {
     DiccString<int> trie;
@@ -114,6 +155,7 @@ void test_trie() {
     ASSERT_EQ(claves.size(), 1);
 }
 
+<<<<<<< HEAD
 
 
 
@@ -191,6 +233,12 @@ void test_red() {
     ASSERT(r.computadoras() == pcs);
     ASSERT_EQ(r.cantCompus(), 5);
 
+=======
+void test_dcnet() {
+    red r;
+    dcnet d = dcnet(r);
+    ASSERT_EQ(d.laRed().cantCompus(), 0);
+>>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
 }
 
 void test_dcnet() { 
@@ -336,9 +384,15 @@ void test_dcnet() {
 
 
 int main() {
-    // RUN_TEST(test_ab);
+    RUN_TEST(test_ab);
+    // RUN_TEST(test_definir);
+    // RUN_TEST(test_obtener);
+    RUN_TEST(test_recalcular_alturas);
     // RUN_TEST(test_dcnet);
     // RUN_TEST(test_trie);
+<<<<<<< HEAD
     RUN_TEST(test_red);
+=======
+>>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
     return 0;
 }

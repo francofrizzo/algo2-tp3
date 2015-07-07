@@ -77,6 +77,7 @@ private:
 public:
     DiccString()
     {
+        cant = 0;
         siguiente.clear();
         padre = NULL;
         es_final = false;

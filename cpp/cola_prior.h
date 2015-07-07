@@ -12,12 +12,13 @@ class colaPrior{
  private:
     Vector<T> heap;
 
-    // Función de debug que verifica que se cumpla el invariante de representación
+    // Función de debug que verifica
+    // que se cumpla el invariante de representación
     bool esHeapValido() {
         for (int i = 0; 2*i + 1 < heap.Longitud(); i++) {
-            if (heap[2*i + 1] > heap[i]) {
+            if (heap[i] < heap[2*i + 1]) {
                 return false;
-            } else if (2*i + 2 < heap.Longitud() && heap[2*i + 2] > heap[i]) {
+            } else if (2*i + 2 < heap.Longitud() && heap[i] < heap[2*i + 2]) {
                 return false;
             }
         }
@@ -39,7 +40,7 @@ template<class T>
 void colaPrior<T>::encolar(const T& a) {
     heap.AgregarAtras(a);
     Nat i = heap.Longitud() - 1;
-    while (i != 0 && heap[i] > heap[(i + 1)/2 - 1]) {
+    while (heap[(i + 1)/2 - 1] < i != 0 && heap[i]) {
         heap.Swap(i, (i + 1)/2 - 1);
         i = (i + 1)/2 - 1;
     }

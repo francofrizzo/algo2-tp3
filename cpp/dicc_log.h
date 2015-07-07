@@ -16,24 +16,25 @@ class diccLog{
         K clave;
         S significado;
         Nat altSubarbol;
-        ab<entrada> padre;
+        ab<entrada>* padre;
 
-        entrada(K k, S s, Nat h, ab<entrada> p) :
+        entrada(K k, S s, Nat h, ab<entrada>* p) :
             clave(k), significado(s), altSubarbol(h), padre(p) {}
     };
 
-    ab<entrada> arbol;
+    ab<entrada>* arbol;
 
-    ab<entrada> buscar(const K& k, ab<entrada>& padre) const;
-    void recalcularAltura(ab<entrada>&);
-    int factorDeBalanceo(ab<entrada>&);
-    void rotarAIzquierda(ab<entrada>&);
-    void rotarADerecha(ab<entrada>&);
-    void rebalancearArbol(ab<entrada>&);
+    ab<entrada>* buscar(const K& k, ab<entrada>*& padre) const;
+    void recalcularAltura(ab<entrada>*);
+    int factorDeBalanceo(ab<entrada>*);
+    void rotarAIzquierda(ab<entrada>*);
+    void rotarADerecha(ab<entrada>*);
+    void rebalancearArbol(ab<entrada>*);
 
  public:
     diccLog();
     diccLog(const diccLog<K, S>& otro);
+    ~diccLog();
 
     bool definido(const K& k) const;
     void definir(const K& k, const S& s);
@@ -44,42 +45,43 @@ class diccLog{
 
 template<class K, class S>
 diccLog<K, S>::diccLog() :
-    arbol(ab<entrada>()) {}
+    arbol(new ab<entrada>()) {}
 
 template<class K, class S>
 diccLog<K, S>::diccLog(const diccLog<K, S>& otro) :
-    arbol(ab<entrada>(otro.arbol)) {}
+    arbol(new ab<entrada>(*(otro.arbol))) {}
+
+template<class K, class S>
+diccLog<K, S>::~diccLog() {
+    delete arbol;
+}
 
 template<class K, class S>
 bool diccLog<K, S>::definido(const K& k) const {
-    ab<entrada> padre;
-    ab<entrada> lugar = buscar(k, padre);
-    return !(lugar.esNil());
+    ab<entrada>* padre;
+    ab<entrada>* lugar = buscar(k, padre);
+    return !(lugar->esNil());
 }
 
 template<class K, class S>
 void diccLog<K, S>::definir(const K& k, const S& s) {
-    // std::cout << "Intentando definir " << k << std::endl;
-    ab<entrada> padre;
-    ab<entrada> lugar = buscar(k, padre);
-    if (!(lugar.esNil())) {
-        // std::cout << k << " ya estaba definido" << std::endl;
-        lugar.raiz().significado = S(s);
-        // std::cout << "Ahora " << k << " está definido como " << s << std::endl;
+    ab<entrada>* padre;
+    ab<entrada>* lugar = buscar(k, padre);
+    if (!(lugar->esNil())) {
+        lugar->raiz().significado = S(s);
     } else {
-        // std::cout << k << " no estaba definido" << std::endl;
-        if (padre.esNil()) {
-            // std::cout << "El árbol no tenía ningun nodo, agregando a " << k << " como raíz" << std::endl;
-            arbol = ab<entrada>(
-                ab<entrada>(), entrada(k, s, 1, ab<entrada>()), ab<entrada>());
-        } else if (k <= padre.raiz().clave) {
-            // std::cout << "Agregando a " << k << " como hijo izquierdo de " << padre.raiz().clave << std::endl;
-            padre.izq() = ab<entrada>(
-            ab<entrada>(), entrada(k, s, 1, padre), ab<entrada>());
+        if (padre->esNil()) {
+            delete arbol;
+            arbol = new ab<entrada>(new ab<entrada>(),
+                entrada(k, s, 1, padre), new ab<entrada>());
         } else {
-            // std::cout << "Agregando a " << k << " como hijo derecho de " << padre.raiz().clave << std::endl;
-            padre.der() = ab<entrada>(
-            ab<entrada>(), entrada(k, s, 1, padre), ab<entrada>());
+            ab<entrada>* nuevo = new ab<entrada>(new ab<entrada>(),
+                entrada(k, s, padre->raiz().altSubarbol, padre), new ab<entrada>());
+            if (k < padre->raiz().clave) {
+                padre->izq(nuevo);
+            } else {
+                padre->der(nuevo);
+            }
         }
         rebalancearArbol(padre);
     }
@@ -88,9 +90,9 @@ void diccLog<K, S>::definir(const K& k, const S& s) {
 template<class K, class S>
 S& diccLog<K, S>::obtener(const K& k) const {
     assert(definido(k));
-    ab<entrada> padre;
-    ab<entrada> lugar = buscar(k, padre);
-    return lugar.raiz().significado;
+    ab<entrada>* padre;
+    ab<entrada>* lugar = buscar(k, padre);
+    return lugar->raiz().significado;
 }
 
 // template<class K, class S>
@@ -151,51 +153,50 @@ S& diccLog<K, S>::obtener(const K& k) const {
 //     delete(reemplazo);
 // }
 
-// template<class K, class S>
-// Nat diccLog<K, S>::cantClaves() const {
-//     return arbol.cantNodos();
-// }
+template<class K, class S>
+Nat diccLog<K, S>::cantClaves() const {
+    return arbol->cantNodos();
+}
 
 template<class K, class S>
-ab<typename diccLog<K, S>::entrada> diccLog<K, S>::buscar(
-    const K& k, ab<entrada>& padre) const {
-    // std::cout << "Buscando a " << k << std::endl;
-    padre = ab<entrada>();
-    ab<entrada> actual = arbol;
-    while (!(actual.esNil()) && actual.raiz().clave != k) {
+ab<typename diccLog<K, S>::entrada>* diccLog<K, S>::buscar(
+    const K& k, ab<entrada>*& padre) const {
+    padre = arbol;
+    ab<entrada>* actual = arbol;
+    while (!(actual->esNil()) && actual->raiz().clave != k) {
         padre = actual;
-        if (k <= actual.raiz().clave) {
-            actual = actual.izq();
+        if (k <= actual->raiz().clave) {
+            actual = actual->izq();
         } else {
-            actual = actual.der();
+            actual = actual->der();
         }
     }
     return actual;
 }
 
 template<class K, class S>
-void diccLog<K, S>::recalcularAltura(ab<entrada>& a) {
-    if (!(a.izq().esNil()) && !(a.der().esNil())) {
-        a.raiz().altSubarbol = 1 + max(
-            a.izq().raiz().altSubarbol, a.der().raiz().altSubarbol);
-    } else if (!(a.izq().esNil())) {
-        a.raiz().altSubarbol = 1 + a.izq().raiz().altSubarbol;
-    } else if (!(a.der().esNil())) {
-        a.raiz().altSubarbol = 1 + a.der().raiz().altSubarbol;
+void diccLog<K, S>::recalcularAltura(ab<entrada>* a) {
+    if (!(a->izq()->esNil()) && !(a->der()->esNil())) {
+        a->raiz().altSubarbol = 1 + max(
+            a->izq()->raiz().altSubarbol, a->der()->raiz().altSubarbol);
+    } else if (!(a->izq()->esNil())) {
+        a->raiz().altSubarbol = 1 + a->izq()->raiz().altSubarbol;
+    } else if (!(a->der()->esNil())) {
+        a->raiz().altSubarbol = 1 + a->der()->raiz().altSubarbol;
     } else {
-        a.raiz().altSubarbol = 1;
+        a->raiz().altSubarbol = 1;
     }
 }
 
 template<class K, class S>
-int diccLog<K, S>::factorDeBalanceo(ab<entrada>& a) {
-    int altIzq = a.izq().esNil() ? 0 : a.izq().raiz().altSubarbol;
-    int altDer = a.der().esNil() ? 0 : a.der().raiz().altSubarbol;
+int diccLog<K, S>::factorDeBalanceo(ab<entrada>* a) {
+    int altIzq = a->izq()->esNil() ? 0 : a->izq()->raiz().altSubarbol;
+    int altDer = a->der()->esNil() ? 0 : a->der()->raiz().altSubarbol;
     return altDer - altIzq;
 }
 
 template<class K, class S>
-void diccLog<K, S>::rotarAIzquierda(ab<entrada>& a) {
+void diccLog<K, S>::rotarAIzquierda(ab<entrada>* a) {
 //     ab<entrada>* nuevo1 = new ab<entrada>(
 //         arbol.izq(), arbol.raiz(), arbol.der().izq());
 //     ab<entrada>* nuevo2 = new ab<entrada>(
@@ -213,7 +214,7 @@ void diccLog<K, S>::rotarAIzquierda(ab<entrada>& a) {
 }
 
 template<class K, class S>
-void diccLog<K, S>::rotarADerecha(ab<entrada>& a) {
+void diccLog<K, S>::rotarADerecha(ab<entrada>* a) {
 //     ab<entrada>* nuevo1 = new ab<entrada>(
 //         arbol.izq().der(), arbol.raiz(), arbol.der());
 //     ab<entrada>* nuevo2 = new ab<entrada>(
@@ -231,14 +232,14 @@ void diccLog<K, S>::rotarADerecha(ab<entrada>& a) {
 }
 
 template<class K, class S>
-void diccLog<K, S>::rebalancearArbol(ab<entrada>& a) {
+void diccLog<K, S>::rebalancearArbol(ab<entrada>* a) {
     std::cout << "Rebalanceando árbol" << std::endl;
-    ab<entrada> p = a;
-    while (!(p.esNil())) {
+    ab<entrada>* p = a;
+    while (!(p->esNil())) {
         recalcularAltura(p);
         int fdb1 = factorDeBalanceo(p);
         if (fdb1 == 2) {
-            ab<entrada> q = p.der();
+            ab<entrada>* q = p->der();
             int fdb2 = factorDeBalanceo(q);
             if (fdb2 == 1 || fdb2 == 0) {
                 rotarAIzquierda(p);
@@ -247,7 +248,7 @@ void diccLog<K, S>::rebalancearArbol(ab<entrada>& a) {
                 rotarAIzquierda(p);
             }
         } else if (fdb1 == -2) {
-            ab<entrada> q = p.izq();
+            ab<entrada>* q = p->izq();
             int fdb2 = factorDeBalanceo(q);
             if (fdb2 == -1 || fdb2 == 0) {
                 rotarADerecha(p);
@@ -256,7 +257,7 @@ void diccLog<K, S>::rebalancearArbol(ab<entrada>& a) {
                 rotarADerecha(p);
             }
         }
-        p = p.raiz().padre;
+        p = p->raiz().padre;
     }
 }
 
