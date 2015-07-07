@@ -58,8 +58,8 @@ class ab {
                               //     (no modifica la estructura interna)
     ab<T>* izq();             // Devuelve el subárbol izquierdo
     ab<T>* der();             // Devuelve el subárbol derecho
-    void izq(ab<T>*);         // Reemplaza el subárbol izquierdo
-    void der(ab<T>*);         // Reemplaza el subárbol derecho
+    void izq(ab<T>*);         // Reemplaza el subárbol izquierdo (NO libera memoria)
+    void der(ab<T>*);         // Reemplaza el subárbol derecho (NO libera memoria)
     Nat altura() const;       // Devuelve la altura del árbol
     Nat cantNodos() const;    // Devuelve la cantidad de nodos del árbol
 };
@@ -130,14 +130,14 @@ ab<T>* ab<T>::der() {
 template<class T>
 void ab<T>::izq(ab<T>* i) {
     assert(!esNil());
-    delete _raiz->_izq;
+    // delete _raiz->_izq;
     _raiz->_izq = i;
 }
 
 template<class T>
 void ab<T>::der(ab<T>* d) {
     assert(!esNil());
-    delete _raiz->_der;
+    // delete _raiz->_der;
     _raiz->_der = d;
 }
 

@@ -1,15 +1,10 @@
 #include <iostream>
-// #include "./aed2.h"
+#include "./aed2.h"
 #include "./dicc_trie.h"
-// #include "./ab.h"
-<<<<<<< HEAD
-// #include "./dicc_log.h"
-// #include "./cola_prior.h"
-#include "./red.h"
-=======
+#include "./ab.h"
 #include "./dicc_log.h"
-// #include "./red.h"
->>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
+#include "./cola_prior.h"
+#include "./red.h"
 // #include "./dcnet.h"
 #include "./mini_test.h"
 
@@ -18,6 +13,56 @@ using namespace tp3;
 
 using std::cout;
 using std::endl;
+
+void test_trie() {
+    DiccString<int> trie;
+    std::vector<string> vacio;
+    std::vector<string> claves = trie.claves();
+    ASSERT(claves == vacio);
+
+    trie.definir("hola", 4);
+    ASSERT(trie.definido("hola"));
+    ASSERT_EQ(trie.obtener("hola"), 4);
+
+    trie.definir("chau", 55);
+    ASSERT(trie.definido("hola"));
+    ASSERT(trie.definido("chau"));
+    ASSERT_EQ(trie.obtener("hola"), 4);
+    ASSERT_EQ(trie.obtener("chau"), 55);
+
+    claves = trie.claves();
+    ASSERT_EQ(claves.size(), 2);
+
+    trie.borrar("hola");
+    ASSERT(!trie.definido("hola"));
+    ASSERT(trie.definido("chau"));
+    ASSERT_EQ(trie.obtener("chau"), 55);
+
+    claves = trie.claves();
+    ASSERT_EQ(claves.size(), 1);
+}
+
+void test_heap() {
+    colaPrior<int> cola;
+    cola.encolar(4);
+    cola.encolar(1);
+    cola.encolar(6);
+    cola.encolar(-80);
+    cola.encolar(8);
+    cola.encolar(150);
+    cola.encolar(7);
+    cola.encolar(99);
+    cola.encolar(-12);
+    ASSERT_EQ(cola.desencolar(), 150)
+    ASSERT_EQ(cola.desencolar(), 99)
+    ASSERT_EQ(cola.desencolar(), 8)
+    ASSERT_EQ(cola.desencolar(), 7)
+    ASSERT_EQ(cola.desencolar(), 6)
+    ASSERT_EQ(cola.desencolar(), 1)
+    ASSERT_EQ(cola.desencolar(), 4)
+    ASSERT_EQ(cola.desencolar(), -12)
+    ASSERT_EQ(cola.desencolar(), -80)
+}
 
 void test_ab() {
     ab<int>* nil1 = new ab<int>();
@@ -42,6 +87,7 @@ void test_ab() {
     ASSERT_EQ(A->altura(), 1);
     ASSERT_EQ(A->cantNodos(), 1);
 
+    delete A->izq();
     A->izq(new ab<int>());
 
     ASSERT(A->izq()->esNil());
@@ -50,6 +96,7 @@ void test_ab() {
 
     ASSERT_EQ(A->raiz(), 8);
 
+    delete A->der();
     A->der(new ab<int>());
 
     ASSERT_EQ(A->cantNodos(), 2);
@@ -80,6 +127,12 @@ void test_definir() {
     ASSERT_EQ(dicc.definido(1), true);
     ASSERT_EQ(dicc.definido(6), true);
     ASSERT_EQ(dicc.cantClaves(), 4);
+    ASSERT(dicc.estaBalanceado());
+    dicc.definir(0, 18);
+    ASSERT(dicc.estaBalanceado());
+    dicc.definir(8, 300);
+    dicc.borrar(8);
+    ASSERT(dicc.estaBalanceado());
 }
 
 void test_obtener() {
@@ -95,70 +148,74 @@ void test_obtener() {
     ASSERT_EQ(dicc.obtener(1), 16);
 }
 
-<<<<<<< HEAD
-=======
+void test_borrado_solo_raiz() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 5);
+    ASSERT_EQ(dicc.definido(4), true);
+    ASSERT_EQ(dicc.cantClaves(), 1);
+    dicc.borrar(4);
+    ASSERT_EQ(dicc.definido(4), false);
+    ASSERT_EQ(dicc.cantClaves(), 0);
+}
+
+void test_borrado_hoja() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 5);
+    dicc.definir(6, 25);
+    dicc.definir(3, 7);
+    dicc.definir(1, 36);
+    ASSERT_EQ(dicc.definido(1), true);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+    dicc.borrar(1);
+    ASSERT_EQ(dicc.definido(1), false);
+    ASSERT_EQ(dicc.cantClaves(), 3);
+}
+
+void test_borrado_solo_hijo_izq() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 5);
+    dicc.definir(6, 25);
+    dicc.definir(3, 7);
+    dicc.definir(1, 36);
+    ASSERT_EQ(dicc.definido(3), true);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+    dicc.borrar(3);
+    ASSERT_EQ(dicc.definido(3), false);
+    ASSERT_EQ(dicc.cantClaves(), 3);
+}
+
+void test_borrado_solo_hijo_der() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 5);
+    dicc.definir(6, 25);
+    dicc.definir(3, 7);
+    dicc.definir(1, 36);
+    dicc.definir(8, 0);
+    ASSERT_EQ(dicc.definido(6), true);
+    ASSERT_EQ(dicc.cantClaves(), 5);
+    dicc.borrar(6);
+    ASSERT_EQ(dicc.definido(6), false);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+}
+
+void test_borrado_ambos_hijos() {
+}
+
+void test_borrado_raiz() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(4, 5);
+    dicc.definir(6, 25);
+    dicc.definir(3, 7);
+    dicc.definir(1, 36);
+    dicc.definir(8, 0);
+    ASSERT_EQ(dicc.definido(4), true);
+    ASSERT_EQ(dicc.cantClaves(), 5);
+    dicc.borrar(4);
+    ASSERT_EQ(dicc.definido(4), false);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+}
+
 /*
-
-void test_red() {
-    red r = red();
-}
-
->>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
-void test_heap() {
-    colaPrior<int> cola;
-    cola.encolar(4);
-    cola.encolar(1);
-    cola.encolar(6);
-    cola.encolar(-80);
-    cola.encolar(8);
-    cola.encolar(150);
-    cola.encolar(7);
-    cola.encolar(99);
-    cola.encolar(-12);
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-    cout << cola.desencolar() << endl;
-}
-
-
-void test_trie() {
-    DiccString<int> trie;
-    std::vector<string> vacio;
-    std::vector<string> claves = trie.claves();
-    ASSERT(claves == vacio);
-
-    trie.definir("hola", 4);
-    ASSERT(trie.definido("hola"));
-    ASSERT_EQ(trie.obtener("hola"), 4);
-
-    trie.definir("chau", 55);
-    ASSERT(trie.definido("hola"));
-    ASSERT(trie.definido("chau"));
-    ASSERT_EQ(trie.obtener("hola"), 4);
-    ASSERT_EQ(trie.obtener("chau"), 55);
-
-    claves = trie.claves();
-    ASSERT_EQ(claves.size(), 2);
-
-    trie.borrar("hola");
-    ASSERT(!trie.definido("hola"));
-    ASSERT(trie.definido("chau"));
-    ASSERT_EQ(trie.obtener("chau"), 55);
-
-    claves = trie.claves();
-    ASSERT_EQ(claves.size(), 1);
-}
-
-<<<<<<< HEAD
-
-
-
 void test_red() {
     red r = red();
     ASSERT_EQ(r.cantCompus(), 0);
@@ -232,13 +289,6 @@ void test_red() {
     pcs.Agregar(c5);
     ASSERT(r.computadoras() == pcs);
     ASSERT_EQ(r.cantCompus(), 5);
-
-=======
-void test_dcnet() {
-    red r;
-    dcnet d = dcnet(r);
-    ASSERT_EQ(d.laRed().cantCompus(), 0);
->>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
 }
 
 void test_dcnet() { 
@@ -379,19 +429,21 @@ void test_dcnet() {
     ASSERT(d.paqueteEnTransito(p4));
     ASSERT_EQ(d.laQueMasEnvio(), c3); // aca puede dar c3 o c2, no se como quedan los nombres pasados por el trie.
     
-
 }
-
+*/
 
 int main() {
     RUN_TEST(test_ab);
     RUN_TEST(test_definir);
+    RUN_TEST(test_borrado_solo_raiz);
+    RUN_TEST(test_borrado_hoja);
+    RUN_TEST(test_borrado_solo_hijo_izq);
+    RUN_TEST(test_borrado_solo_hijo_der);
+    RUN_TEST(test_borrado_ambos_hijos);
+    RUN_TEST(test_borrado_raiz);
     // RUN_TEST(test_obtener);
     // RUN_TEST(test_dcnet);
     // RUN_TEST(test_trie);
-<<<<<<< HEAD
-    RUN_TEST(test_red);
-=======
->>>>>>> 8b80eec0f9612e0642ad7639b42df1db1e9529c1
+    // RUN_TEST(test_red);
     return 0;
 }
