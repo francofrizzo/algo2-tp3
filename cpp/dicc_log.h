@@ -6,6 +6,8 @@
 #include "./ab.h"
 
 using namespace aed2;
+using std::cout;
+using std::endl;
 
 namespace tp3 {
 
@@ -27,9 +29,10 @@ class diccLog{
     ab<entrada>* buscar(const K& k, ab<entrada>*& padre) const;
     void recalcularAltura(ab<entrada>*);
     int factorDeBalanceo(ab<entrada>*) const;
-    void rotarAIzquierda(ab<entrada>*&);
-    void rotarADerecha(ab<entrada>*);
+    ab<entrada>* rotarAIzquierda(ab<entrada>*);
+    ab<entrada>* rotarADerecha(ab<entrada>*);
     void rebalancearArbol(ab<entrada>*);
+    void reemplazarHijo(ab<entrada>*, ab<entrada>*, ab<entrada>*);
 
     bool estaBalanceado(ab<entrada>* a) const;
 
@@ -45,7 +48,7 @@ class diccLog{
     Nat cantClaves() const;
 
     bool estaBalanceado() const;
-    Lista<K> clavesEnOrden() const;
+    Lista<K> preorderClaves() const;
 };
 
 template<class K, class S>
@@ -70,12 +73,15 @@ bool diccLog<K, S>::definido(const K& k) const {
 
 template<class K, class S>
 void diccLog<K, S>::definir(const K& k, const S& s) {
+    // cout << endl << "Definiendo clave " << k << "." << endl;  // DEBUG
     ab<entrada>* padre;
     ab<entrada>* lugar = buscar(k, padre);
     if (!(lugar->esNil())) {
         // La clave ya estaba definida, reemplazo el significado por el nuevo
+        // cout << "    Clave ya definida, reeplazando nodo." << endl;  // DEBUG
         lugar->raiz().significado = S(s);
     } else {
+        // cout << "    Clave no definida, insertando nuevo nodo." << endl;  // DEBUG
         if (padre == NULL) {
             // El árbol estaba vacío, agrego la nueva clave como árbol principal
             delete arbol;
@@ -109,6 +115,7 @@ S& diccLog<K, S>::obtener(const K& k) const {
 
 template<class K, class S>
 void diccLog<K, S>::borrar(const K& k) {
+    // cout << endl << "Borrando clave " << k << "." << endl;  // DEBUG
     assert(definido(k));
     ab<entrada>* padre;
     ab<entrada>* lugar = buscar(k, padre);
@@ -118,12 +125,9 @@ void diccLog<K, S>::borrar(const K& k) {
         if (padre == NULL) {
             // Era el único nodo en el árbol. Ahora quedó vacío.
             arbol = new ab<entrada>();
-        } else if (padre->izq() == lugar) {
-            // Era hijo izquierdo de su padre
-            padre->izq(new ab<entrada>());
         } else {
-            // Era hijo derecho de su padre
-            padre->der(new ab<entrada>());
+            // Arreglo el link del padre
+            reemplazarHijo(padre, lugar, new ab<entrada>());
         }
         delete lugar;
         rebalancearArbol(padre);
@@ -133,12 +137,9 @@ void diccLog<K, S>::borrar(const K& k) {
         if (padre == NULL) {
             // Era la raíz del árbol. Ahora lo es su hijo izquierdo
             arbol = lugar->izq();
-        } else if (padre->izq() == lugar) {
-            // Era hijo izquierdo de su padre
-            padre->izq(lugar->izq());
         } else {
-            // Era hijo derecho de su padre
-            padre->der(lugar->izq());
+            // Arreglo el link del padre
+            reemplazarHijo(padre, lugar, lugar->izq());
         }
         lugar->izq(NULL);
         delete lugar;
@@ -149,12 +150,9 @@ void diccLog<K, S>::borrar(const K& k) {
         if (padre == NULL) {
             // Era la raíz del árbol. Ahora lo es su hijo derecho
             arbol = lugar->der();
-        } else if (padre->izq() == lugar) {
-            // Era hijo izquierdo de su padre
-            padre->izq(lugar->der());
         } else {
-            // Era hijo derecho de su padre
-            padre->der(lugar->der());
+            // Arreglo el link del padre
+            reemplazarHijo(padre, lugar, lugar->der());
         }
         lugar->der(NULL);
         delete lugar;
@@ -165,15 +163,13 @@ void diccLog<K, S>::borrar(const K& k) {
         if (reemplazo->izq() == NULL || reemplazo->izq()->esNil()) {
             // Caso en el que el reemplazo es hijo directo del nodo a borrar
             // Cuelgo al reemplazo de donde corresponde
+            reemplazo->raiz().padre = padre;
             if (padre == NULL) {
                 // Era la raíz del árbol. Ahora lo es el reemplazo
                 arbol = reemplazo;
-            } else if (padre->izq() == lugar) {
-                // Era hijo izquierdo de su padre
-                padre->izq(reemplazo);
             } else {
-                // Era hijo derecho de su padre
-                padre->der(reemplazo);
+                // Arreglo el link del padre
+                reemplazarHijo(padre, lugar, reemplazo);
             }
             // Cuelgo del reemplazo al hijo izquierdo del nodo a reemplazar
             delete reemplazo->izq();
@@ -203,12 +199,9 @@ void diccLog<K, S>::borrar(const K& k) {
             if (padre == NULL) {
                 // Era la raíz del árbol. Ahora lo es el reemplazo
                 arbol = reemplazo;
-            } else if (padre->izq() == lugar) {
-                // Era hijo izquierdo de su padre
-                padre->izq(reemplazo);
             } else {
-                // Era hijo derecho de su padre
-                padre->der(reemplazo);
+                // Arreglo el link del padre
+                reemplazarHijo(padre, lugar, reemplazo);
             }
             // Le cuelgo al reemplazo los hijos del nodo a reemplazar
             delete reemplazo->izq();
@@ -252,23 +245,23 @@ ab<typename diccLog<K, S>::entrada>* diccLog<K, S>::buscar(
 
 template<class K, class S>
 void diccLog<K, S>::recalcularAltura(ab<entrada>* a) {
-    assert(a != NULL && !(a->esNil()));
-    cout << "Recalculando altura de nodo con raíz " << a->raiz().clave << endl;
+    // assert(a != NULL && !(a->esNil()));  // DEBUG
+    // cout << "  - Recalculando altura de nodo con raíz " << a->raiz().clave << "." << endl;  // DEBUG
     if (!(a->izq()->esNil()) && !(a->der()->esNil())) {
         a->raiz().altSubarbol = 1 + max(
             a->izq()->raiz().altSubarbol, a->der()->raiz().altSubarbol);
-        cout << "Ambos hijos no nulos.";
+        // cout << "    Ambos hijos no nulos.";  // DEBUG
     } else if (!(a->izq()->esNil())) {
         a->raiz().altSubarbol = 1 + a->izq()->raiz().altSubarbol;
-        cout << "Hijo derecho nulo.";
+        // cout << "    Hijo derecho nulo.";  // DEBUG
     } else if (!(a->der()->esNil())) {
         a->raiz().altSubarbol = 1 + a->der()->raiz().altSubarbol;
-        cout << "Hijo izquierdo nulo.";
+        // cout << "    Hijo izquierdo nulo.";  // DEBUG
     } else {
         a->raiz().altSubarbol = 1;
-        cout << "Ambos hijos nulos.";
+        // cout << "    Ambos hijos nulos.";  // DEBUG
     }
-    cout << " Altura calculada: " << a->raiz().altSubarbol << endl << endl;
+    // cout << " Altura calculada: " << a->raiz().altSubarbol << "." << endl;  // DEBUG
 }
 
 template<class K, class S>
@@ -280,106 +273,132 @@ int diccLog<K, S>::factorDeBalanceo(ab<entrada>* a) const {
 }
 
 template<class K, class S>
-void diccLog<K, S>::rotarAIzquierda(ab<entrada>*& a) {
-    assert(!(a->esNil()));
-    assert(a->der() != NULL && !(a->der()->esNil()));
-    cout << "ROTACIÓN A IZQUIERDA. Baja nodo con clave " << a->raiz().clave << endl;
-    cout << "Sube nodo con clave " << a->der()->raiz().clave << endl;
-    // ab<entrada>* b = a->der();
-    // a->der(b->izq());
-    // b->izq(a);
-    // b->raiz().padre = a->raiz().padre;
-    // a->raiz().padre = b;
-    // if (a->der() != NULL && !(a->der()->esNil())) {
-    //     a->der()->raiz().padre = a;
-    // }
-    // if (a->izq() != NULL && !(a->der()->esNil())) {
-    //     a->izq()->raiz().padre = a;
-    // }
-    // recalcularAltura(a);
-    // recalcularAltura(b);
-    // a = b;
+ab<typename diccLog<K, S>::entrada>* diccLog<K, S>::rotarAIzquierda(ab<entrada>* a) {
+    // assert(!(a->esNil()));  // DEBUG
+    // assert(a->der() != NULL && !(a->der()->esNil()));  // DEBUG
+    // cout << "  - Rotación a IZQUIERDA. Baja nodo con clave " << a->raiz().clave;  // DEBUG
+    // cout << ". Sube nodo con clave " << a->der()->raiz().clave << endl;  // DEBUG
+    ab<entrada>* b = a->der();
+    a->der(b->izq());
+    b->izq(a);
+    b->raiz().padre = a->raiz().padre;
+    a->raiz().padre = b;
+    if (a->der() != NULL && !(a->der()->esNil())) {
+        a->der()->raiz().padre = a;
+    }
+    if (a->izq() != NULL && !(a->izq()->esNil())) {
+        a->izq()->raiz().padre = a;
+    }
+    recalcularAltura(a);
+    recalcularAltura(b);
+    return b;
 }
 
 template<class K, class S>
-void diccLog<K, S>::rotarADerecha(ab<entrada>* a) {
-    assert(!(a->esNil()));
-    assert(a->izq() != NULL && !(a->izq()->esNil()));
-    cout << "ROTACIÓN A DERECHA. Baja nodo con clave " << a->raiz().clave << endl;
-    cout << "Sube nodo con clave " << a->izq()->raiz().clave << endl;
-//     ab<entrada>* nuevo1 = new ab<entrada>(
-//         arbol.izq().der(), arbol.raiz(), arbol.der());
-//     ab<entrada>* nuevo2 = new ab<entrada>(
-//         arbol.izq().izq(), arbol.izq().raiz(), nuevo1);
-//     delete(arbol.izq());
-//     delete(arbol);
-//     arbol = nuevo2;
-//     arbol.raiz().padre = arbol.der().raiz().padre;
-//     arbol.izq().raiz().padre = arbol;
-//     arbol.der().raiz().padre = arbol;
-//     arbol.izq().der().raiz().padre = arbol.der();
-//     arbol.der().der().raiz().padre = arbol.der();
-//     arbol.der()->recalcularAltura();
-//     arbol->recalcularAltura();
+ab<typename diccLog<K, S>::entrada>* diccLog<K, S>::rotarADerecha(ab<entrada>* a) {
+    // assert(!(a->esNil()));  // DEBUG
+    // assert(a->izq() != NULL && !(a->izq()->esNil()));  // DEBUG
+    // cout << "  - Rotación a DERECHA. Baja nodo con clave " << a->raiz().clave << endl;  // DEBUG
+    // cout << "Sube nodo con clave " << a->izq()->raiz().clave << endl;  // DEBUG
+    ab<entrada>* b = a->izq();
+    a->izq(b->der());
+    b->der(a);
+    b->raiz().padre = a->raiz().padre;
+    a->raiz().padre = b;
+    if (a->der() != NULL && !(a->der()->esNil())) {
+        a->der()->raiz().padre = a;
+    }
+    if (a->izq() != NULL && !(a->izq()->esNil())) {
+        a->izq()->raiz().padre = a;
+    }
+    recalcularAltura(a);
+    recalcularAltura(b);
+    return b;
 }
 
 template<class K, class S>
 void diccLog<K, S>::rebalancearArbol(ab<entrada>* a) {
-    std::cout << "Rebalanceando árbol" << std::endl;
+    // cout << endl << "Rebalanceando árbol." << endl;  // DEBUG
     ab<entrada>* p = a;
     while (p != NULL) {
+        ab<entrada>* pAux;
         recalcularAltura(p);
         int fdb1 = factorDeBalanceo(p);
-        if (fdb1 == 2) {
-            ab<entrada>* q = p->der();
-            int fdb2 = factorDeBalanceo(q);
-            if (fdb2 == 1 || fdb2 == 0) {
-                rotarAIzquierda(p);
-            } else if (fdb2 == -1) {
-                rotarADerecha(q);
-                rotarAIzquierda(p);
+        if (fdb1 == 2 || fdb1 == -2) {
+            if (fdb1 == 2) {
+                ab<entrada>* q = p->der();
+                int fdb2 = factorDeBalanceo(q);
+                if (fdb2 == 1 || fdb2 == 0) {
+                    pAux = rotarAIzquierda(p);
+                } else if (fdb2 == -1) {
+                    q = rotarADerecha(q);
+                    p->der(q);
+                    pAux = rotarAIzquierda(p);
+                }
+            } else if (fdb1 == -2) {
+                ab<entrada>* q = p->izq();
+                int fdb2 = factorDeBalanceo(q);
+                if (fdb2 == -1 || fdb2 == 0) {
+                    pAux = rotarADerecha(p);
+                } else {
+                    q = rotarAIzquierda(q);
+                    p->izq(q);
+                    pAux = rotarADerecha(p);
+                }
             }
-        } else if (fdb1 == -2) {
-            ab<entrada>* q = p->izq();
-            int fdb2 = factorDeBalanceo(q);
-            if (fdb2 == -1 || fdb2 == 0) {
-                rotarADerecha(p);
+            if (pAux->raiz().padre != NULL) {
+                reemplazarHijo(pAux->raiz().padre, p, pAux);
             } else {
-                rotarAIzquierda(q);
-                rotarADerecha(p);
+                arbol = pAux;
             }
+            p = pAux->raiz().padre;
+        } else {
+            p = p->raiz().padre;
         }
-        p = p->raiz().padre;
+    }
+}
+
+template<class K, class S>
+void diccLog<K, S>::reemplazarHijo(ab<entrada>* padre, ab<entrada>* hijo,
+    ab<entrada>* reemplazo) {
+    assert(padre != NULL);
+    if (padre->izq() == hijo) {
+        // Era hijo izquierdo de su padre
+        padre->izq(reemplazo);
+    } else {
+        // Era hijo derecho de su padre
+        padre->der(reemplazo);
     }
 }
 
 template<class K, class S>
 bool diccLog<K, S>::estaBalanceado() const {
+    // cout << endl << "Verificando si el árbol está balanceado." << endl;  // DEBUG
     return estaBalanceado(arbol);
 }
 
 template<class K, class S>
 bool diccLog<K, S>::estaBalanceado(ab<entrada>* a) const {
     if (a == NULL || a->esNil()) {
-        cout << "Visitando nodo vacío (Balanceado)." << endl;
+        // cout << "  - Visitando nodo vacío (está balanceado)." << endl;  // DEBUG
         return true;
     } else if (factorDeBalanceo(a) == -1 ||
         factorDeBalanceo(a) == 0 ||
         factorDeBalanceo(a) == 1) {
-        cout << "Visitando nodo con clave "<< a->raiz().clave <<". Factor de balanceo: "
-            << factorDeBalanceo(a) << " (está balanceado)." << endl;
-        cout << "Altura de subárbol: " << a->raiz().altSubarbol << endl;
+        // cout << "  - Visitando nodo con clave "<< a->raiz().clave << "." << endl;  // DEBUG
+        // cout << "    Factor de balanceo: " << factorDeBalanceo(a) << " (está balanceado)." << endl;  // DEBUG
+        // cout << "    Altura de subárbol: " << a->raiz().altSubarbol << "." << endl;  // DEBUG
         return estaBalanceado(a->izq()) && estaBalanceado(a->der());
     } else {
+        // cout << "  - Visitando nodo con clave "<< a->raiz().clave << "." << endl;  // DEBUG
+        // cout << "    Factor de balanceo: " << factorDeBalanceo(a) << " (no está balanceado)." << endl;  // DEBUG
+        // cout << "    Altura de subárbol: " << a->raiz().altSubarbol << "." << endl;  // DEBUG
         return false;
-        cout << "Visitando nodo con clave "<< a->raiz().clave <<". Factor de balanceo: "
-            << factorDeBalanceo(a) << " (no está balanceado)." << endl;
-        cout << "Altura de subárbol: " << a->raiz().altSubarbol << endl;
     }
 }
 
 template<class K, class S>
-Lista<K> diccLog<K, S>::clavesEnOrden() const {
+Lista<K> diccLog<K, S>::preorderClaves() const {
     Lista<entrada> entradas = arbol->preorder();
     Lista<K> res;
     for (typename Lista<entrada>::Iterador it = entradas.CrearIt(); it.HaySiguiente(); it.Avanzar()) {

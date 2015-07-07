@@ -8,7 +8,7 @@ using namespace aed2;
 namespace tp3 {
 
 template<class T>
-class colaPrior{
+class colaPrior {
  private:
     Vector<T> heap;
 
@@ -40,7 +40,7 @@ template<class T>
 void colaPrior<T>::encolar(const T& a) {
     heap.AgregarAtras(a);
     Nat i = heap.Longitud() - 1;
-    while (heap[(i + 1)/2 - 1] < i != 0 && heap[i]) {
+    while (i != 0 && heap[(i + 1)/2 - 1] < heap[i]) {
         heap.Swap(i, (i + 1)/2 - 1);
         i = (i + 1)/2 - 1;
     }

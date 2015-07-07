@@ -13,12 +13,8 @@ typedef Nat interfaz;
 struct compu {
     ip IP;
     Conj<interfaz> interfaces;
-    bool operator==(const compu& otra) const {
-        return (IP == otra.IP) && (interfaces == otra.interfaces);
-    }
-    bool operator!=(const compu& otra) const {
-        return !(this->operator==(otra));
-    }
+    bool operator==(const compu& otra) const;
+    bool operator!=(const compu& otra) const;
 };
 
 class red {

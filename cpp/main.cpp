@@ -5,7 +5,7 @@
 #include "./dicc_log.h"
 #include "./cola_prior.h"
 #include "./red.h"
-// #include "./dcnet.h"
+#include "./dcnet.h"
 #include "./mini_test.h"
 
 using namespace aed2;
@@ -13,6 +13,8 @@ using namespace tp3;
 
 using std::cout;
 using std::endl;
+
+// Diccionario de strings
 
 void test_trie() {
     DiccString<int> trie;
@@ -42,6 +44,8 @@ void test_trie() {
     ASSERT_EQ(claves.size(), 1);
 }
 
+// Cola de prioridad
+
 void test_heap() {
     colaPrior<int> cola;
     cola.encolar(4);
@@ -63,6 +67,8 @@ void test_heap() {
     ASSERT_EQ(cola.desencolar(), -12)
     ASSERT_EQ(cola.desencolar(), -80)
 }
+
+// Arbol binario
 
 void test_ab() {
     ab<int>* nil1 = new ab<int>();
@@ -211,18 +217,67 @@ void test_borrado_raiz() {
     dicc.definir(8, 0);
     ASSERT_EQ(dicc.definido(4), true);
     ASSERT_EQ(dicc.cantClaves(), 6);
-    cout << dicc.clavesEnOrden() << endl;
+    cout << dicc.preorderClaves() << endl;
     dicc.borrar(4);
     ASSERT_EQ(dicc.definido(4), false);
     ASSERT_EQ(dicc.cantClaves(), 5);
-    cout << dicc.clavesEnOrden() << endl;
-    // dicc.borrar(6);
-    // ASSERT_EQ(dicc.definido(6), false);
-    // ASSERT_EQ(dicc.cantClaves(), 4);
-    // cout << dicc.clavesEnOrden() << endl;
+    cout << dicc.preorderClaves() << endl;
+    dicc.borrar(6);
+    ASSERT_EQ(dicc.definido(6), false);
+    ASSERT_EQ(dicc.cantClaves(), 4);
+    cout << dicc.preorderClaves() << endl;
 }
 
-/*
+void test_rotac_izquierda() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(1, 0);
+    dicc.definir(5, 0);
+    dicc.definir(10, 0);
+    ASSERT(dicc.estaBalanceado());
+}
+
+void test_rotac_derecha() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(10, 0);
+    dicc.definir(5, 0);
+    dicc.definir(1, 0);
+    ASSERT(dicc.estaBalanceado());
+}
+
+void test_rebalanceo() {
+    diccLog<int, int> dicc = diccLog<int, int>();
+    dicc.definir(50, 0);
+    dicc.definir(75, 0);
+    dicc.definir(100, 0);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.definir(40, 0);
+    dicc.definir(20, 0);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.definir(45, 0);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.definir(80, 0);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.borrar(50);
+    ASSERT(dicc.estaBalanceado());
+
+    cout << dicc.preorderClaves() << endl;
+
+    dicc.borrar(75);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.borrar(80);
+    ASSERT(dicc.estaBalanceado());
+
+    dicc.borrar(100);
+    ASSERT(dicc.estaBalanceado());
+}
+
+// Red y DCNet
+
 void test_red() {
     red r = red();
     ASSERT_EQ(r.cantCompus(), 0);
@@ -287,7 +342,7 @@ void test_red() {
     lis.AgregarAtras(c1);
     lis.AgregarAtras(c2);
     minis.Agregar(lis);
-    ASSERT(r.caminosMinimos(c1,c2) == minis);
+    ASSERT(r.caminosMinimos(c1, c2) == minis);
     Conj<compu> pcs = Conj<compu>();
     pcs.Agregar(c1);
     pcs.Agregar(c2);
@@ -301,7 +356,7 @@ void test_red() {
 void test_dcnet() { 
     //crear red
     red r = red();
-   //creo compu 1
+    //creo compu 1
     compu c1;
     Conj<interfaz> inter1 = Conj<interfaz>();
     inter1.Agregar(1);
@@ -373,14 +428,14 @@ void test_dcnet() {
     p1.origen = c1;
     p1.destino = c3;
     d.crearPaquete(p1);
-    lista<compu> l;
+    Lista<compu> l;
     l.AgregarAtras(c1);
-    ASSERT_EQ(d.caminoRecorrido(p1), l);
+    ASSERT(d.caminoRecorrido(p1) == l);
     d.avanzarSegundo();
-    ASSERT_EQ(d.laQueMasEnvio(), c1);
+    ASSERT(d.laQueMasEnvio() == c1);
     l.AgregarAtras(c2);
-    ASSERT_EQ(d.lared(), r);
-    ASSERT_EQ(d.caminoRecorrido(p1),l);
+    // ASSERT(d.laRed() == r);  // ¡No sabemos comparar redes!
+    ASSERT(d.caminoRecorrido(p1) == l);
     Conj<paquete> paqs = Conj<paquete>();
     paqs.Agregar(p1);
     ASSERT(d.enEspera(c2) == paqs);
@@ -408,39 +463,113 @@ void test_dcnet() {
     p4.origen = c3;
     p4.destino = c1;
     d.crearPaquete(p4);
+   
+    //veamos que en c3 estan en espera los dos paquetes que tienen como origen a c3, es decir, p3 y p4.
+
+    paqs = Conj<paquete>();
+    paqs.Agregar(p3);
+    paqs.Agregar(p4);
+    ASSERT(d.enEspera(c3) == paqs);
+    
     d.avanzarSegundo();
     
     //p2 llego a destino. p4 esta en c2. p3 esta en c3. 
-    //c2 mando 2 paquetes. c3 mando 1 paquete.  c1 mando 1 paquete.
+    //c1 mando 1 paquete. c2 mando 2 paquetes.  c3 mando 1 paquete.
     
     Lista<compu> l3;
     l3.AgregarAtras(c3);
-    l3.AgregarAtras(c1);
-    ASSERT_EQ(d.caminoRecorrido(p3), l3);
+    ASSERT(d.caminoRecorrido(p3) == l3);
     Lista<compu> l4;
     l4.AgregarAtras(c3);
     l4.AgregarAtras(c2);
-    ASSERT_EQ(d.caminoRecorrido(p4), l4);
+    ASSERT(d.caminoRecorrido(p4) == l4);
+
+    //cantidad de paquetes enviados de cada compu
+
     ASSERT_EQ(d.cantidadEnviados(c1), 1);
     ASSERT_EQ(d.cantidadEnviados(c2), 2);
-    ASSERT_EQ(d.cantidadEnviados(c3), 2);
+    ASSERT_EQ(d.cantidadEnviados(c3), 1);
+    
+    //quienes son los paquetes en espera de las compus.
+
     Conj<paquete> paqs1 = Conj<paquete>();
     ASSERT(d.enEspera(c1) == paqs1);
-    ASSERT(d.enEspera(c3) == paqs1);
-    Conj<paquete> paqs2 = Conj<paquete>();
-    paqs2.Agregar(p3);
+    Conj<paquete> paqs2 = Conj<paquete> ();
     paqs2.Agregar(p4);
-    ASSERT(d.enEspera(c3) == paqs2);
+    ASSERT(d.enEspera(c2) == paqs2);
+    Conj<paquete> paqs3 = Conj<paquete> ();
+    paqs2.Agregar(p3);
+    ASSERT(d.enEspera(c3) == paqs3);
+
+    //los paquetes que estan en transito.
+
     ASSERT_EQ(d.paqueteEnTransito(p2), false);
     ASSERT(d.paqueteEnTransito(p3));
     ASSERT(d.paqueteEnTransito(p4));
-    ASSERT_EQ(d.laQueMasEnvio(), c3); // aca puede dar c3 o c2, no se como quedan los nombres pasados por el trie.
+
+    //la que mas envio es c2.
+
+    ASSERT(d.laQueMasEnvio() == c2); 
+
+    d.avanzarSegundo();
+
+    //p4 llego a destino. p3 esta en c2
+    //c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes
+
     
+    l3.AgregarAtras(c2);
+    ASSERT(d.caminoRecorrido(p3) == l3);
+
+
+    ASSERT_EQ(d.cantidadEnviados(c1), 1);
+    ASSERT_EQ(d.cantidadEnviados(c2), 3);
+    ASSERT_EQ(d.cantidadEnviados(c3), 2);
+
+
+    ASSERT(d.enEspera(c1) == paqs1);
+    paqs2 = Conj<paquete> ();
+    paqs2.Agregar(p3);
+    ASSERT(d.enEspera(c2) == paqs2);
+    Conj<paquete> paqs33 = Conj<paquete> ();
+    ASSERT(d.enEspera(c3) == paqs33);
+
+
+    ASSERT_EQ(d.paqueteEnTransito(p4), false);
+    ASSERT(d.paqueteEnTransito(p3));
+
+
+    ASSERT(d.laQueMasEnvio() == c2); 
+
+    d.avanzarSegundo();
+
+    // No hay paquetes en transito.
+    // c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes.
+
+    ASSERT_EQ(d.cantidadEnviados(c1), 1);
+    ASSERT_EQ(d.cantidadEnviados(c2), 4);
+    ASSERT_EQ(d.cantidadEnviados(c3), 2);
+
+    ASSERT(d.enEspera(c1) == paqs1);
+    ASSERT(d.enEspera(c2) == paqs1);
+    ASSERT(d.enEspera(c3) == paqs1);
+
+    ASSERT_EQ(d.paqueteEnTransito(p3), false);
+
+    ASSERT(d.laQueMasEnvio() == c2); 
+
 }
-*/
 
 int main() {
-    RUN_TEST(test_ab);
+    // Diccionario de strings
+    // RUN_TEST(test_trie);
+
+    // Cola de prioridad
+    // RUN_TEST(test_heap);
+
+    // Árbol binario
+    // RUN_TEST(test_ab);
+
+    // Diccionario logarítmico
     RUN_TEST(test_definir);
     RUN_TEST(test_borrado_solo_raiz);
     RUN_TEST(test_borrado_hoja);
@@ -448,9 +577,13 @@ int main() {
     RUN_TEST(test_borrado_solo_hijo_der);
     RUN_TEST(test_borrado_ambos_hijos);
     RUN_TEST(test_borrado_raiz);
-    // RUN_TEST(test_obtener);
-    // RUN_TEST(test_dcnet);
-    // RUN_TEST(test_trie);
+    RUN_TEST(test_obtener);
+    RUN_TEST(test_rotac_izquierda);
+    RUN_TEST(test_rotac_derecha);
+    RUN_TEST(test_rebalanceo);
+
+    // Red y DCNet
     // RUN_TEST(test_red);
+    // RUN_TEST(test_dcnet);
     return 0;
 }

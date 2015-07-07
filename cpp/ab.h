@@ -1,13 +1,9 @@
 #ifndef ARBOL_BIN_H
 #define ARBOL_BIN_H
 
-#include <algorithm>
 #include <iostream>
 #include "./aed2.h"
 
-using std::cerr;
-using std::endl;
-using std::max;
 using namespace aed2;
 
 namespace tp3 {
@@ -149,7 +145,8 @@ Nat ab<T>::altura() const {
     if (esNil()) {
         return 0;
     } else {
-        return 1 + max(izq()->altura(), der()->altura());
+        return 1 + (izq()->altura() < der()->altura() ?
+            der()->altura() : izq()->altura());
     }
 }
 

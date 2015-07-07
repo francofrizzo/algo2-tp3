@@ -2,6 +2,17 @@
 
 namespace tp3 {
 
+// compu
+
+bool compu::operator==(const compu& otra) const {
+    return (IP == otra.IP) && (interfaces == otra.interfaces);
+}
+bool compu::operator!=(const compu& otra) const {
+    return !(this->operator==(otra));
+}
+
+// red
+
 // Constructores
 
 red::red() :

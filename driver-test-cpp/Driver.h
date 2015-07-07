@@ -60,6 +60,8 @@ class Driver
         
     private:
 
+        dcnet d;
+
     /*********************************************************************
      * TODO: Va a ser necesario instanciar privadamente un Modulo DCNet *
      * con el cuál interactuar. Además, pueden declarar todas las        *

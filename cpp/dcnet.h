@@ -2,9 +2,8 @@
 #define DCNET_H
 
 #include "./aed2.h"
- #include "./dicc_trie.h"
-// #include "./dicc_log.h"
-#include "./dicc_caca.h"
+#include "./dicc_trie.h"
+#include "./dicc_log.h"
 #include "./cola_prior.h"
 #include "./red.h"
 
@@ -23,8 +22,6 @@ struct paquete {
     bool operator==(const paquete& otro) const;
     bool operator!=(const paquete& otro) const;
 };
-
-
 
 class dcnet {
  private:
