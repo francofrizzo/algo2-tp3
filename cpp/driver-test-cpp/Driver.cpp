@@ -59,7 +59,6 @@ void Driver::Conectar(const Computadora& c1, const Interfaz& i1, const Computado
     r.conectar(strACompu(c1), i1, strACompu(c2), i2);
 }
 
-
 Nat Driver::CantidadNodosRecorridosPor(const Paquete& p) const {
     assert(d != NULL);
     const paquete& p2 = encontrarPaquete(p);
