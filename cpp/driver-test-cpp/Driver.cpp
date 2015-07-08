@@ -62,15 +62,15 @@ void Driver::Conectar(const Computadora& c1, const Interfaz& i1, const Computado
 
 Nat Driver::CantidadNodosRecorridosPor(const Paquete& p) const {
     assert(d != NULL);
-    paquete p2 = encontrarPaquete(p);
+    const paquete& p2 = encontrarPaquete(p);
     return d->caminoRecorrido(p2).Longitud();
 }
 
 const Computadora& Driver::IesimoNodoRecorridoPor(const Paquete& p, const Nat i) const {
     assert(d != NULL);
     assert(i < CantidadNodosRecorridosPor(p));
-    paquete p2 = encontrarPaquete(p);
-    return d->caminoRecorrido(p2)[i].IP;
+    const paquete& p2 = encontrarPaquete(p);
+    return strACompu(d->caminoRecorrido(p2)[i].IP).IP;
 }
 
 Nat Driver::CantidadEnviadosPor(const Computadora& c) const {
@@ -86,7 +86,7 @@ Nat Driver::CantidadEnEsperaEn(const Computadora& c) const {
 const Paquete& Driver::IesimoEnEsperaEn(const Computadora& c, const Nat i) const {
     assert(d != NULL);
     assert(i < CantidadEnEsperaEn(c));
-    Conj<paquete> cola = d->enEspera(strACompu(c));
+    const Conj<paquete>& cola = d->enEspera(strACompu(c));
     Conj<paquete>::const_Iterador it = cola.CrearIt();
     for (Nat j = 0; j < i; j++) {
         it.Avanzar();
@@ -146,7 +146,7 @@ const paquete& Driver::encontrarPaquete(const Paquete& p) const {
     assert(d != NULL);
     Conj<compu>::const_Iterador it1 = r.computadoras().CrearIt();
     while (it1.HaySiguiente()) {
-        Conj<paquete> cola = d->enEspera(it1.Siguiente());
+        const Conj<paquete>& cola = d->enEspera(it1.Siguiente());
         Conj<paquete>::const_Iterador it2 = cola.CrearIt();
         while (it2.HaySiguiente()) {
             if (it2.Siguiente().ID == p) {

@@ -14,11 +14,11 @@ bool paquete::operator!=(const paquete& otro) const {
 }
 
 bool dcnet::paqPorPrior::operator<(const dcnet::paqPorPrior& otro) const {
-    return _prioridad < otro._prioridad;
+    return _prioridad > otro._prioridad;
 }
 
 bool dcnet::paqPorPrior::operator>(const dcnet::paqPorPrior& otro) const {
-    return _prioridad > otro._prioridad;
+    return _prioridad < otro._prioridad;
 }
 
 std::ostream& operator<<(std::ostream& os, const paquete& c)
@@ -50,10 +50,10 @@ dcnet::dcnet(const red& r) {
         paquetesEnEspera.Definir(j, cs);
         IDsCompusPorIP.definir(it1.Siguiente().IP, j);
         IPsCompusPorID.Definir(j, it1.Siguiente());
-        cout << "Agregando compu \"" << it1.Siguiente().IP << "\" con ID " << j << endl;  // DEBUG 
+        // cout << "Agregando compu \"" << it1.Siguiente().IP << "\" con ID " << j << endl;  // DEBUG
         it1.Avanzar();
     }
-    cout << endl << "¡La Tablita!" << endl;  // DEBUG
+    // cout << endl << "¡La Tablita!" << endl;  // DEBUG
     for (Nat j = 0; j < cantC; j++) {
         siguientesCompus.Definir(j, Arreglo<Nat>(cantC));
         for (Nat k = 0; k < cantC; k++) {
@@ -64,15 +64,15 @@ dcnet::dcnet(const red& r) {
                 Lista<compu> camino = it2.Siguiente();
                 camino.Fin();
                 siguientesCompus[j].Definir(k, *(IDsCompusPorIP.obtener(camino.Primero().IP)));
-                cout << *(IDsCompusPorIP.obtener(camino.Primero().IP)) << "  " ;  // DEBUG
+                // cout << *(IDsCompusPorIP.obtener(camino.Primero().IP)) << "  " ;  // DEBUG
             }
-            else {  // DEBUG
-                cout << "*  ";  // DEBUG
-            }  // DEBUG
+            // else {  // DEBUG
+                // cout << "*  ";  // DEBUG
+            // }  // DEBUG
         }
-        cout << endl;  // DEBUG
+        // cout << endl;  // DEBUG
     }
-    cout << endl << "Donde * significa: \"You shall not pass\"." << endl << endl;  // DEBUG
+    // cout << endl << endl;  // DEBUG
 }
 
 // Métodos públicos
@@ -82,7 +82,7 @@ void dcnet::crearPaquete(const paquete &p) {
 
     Nat o = *(IDsCompusPorIP.obtener(p.origen.IP));
     Nat dest = *(IDsCompusPorIP.obtener(p.destino.IP));
-    cout << "Creando paquete " << p.ID << ": " << o << " -> " << dest << "... ";  // DEBUG
+    // cout << "Creando paquete " << p.ID << ": " << o << " -> " << dest << "... ";  // DEBUG
     Conj<paquete>::Iterador it = paquetesEnEspera[o].enConjunto.CrearIt();
     it = paquetesEnEspera[o].enConjunto.AgregarRapido(p);
     paqPorID i;
@@ -94,7 +94,7 @@ void dcnet::crearPaquete(const paquete &p) {
     pi._prioridad = p._prioridad;
     pi.itPaquete = it;
     paquetesEnEspera[o].porPrioridad.encolar(pi);
-    cout << "Paquete creado con éxito ✓" << endl << endl;  // DEBUG
+    // cout << "Paquete creado con éxito ✓" << endl << endl;  // DEBUG
 }
 
 void dcnet::avanzarSegundo() {
@@ -107,11 +107,11 @@ void dcnet::avanzarSegundo() {
             paq = paquetesEnEspera[j].porPrioridad.desencolar().itPaquete.Siguiente();
             o = paquetesEnEspera[j].porID.obtener(paq.ID).codOrigen;  // Esto es necesario?
             dest = paquetesEnEspera[j].porID.obtener(paq.ID).codDestino;
-            cout << "Procesando paquete " << paq.ID << " (" << o << " -> " << dest << "), actualmente en " << j << ". ";  // DEBUG
+            // cout << "Procesando paquete " << paq.ID << " (" << o << " -> " << dest << "), actualmente en " << j << ". ";  // DEBUG
             it = paquetesEnEspera[j].porID.obtener(paq.ID).itPaquete;
             paquetesEnEspera[j].porID.borrar(paq.ID);
             it.EliminarSiguiente();
-            cout << "Paquete listo para enviar." << endl;  // DEBUG
+            // cout << "Paquete listo para enviar." << endl;  // DEBUG
             cantPaqEnviados[j]++;
             paquetesEnEspera[j].porEnviar.paq = paq;
             paquetesEnEspera[j].porEnviar.vacio = false;
@@ -119,13 +119,13 @@ void dcnet::avanzarSegundo() {
             paquetesEnEspera[j].porEnviar.desti = dest;
         }
     }
-    cout << endl;  // DEBUG
+    // cout << endl;  // DEBUG
     for (Nat j = 0; j < _red.cantCompus(); j++) {
         if (!(paquetesEnEspera[j].porEnviar.vacio)) {
             Nat sigCompu = siguientesCompus[j]
                 [paquetesEnEspera[j].porEnviar.desti];
             if (sigCompu != paquetesEnEspera[j].porEnviar.desti) {
-                cout << "Enviando paquete " << paquetesEnEspera[j].porEnviar.paq.ID << ". Próximo paso: " << j << " -> " << sigCompu << "... ";  // DEBUG
+                // cout << "Enviando paquete " << paquetesEnEspera[j].porEnviar.paq.ID << ". Próximo paso: " << j << " -> " << sigCompu << "... ";  // DEBUG
                 Conj<paquete>::Iterador it = paquetesEnEspera[sigCompu]
                     .enConjunto.CrearIt();
                 it = paquetesEnEspera[sigCompu].enConjunto
@@ -139,15 +139,15 @@ void dcnet::avanzarSegundo() {
                 pi._prioridad = paquetesEnEspera[j].porEnviar.paq._prioridad;
                 pi.itPaquete = it;
                 paquetesEnEspera[sigCompu].porPrioridad.encolar(pi);
-                cout << "Paquete enviado con éxito ✓" << endl;  // DEBUG
+                // cout << "Paquete enviado con éxito ✓" << endl;  // DEBUG
             }
-            else {  // DEBUG
-                cout << "El paquete ya llegó a destino y será eliminado. Será como si jamás hubiera existido. :(" << endl;  // DEBUG
-            }  // DEBUG
+            // else {  // DEBUG
+                // cout << "El paquete ya llegó a destino y será eliminado." << endl;  // DEBUG
+            // }  // DEBUG
             paquetesEnEspera[j].porEnviar.vacio = true;
         }
     }
-    cout << endl;  // DEBUG
+    // cout << endl;  // DEBUG
     Nat h = 0;
     for (Nat k = 0; k < _red.cantCompus(); k++) {
         if (cantPaqEnviados[k] > cantPaqEnviados[h]) {
@@ -163,32 +163,32 @@ const red& dcnet::laRed() const {
 
 Lista<compu> dcnet::caminoRecorrido(const paquete &p) const {
     assert(paqueteEnTransito(p));  // DEBUG - ASSERTION
-    cout << "Analizando el recorrido del paquete " << p.ID << "... " << endl;  // DEBUG
+    // cout << "Analizando el recorrido del paquete " << p.ID << "... " << endl;  // DEBUG
     Lista<compu> res = Lista<compu>();
     Nat j;
     for (j = 0; !(paquetesEnEspera[j].porID.definido(p.ID)); j++) {}
     Nat o = paquetesEnEspera[j].porID.obtener(p.ID).codOrigen;
     Nat dest = paquetesEnEspera[j].porID.obtener(p.ID).codDestino;
-    cout << "El recorrido del paquete fue: ";  // DEBUG
+    // cout << "El recorrido del paquete fue: ";  // DEBUG
     while (!(paquetesEnEspera[o].porID.definido(p.ID))) {
         res.AgregarAtras(IPsCompusPorID[o]);
-        cout << o << " -> ";  // DEBUG
+        // cout << o << " -> ";  // DEBUG
         o = siguientesCompus[o][dest];
     }
     res.AgregarAtras(IPsCompusPorID[o]);
-    cout << o << endl << endl;  // DEBUG
+    // cout << o << endl << endl;  // DEBUG
     return res;
 }
 
 Nat dcnet::cantidadEnviados(const compu &c) const {
     Nat i = *(IDsCompusPorIP.obtener(c.IP));
-    cout << "La compu " << i << " envió " << cantPaqEnviados[i] << " paquetes." << endl << endl;  // DEBUG
+    // cout << "La compu " << i << " envió " << cantPaqEnviados[i] << " paquetes." << endl << endl;  // DEBUG
     return cantPaqEnviados[i];
 }
 
 const Conj<paquete>& dcnet::enEspera(const compu &c) const {
     Nat i = *(IDsCompusPorIP.obtener(c.IP));
-    cout << "La compu " << i << " tiene estos paquetes en su cola: " << paquetesEnEspera[i].enConjunto << endl << endl;  // DEBUG
+    // cout << "La compu " << i << " tiene estos paquetes en su cola: " << paquetesEnEspera[i].enConjunto << endl << endl;  // DEBUG
     return paquetesEnEspera[i].enConjunto;
 }
 
