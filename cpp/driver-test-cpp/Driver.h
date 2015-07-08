@@ -63,6 +63,11 @@ class Driver
 
         red r;
         dcnet* d;
+        Nat sigId;
+
+        // Funciones auxiliares
+        const compu& strACompu(const Computadora&) const;
+        const paquete& encontrarPaquete(const Paquete& p) const;
 
     /*********************************************************************
      * TODO: Va a ser necesario instanciar privadamente un Modulo DCNet *
