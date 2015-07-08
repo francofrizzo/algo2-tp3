@@ -374,7 +374,6 @@ int main(int argc, char **argv)
      * las funcionalidades del módulo.                                *
      * La interacción con el TAD DcNet se debe hacer exclusivamente  *
      * a través de la interfaz del driver.                            *
-    assert(d != NULL);
      ******************************************************************/
    
 
