@@ -87,7 +87,7 @@ bool Comparar(const T& t, const S& s)
  */
 
 void test_red(){
-	red re = red();
+	Driver re = Driver();
     ASSERT_EQ(re.CantidadComputadoras(), 0);
     Computadora c1 = "Manu";
     Conj<Interfaz> inter1 = Conj<Interfaz>();
@@ -111,7 +111,7 @@ void test_red(){
     ASSERT_EQ(re.CantidadComputadoras(), 3);
     Computadora c4 = "Minion";
     Conj<Interfaz> inter4 = Conj<Interfaz>();
-    inter2.Agregar(9);
+    inter4.Agregar(9);
     re.AgregarComputadora(c4, inter4);
     ASSERT_EQ(re.CantidadComputadoras(), 4);
     Computadora c5 = "Uri";
@@ -131,10 +131,10 @@ void test_red(){
     ASSERT_EQ(re.IesimaComputadora(2), c3);
     ASSERT_EQ(re.IesimaComputadora(3), c2);
     ASSERT_EQ(re.IesimaComputadora(4), c1);
-    re.conectar(c1, 1, c2, 5);
-    re.conectar(c3, 65, c2, 3);
-    re.conectar(c1, 2, c3, 7);
-    re.conectar(c3, 1, c4, 9);
+    re.Conectar(c1, 1, c2, 5);
+    re.Conectar(c3, 65, c2, 3);
+    re.Conectar(c1, 2, c3, 7);
+    re.Conectar(c3, 1, c4, 9);
     ASSERT(re.conectadas(c1, c2));
     ASSERT(re.conectadas(c2, c1));
     ASSERT(re.conectadas(c2, c3));
@@ -144,18 +144,18 @@ void test_red(){
     ASSERT_EQ(re.conectadas(c1, c4), false);
     ASSERT_EQ(re.conectadas(c2, c5), false);
     ASSERT_EQ(re.conectadas(c2, c4), false); 
-    ASSERT_EQ(re.InterfazUsada(c1, c2), 1);
-    ASSERT_EQ(re.InterfazUsada(c2, c3), 3);
-    ASSERT_EQ(re.InterfazUsada(c2, c1), 5);
-    ASSERT_EQ(re.InterfazUsada(c3, c2), 65);
-    ASSERT_EQ(re.InterfazUsada(c3, c1), 7);
-    ASSERT_EQ(re.InterfazUsada(c1, c3), 2);
+    ASSERT_EQ(re.IntefazUsada(c1, c2), 1);
+    ASSERT_EQ(re.IntefazUsada(c2, c3), 3);
+    ASSERT_EQ(re.IntefazUsada(c2, c1), 5);
+    ASSERT_EQ(re.IntefazUsada(c3, c2), 65);
+    ASSERT_EQ(re.IntefazUsada(c3, c1), 7);
+    ASSERT_EQ(re.IntefazUsada(c1, c3), 2);
 
 }
 
 
 void test_dcnet(){
-	red re = red();
+	Driver re = Driver();
     Computadora c1 = "Manu";
     Conj<Interfaz> inter1 = Conj<Interfaz>();
     inter1.Agregar(1);
@@ -175,7 +175,7 @@ void test_dcnet(){
     re.AgregarComputadora(c3, inter3);
     Computadora c4 = "Minion";
     Conj<Interfaz> inter4 = Conj<Interfaz>();
-    inter2.Agregar(9);
+    inter4.Agregar(9);
     re.AgregarComputadora(c4, inter4);
     Computadora c5 = "Uri";
     Conj<Interfaz> inter5 = Conj<Interfaz>();
@@ -183,13 +183,144 @@ void test_dcnet(){
     inter5.Agregar(6);
     inter5.Agregar(45);
     re.AgregarComputadora(c5, inter5);
-    re.conectar(c1, 1, c2, 5);
-    re.conectar(c3, 65, c2, 3);
-    re.conectar(c1, 2, c3, 7);
-    re.conectar(c3, 1, c4, 9);
+    re.Conectar(c1, 1, c2, 5);
+    re.Conectar(c3, 65, c2, 3);
+   // re.Conectar(c1, 2, c3, 7);
+    //re.Conectar(c3, 1, c4, 9);
 
     // Ya se creo la red
     // Creamos una nueva DCNet
+
+    Paquete p1 = 1;
+    re.CrearPaquete(c1, c3, 1);
+    ASSERT(re.CantidadNodosRecorridosPor(p1) == 1);
+    re.AvanzarSegundo();
+    ASSERT(re.laQueMasEnvio() == c1);
+    ASSERT(re.CantidadNodosRecorridosPor(p1) == 2);
+    ASSERT(re.CantidadEnEsperaEn(c2) == 1);
+    re.AvanzarSegundo();
+    re.AvanzarSegundo();
+    ASSERT_EQ(re.CantidadEnviadosPor(c1), 1);
+
+    // // creo paquetes 2, 3 y 4. c1 mando 1 paquete, c2 mando un paquete. No hay paquetes en transito.
+
+    Paquete p2 = 2;
+    re.CrearPaquete(c2, c3, 2);
+    Paquete p3 = 3;
+    re.CrearPaquete(c3, c1, 3);
+    Paquete p4 = 4;
+    re.CrearPaquete(c3, c1, 4);
+
+    // veamos que en c3 estan en espera los dos paquetes que tienen como origen a c3, es decir, p3 y p4.
+
+    ASSERT(re.CantidadEnEsperaEn(c3) == 2);
+    bool estaElPaquete3 = false;
+    bool estaElPaquete4 = false;
+    for (int i =0; i < re.CantidadEnEsperaEn(c3) ; i++) { 
+        if (re.IesimoEnEsperaEn(c3, i) == p3){
+        	estaElPaquete3 = true;
+        }
+        if (re.IesimoEnEsperaEn(c3, i) == p4){
+        	estaElPaquete4 = true;
+        }
+    }
+    ASSERT(estaElPaquete3);
+    ASSERT(estaElPaquete4);
+   
+    re.AvanzarSegundo();
+
+    // p2 llego a destino. p4 esta en c2. p3 esta en c3.
+    //c1 mando 1 paquete. c2 mando 2 paquetes.  c3 mando 1 paquete.
+
+
+    ASSERT(re.CantidadNodosRecorridosPor(p3) == 1);
+    ASSERT(re.CantidadNodosRecorridosPor(p4) == 2);
+
+
+    // cantidad de paquetes enviados de cada compu
+    
+
+   	ASSERT(re.CantidadEnviadosPor(c1) == 1);
+    ASSERT(re.CantidadEnviadosPor(c2) == 2);
+    ASSERT(re.CantidadEnviadosPor(c3) == 1);
+
+
+    // quienes son los paquetes en espera de las compus.
+
+    ASSERT(re.CantidadEnEsperaEn(c1) == 0);
+    ASSERT(re.CantidadEnEsperaEn(c2) == 1);
+
+    estaElPaquete4 = false;
+
+    for (int i =0; i < re.CantidadEnEsperaEn(c2) ; i++) { 
+        if (re.IesimoEnEsperaEn(c2, i) == p4){
+        	estaElPaquete4 = true;
+        }
+    }
+
+    ASSERT(estaElPaquete4);
+
+    ASSERT(re.CantidadEnEsperaEn(c3) == 1);
+
+    estaElPaquete3 = false;
+
+    for (int i =0; i < re.CantidadEnEsperaEn(c3) ; i++) { 
+        if (re.IesimoEnEsperaEn(c3, i) == p3){
+        	estaElPaquete3 = true;
+        }
+    }
+
+    ASSERT(estaElPaquete3);
+
+    //la que mas envio es c2.
+
+    ASSERT(re.laQueMasEnvio() == c2);
+
+    re.AvanzarSegundo();
+
+    // p4 llego a destino. p3 esta en c2
+    // c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes
+
+    ASSERT(re.CantidadNodosRecorridosPor(p3) == 2);
+
+    ASSERT_EQ(re.CantidadEnviadosPor(c1), 1);
+    ASSERT_EQ(re.CantidadEnviadosPor(c2), 3);
+    ASSERT_EQ(re.CantidadEnviadosPor(c3), 2);
+
+    ASSERT(re.CantidadEnEsperaEn(c1) == 0);
+    ASSERT(re.CantidadEnEsperaEn(c2) == 1);
+    ASSERT(re.CantidadEnEsperaEn(c3) == 0);
+
+
+    estaElPaquete3 = false;
+
+    for (int i =0; i < re.CantidadEnEsperaEn(c2) ; i++) { 
+        if (re.IesimoEnEsperaEn(c2, i) == p3){
+        	estaElPaquete3 = true;
+        }
+    }
+
+    ASSERT(estaElPaquete3);
+
+
+
+    ASSERT(re.laQueMasEnvio() == c2);
+
+    re.AvanzarSegundo();
+
+    // No hay paquetes en transito.
+    // c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes.
+
+    ASSERT_EQ(re.CantidadEnviadosPor(c1), 1);
+    ASSERT_EQ(re.CantidadEnviadosPor(c2), 4);
+    ASSERT_EQ(re.CantidadEnviadosPor(c3), 2);
+
+	ASSERT(re.CantidadEnEsperaEn(c1) == 0);
+    ASSERT(re.CantidadEnEsperaEn(c2) == 0);
+    ASSERT(re.CantidadEnEsperaEn(c3) == 0);
+
+    ASSERT(re.laQueMasEnvio() == c2);
+
 
 }
 

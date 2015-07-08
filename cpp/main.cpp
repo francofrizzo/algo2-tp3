@@ -436,10 +436,6 @@ void test_dcnet() {
     d.avanzarSegundo();
     ASSERT_EQ(d.cantidadEnviados(c1), 1);
 
-    // IMPORTANTE
-    // Todo funciona bien, pero los paquetes pasan un segundo el el destino antes de morir.
-    // Revisar la especificación, porque no estoy seguro de que eso era lo que queríamos.
-
     // // creo paquetes 2, 3 y 4. c1 mando 1 paquete, c2 mando un paquete. No hay paquetes en transito.
 
     paquete p2;
