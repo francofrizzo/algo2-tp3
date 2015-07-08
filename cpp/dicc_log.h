@@ -14,42 +14,68 @@ namespace tp3 {
 template<class K, class S>
 class diccLog{
  private:
-    struct entrada {
-        K clave;
-        S significado;
-        Nat altSubarbol;
-        ab<entrada>* padre;
+    struct entrada {       // Cada uno de los nodos del árbol es de este tipo
+        K clave;             // La clave almacenada
+        S significado;       // El significado correspondiente
+        Nat altSubarbol;     // Altura del subárbol del cual el nodo es raíz
+        ab<entrada>* padre;  // Puntero al padre del nodo. Es NULL si y solo
+                                // si el nodo es la raíz del árbol.
 
         entrada(K k, S s, Nat h, ab<entrada>* p) :
             clave(k), significado(s), altSubarbol(h), padre(p) {}
     };
 
-    ab<entrada>* arbol;
+    ab<entrada>* arbol;     // El diccionario se representa mediante
+                               // un árbol binario con invariante de AVL.
 
     ab<entrada>* buscar(const K& k, ab<entrada>*& padre) const;
+        // Devuelve un puntero al nodo cuya clave es k, o en su defecto
+           // al nodo nil cuya clave debería ser k si estuviera definida.
+           // Coloca en p la dirección del padre de dicho nodo.
     void recalcularAltura(ab<entrada>*);
+        // Recalcula el valor del campo "altSubarbol" del nodo
+           // cuya dirección recibe por parámetro.
     int factorDeBalanceo(ab<entrada>*) const;
+        // Calcula el factor de balanceo del nodo
+           // cuya dirección recibe por parámetro.
     ab<entrada>* rotarAIzquierda(ab<entrada>*);
+        // Realiza una rotación entre el nodo cuya dirección recibe
+           // por parámetro y su hijo izquierdo.
     ab<entrada>* rotarADerecha(ab<entrada>*);
+        // Realiza una rotación entre el nodo cuya dirección recibe
+           // por parámetro y su hijo derecho.
     void rebalancearArbol(ab<entrada>*);
+        // Restablece el invariante de representación de AVL
+           // de forma ascendente, a partir del nodo cuya dirección
+           // recibe por parámetro.
     void reemplazarHijo(ab<entrada>*, ab<entrada>*, ab<entrada>*);
-
+        // Si uno de los hijos del primer parámetro es igual al segundo
+           // parámetro, lo reemplaza por el tercer parámetro.
     bool estaBalanceado(ab<entrada>* a) const;
+        // Función de debug que decide si el árbol cuya raíz recibe
+           // por parámetro cumple el invariante de representación de AVL.
+    bool estaBalanceado() const;
+        // Función de debug que decide si el árbol subyacente está balanceado.
+    Lista<K> preorderClaves() const;
+        // Función de debug que devuelve las claves del diccionario en preorder.
 
  public:
-    diccLog();
-    diccLog(const diccLog<K, S>& otro);
-    ~diccLog();
+    diccLog();                            // Construye un diccionario vacío.
+    diccLog(const diccLog<K, S>& otro);   // Construye un diccionario por copia.
+    ~diccLog();                           // Destruye un diccionario.
 
-    bool definido(const K& k) const;
-    void definir(const K& k, const S& s);
-    S& obtener(const K& k) const;
-    void borrar(const K& k);
-    Nat cantClaves() const;
+    diccLog<K, S>& operator=(const diccLog<K, S>& otro);
+        // Operador de asignación por copia
 
-    bool estaBalanceado() const;
-    Lista<K> preorderClaves() const;
+    bool definido(const K&) const;     // Decide si una clave está definida.
+    void definir(const K&, const S&);  // Define el significado de una clave.
+    S& obtener(const K&) const;        // Devuelve el significado de una clave.
+    void borrar(const K&);             // Elimina una clave del diccionario.
+    Nat cantClaves() const;            // Devuelve la cantidad de claves
+                                          // del diccionario.
 };
+
+// Constructores
 
 template<class K, class S>
 diccLog<K, S>::diccLog() :
@@ -59,9 +85,20 @@ template<class K, class S>
 diccLog<K, S>::diccLog(const diccLog<K, S>& otro) :
     arbol(new ab<entrada>(*(otro.arbol))) {}
 
+// Destructor
+
 template<class K, class S>
 diccLog<K, S>::~diccLog() {
     delete arbol;
+}
+
+// Métodos públicos
+
+template<class K, class S>
+diccLog<K, S>& diccLog<K, S>::operator=(const diccLog<K, S>& otro) {
+    delete arbol;
+    arbol = otro.arbol == NULL ? NULL : new ab<entrada>(*(otro.arbol));
+    return *this;
 }
 
 template<class K, class S>
@@ -107,7 +144,7 @@ void diccLog<K, S>::definir(const K& k, const S& s) {
 
 template<class K, class S>
 S& diccLog<K, S>::obtener(const K& k) const {
-    assert(definido(k));
+    assert(definido(k));  // DEBUG - ASSERTION
     ab<entrada>* padre;
     ab<entrada>* lugar = buscar(k, padre);
     return lugar->raiz().significado;
@@ -116,7 +153,7 @@ S& diccLog<K, S>::obtener(const K& k) const {
 template<class K, class S>
 void diccLog<K, S>::borrar(const K& k) {
     // cout << endl << "Borrando clave " << k << "." << endl;  // DEBUG
-    assert(definido(k));
+    assert(definido(k));  // DEBUG - ASSERTION
     ab<entrada>* padre;
     ab<entrada>* lugar = buscar(k, padre);
     if ((lugar->izq() == NULL || lugar->izq()->esNil()) &&
@@ -227,6 +264,8 @@ Nat diccLog<K, S>::cantClaves() const {
     return arbol->cantNodos();
 }
 
+// Métodos privados
+
 template<class K, class S>
 ab<typename diccLog<K, S>::entrada>* diccLog<K, S>::buscar(
     const K& k, ab<entrada>*& padre) const {
@@ -266,7 +305,7 @@ void diccLog<K, S>::recalcularAltura(ab<entrada>* a) {
 
 template<class K, class S>
 int diccLog<K, S>::factorDeBalanceo(ab<entrada>* a) const {
-    assert(a != NULL);
+    // assert(a != NULL);  // DEBUG
     int altIzq = a->izq()->esNil() ? 0 : a->izq()->raiz().altSubarbol;
     int altDer = a->der()->esNil() ? 0 : a->der()->raiz().altSubarbol;
     return altDer - altIzq;
@@ -356,6 +395,7 @@ void diccLog<K, S>::rebalancearArbol(ab<entrada>* a) {
             p = p->raiz().padre;
         }
     }
+    assert(estaBalanceado());  // DEBUG
 }
 
 template<class K, class S>
@@ -369,12 +409,6 @@ void diccLog<K, S>::reemplazarHijo(ab<entrada>* padre, ab<entrada>* hijo,
         // Era hijo derecho de su padre
         padre->der(reemplazo);
     }
-}
-
-template<class K, class S>
-bool diccLog<K, S>::estaBalanceado() const {
-    // cout << endl << "Verificando si el árbol está balanceado." << endl;  // DEBUG
-    return estaBalanceado(arbol);
 }
 
 template<class K, class S>
@@ -395,6 +429,12 @@ bool diccLog<K, S>::estaBalanceado(ab<entrada>* a) const {
         // cout << "    Altura de subárbol: " << a->raiz().altSubarbol << "." << endl;  // DEBUG
         return false;
     }
+}
+
+template<class K, class S>
+bool diccLog<K, S>::estaBalanceado() const {
+    // cout << endl << "Verificando si el árbol está balanceado." << endl;  // DEBUG
+    return estaBalanceado(arbol);
 }
 
 template<class K, class S>

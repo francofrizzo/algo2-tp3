@@ -11,30 +11,27 @@ template<class T>
 class colaPrior {
  private:
     Vector<T> heap;
+        // La cola de prioridad se representa con un heap sobre vector.
 
-    // Función de debug que verifica
-    // que se cumpla el invariante de representación
-    bool esHeapValido() {
-        for (int i = 0; 2*i + 1 < heap.Longitud(); i++) {
-            if (heap[i] < heap[2*i + 1]) {
-                return false;
-            } else if (2*i + 2 < heap.Longitud() && heap[i] < heap[2*i + 2]) {
-                return false;
-            }
-        }
-        return true;
-    }
+    bool esHeapValido();
+        // Función de debug que verifica que se cumpla
+           // el invariante de representación
 
  public:
-    colaPrior();
+    colaPrior();             // Crea una cola de prioridad vacía
 
-    void encolar(const T&);
-    bool esVacia() const;
-    T desencolar();
+    void encolar(const T&);  // Agrega un elemento a la cola de prioridad
+    bool esVacia() const;    // Decide si la cola de prioridad está vacía
+    T desencolar();          // Devuelve uno de los elementos de máxima
+                                // prioridad y lo elimina de la cola
 };
+
+// Constructor
 
 template<class T>
 colaPrior<T>::colaPrior() : heap(Vector<T>()) {}
+
+// Métodos públicos
 
 template<class T>
 void colaPrior<T>::encolar(const T& a) {
@@ -44,7 +41,7 @@ void colaPrior<T>::encolar(const T& a) {
         heap.Swap(i, (i + 1)/2 - 1);
         i = (i + 1)/2 - 1;
     }
-    // assert(esHeapValido());  // debug
+    // assert(esHeapValido());  // DEBUG
 }
 
 template<class T>
@@ -54,7 +51,7 @@ bool colaPrior<T>::esVacia() const {
 
 template<class T>
 T colaPrior<T>::desencolar() {
-    assert(!esVacia());
+    assert(!esVacia());  // DEBUG - ASSERTION
     T res = T(heap[0]);
     heap.Swap(0, heap.Longitud() - 1);
     heap.Comienzo();
@@ -76,8 +73,22 @@ T colaPrior<T>::desencolar() {
             i = 2*i + 1;
         }
     }
-    // assert(esHeapValido());  // debug
+    // assert(esHeapValido());  // DEBUG
     return res;
+}
+
+// Métodos privados
+
+template<class T>
+bool colaPrior<T>::esHeapValido() {
+    for (int i = 0; 2*i + 1 < heap.Longitud(); i++) {
+        if (heap[i] < heap[2*i + 1]) {
+            return false;
+        } else if (2*i + 2 < heap.Longitud() && heap[i] < heap[2*i + 2]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 }  // namespace tp3

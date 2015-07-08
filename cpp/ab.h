@@ -17,17 +17,14 @@ class ab {
         ab<T>* _der;
 
         nodo(ab<T>* i, T v, ab<T>* d) :
-            valor(v),
-            _izq(i),
-            _der(d) {
-        }
+            valor(v), _izq(i), _der(d) {}
 
         nodo(const nodo& otro) :
             valor(otro.valor) {
             _izq = otro._izq == NULL ? NULL : new ab<T>(*(otro._izq));
             _der = otro._der == NULL ? NULL : new ab<T>(*(otro._der));
         }
-
+        
         ~nodo() {
             delete _izq;
             delete _der;
@@ -37,30 +34,30 @@ class ab {
     nodo* _raiz;
 
  public:
-    ab();                          // Constructor vacío (Nil)
-    ab(const ab<T>&);              // Constructor por copia
-    ab(ab<T>*, const T&, ab<T>*);  // Constructor Bin
-
-    ~ab();
+    ab();                          // Construye un árbol vacío
+    ab(const ab<T>&);              // Construye un árbol por copia
+    ab(ab<T>*, const T&, ab<T>*);  // Construye un árbol a partir de su raíz
+                                      // y subárboles izquierdo y derecho
+    ~ab();                         // Destruye un árbol
 
     ab<T>& operator=(const ab<T>&);  // Operador de asignación por copia
 
-    bool esNil() const;       // Devuelve True si y solo si el árbol
-                              //     no contiene nodos
-    T& raiz() const;          // Devuelve el valor de la raíz del árbol
-    ab<T>* izq() const;  // Devuelve el subárbol izquierdo
-                              //     (no modifica la estructura interna)
-    ab<T>* der() const;  // Devuelve el subárbol derecho
-                              //     (no modifica la estructura interna)
-    ab<T>* izq();             // Devuelve el subárbol izquierdo
-    ab<T>* der();             // Devuelve el subárbol derecho
-    void izq(ab<T>*);         // Reemplaza el subárbol izquierdo (NO libera memoria)
-    void der(ab<T>*);         // Reemplaza el subárbol derecho (NO libera memoria)
-    Nat altura() const;       // Devuelve la altura del árbol
-    Nat cantNodos() const;    // Devuelve la cantidad de nodos del árbol
-    Lista<T> inorder() const;
-    Lista<T> preorder() const;
-    Lista<T> postorder() const;
+    bool esNil() const;          // Devuelve True si y solo si el árbol
+                                    // no contiene nodos
+    T& raiz() const;             // Devuelve el valor de la raíz del árbol
+    ab<T>* izq() const;          // Devuelve el subárbol izquierdo
+    ab<T>* der() const;          // Devuelve el subárbol derecho
+    ab<T>* izq();                // Devuelve el subárbol izquierdo
+    ab<T>* der();                // Devuelve el subárbol derecho
+    void izq(ab<T>*);            // Reemplaza el subárbol izquierdo
+                                    // (NO libera memoria)
+    void der(ab<T>*);            // Reemplaza el subárbol derecho
+                                    // (NO libera memoria)
+    Nat altura() const;          // Devuelve la altura del árbol
+    Nat cantNodos() const;       // Devuelve la cantidad de nodos del árbol
+    Lista<T> inorder() const;    // Recorre el arbol en inorder
+    Lista<T> preorder() const;   // Recorre el arbol en preorder
+    Lista<T> postorder() const;  // Recorre el arbol en postorder
 };
 
 // Implementación de métodos públicos

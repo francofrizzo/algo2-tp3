@@ -19,9 +19,11 @@ struct paquete {
     prioridad _prioridad;
     compu origen;
     compu destino;
-    bool operator==(const paquete& otro) const;
-    bool operator!=(const paquete& otro) const;
+    bool operator==(const paquete&) const;
+    bool operator!=(const paquete&) const;
 };
+
+std::ostream& operator<<(std::ostream&, const paquete&);  // DEBUG
 
 class dcnet {
  private:
@@ -34,8 +36,8 @@ class dcnet {
     struct paqPorPrior {
         prioridad _prioridad;
         Conj<paquete>::Iterador itPaquete;
-        bool operator<(const paqPorPrior& otro) const;
-        bool operator>(const paqPorPrior& otro) const;
+        bool operator<(const paqPorPrior&) const;
+        bool operator>(const paqPorPrior&) const;
     };
 
     struct datosPaqAEnviar{
@@ -61,14 +63,14 @@ class dcnet {
     Arreglo<compu> IPsCompusPorID;
 
  public:
-    explicit dcnet(const red& r);
-    void crearPaquete(const paquete& p);
+    explicit dcnet(const red&);
+    void crearPaquete(const paquete&);
     void avanzarSegundo();
     const red& laRed() const;
-    Lista<compu> caminoRecorrido(const paquete& p) const;
-    Nat cantidadEnviados(const compu& c) const;
-    const Conj<paquete>& enEspera(const compu& c) const;
-    bool paqueteEnTransito(const paquete& p) const;
+    Lista<compu> caminoRecorrido(const paquete&) const;
+    Nat cantidadEnviados(const compu&) const;
+    const Conj<paquete>& enEspera(const compu&) const;
+    bool paqueteEnTransito(const paquete&) const;
     const compu& laQueMasEnvio() const;
 };
 

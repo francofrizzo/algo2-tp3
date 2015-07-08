@@ -13,9 +13,11 @@ typedef Nat interfaz;
 struct compu {
     ip IP;
     Conj<interfaz> interfaces;
-    bool operator==(const compu& otra) const;
-    bool operator!=(const compu& otra) const;
+    bool operator==(const compu&) const;
+    bool operator!=(const compu&) const;
 };
+
+std::ostream& operator<<(std::ostream&, const compu&);  // DEBUG
 
 class red {
  private:
@@ -24,26 +26,26 @@ class red {
     Conj<compu> compus;
     DiccString<diccConexiones> conexiones;
 
-    Conj<Lista<compu> > dameMinimos(const Conj<Lista<compu> >& c) const;
-    Conj<Lista<compu> > losDeLong(const Conj<Lista<compu> >& c, Nat k) const;
-    Nat minimaLong(const Conj<Lista<compu> >& c) const;
-    Lista<compu> pasarConjALista(const Conj<compu>& c) const;
-    Conj<Lista<compu> > caminos(const compu& c1, const compu& c2,
-        Lista<compu>& l, Lista<compu>& candidatos) const;
+    Conj<Lista<compu> > dameMinimos(const Conj<Lista<compu> >&) const;
+    Conj<Lista<compu> > losDeLong(const Conj<Lista<compu> >&, Nat) const;
+    Nat minimaLong(const Conj<Lista<compu> >&) const;
+    Lista<compu> pasarConjALista(const Conj<compu>&) const;
+    Conj<Lista<compu> > caminos(const compu&, const compu&,
+        Lista<compu>&, Lista<compu>&) const;
 
  public:
     red();
     red(const red& r);
 
-    void agregarCompu(const compu& c);
-    void conectar(const compu& c1, const interfaz& i1,
-        const compu& c2, const interfaz& i2);
-    bool conectadas(const compu& c1, const compu& c2) const;
-    const interfaz& interfazUsada(const compu& c1, const compu& c2) const;
-    Conj<compu> vecinos(const compu& c) const;
-    bool usaInterfaz(const compu& c, const interfaz& i) const;
-    Conj<Lista<compu> > caminosMinimos(const compu& c1, const compu& c2) const;
-    bool hayCamino(const compu& c1, const compu& c2) const;
+    void agregarCompu(const compu&);
+    void conectar(const compu&, const interfaz&,
+        const compu&, const interfaz&);
+    bool conectadas(const compu&, const compu&) const;
+    const interfaz& interfazUsada(const compu&, const compu&) const;
+    Conj<compu> vecinos(const compu&) const;
+    bool usaInterfaz(const compu&, const interfaz&) const;
+    Conj<Lista<compu> > caminosMinimos(const compu&, const compu&) const;
+    bool hayCamino(const compu&, const compu&) const;
     const Conj<compu>& computadoras() const;
     Nat cantCompus() const;
 };

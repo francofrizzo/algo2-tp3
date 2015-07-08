@@ -11,6 +11,11 @@ bool compu::operator!=(const compu& otra) const {
     return !(this->operator==(otra));
 }
 
+std::ostream& operator<<(std::ostream& os, const compu& c)
+{
+  return os << c.IP;
+}
+
 // red
 
 // Constructores
@@ -33,11 +38,19 @@ void red::agregarCompu(const compu& c) {
 
 void red::conectar(const compu& c1, const interfaz& i1,
     const compu& c2, const interfaz& i2) {
+    assert(computadoras().Pertenece(c1));  // DEBUG - ASSERTION
+    assert(computadoras().Pertenece(c2));  // DEBUG - ASSERTION
+    assert(c1.interfaces.Pertenece(i1));   // DEBUG - ASSERTION
+    assert(c2.interfaces.Pertenece(i2));   // DEBUG - ASSERTION
+    assert(!usaInterfaz(c1, i1));          // DEBUG - ASSERTION
+    assert(!usaInterfaz(c2, i2));          // DEBUG - ASSERTION
     conexiones.obtener(c1.IP)->DefinirRapido(i1, c2.IP);
     conexiones.obtener(c2.IP)->DefinirRapido(i2, c1.IP);
 }
 
 bool red::conectadas(const compu& c1, const compu& c2) const {
+    assert(computadoras().Pertenece(c1));  // DEBUG - ASSERTION
+    assert(computadoras().Pertenece(c2));  // DEBUG - ASSERTION
     diccConexiones* d = conexiones.obtener(c1.IP);
     diccConexiones::Iterador it = d->CrearIt();
     while (it.HaySiguiente() && it.SiguienteSignificado() != c2.IP) {
@@ -47,6 +60,8 @@ bool red::conectadas(const compu& c1, const compu& c2) const {
 }
 
 const interfaz& red::interfazUsada(const compu& c1, const compu& c2) const {
+    assert(computadoras().Pertenece(c1));  // DEBUG - ASSERTION
+    assert(computadoras().Pertenece(c2));  // DEBUG - ASSERTION
     Dicc<interfaz, ip>* d = conexiones.obtener(c1.IP);
     Dicc<interfaz, ip>::Iterador it = d->CrearIt();
     while (it.SiguienteSignificado() != c2.IP) {
@@ -56,6 +71,7 @@ const interfaz& red::interfazUsada(const compu& c1, const compu& c2) const {
 }
 
 Conj<compu> red::vecinos(const compu& c) const {
+    assert(computadoras().Pertenece(c));  // DEBUG - ASSERTION
     Dicc<interfaz, ip>* d = conexiones.obtener(c.IP);
     Dicc<interfaz, ip>::Iterador it1 = d->CrearIt();
     Conj<compu> res = Conj<compu>();
@@ -71,10 +87,15 @@ Conj<compu> red::vecinos(const compu& c) const {
 }
 
 bool red::usaInterfaz(const compu& c, const interfaz& i) const {
+    assert(computadoras().Pertenece(c));  // DEBUG - ASSERTION
+    assert(c.interfaces.Pertenece(i));   // DEBUG - ASSERTION
     return conexiones.obtener(c.IP)->Definido(i);
 }
 
 Conj<Lista<compu> > red::caminosMinimos(const compu& c1, const compu& c2) const {
+    assert(computadoras().Pertenece(c1));  // DEBUG - ASSERTION
+    assert(computadoras().Pertenece(c2));  // DEBUG - ASSERTION
+    assert(hayCamino(c1, c2));  // DEBUG - ASSERTION
     Conj<Lista<compu> > res = Conj<Lista<compu> >();
     if (vecinos(c1).Pertenece(c2)) {
         Lista<compu> l = Lista<compu>();
@@ -91,6 +112,8 @@ Conj<Lista<compu> > red::caminosMinimos(const compu& c1, const compu& c2) const 
 }
 
 bool red::hayCamino(const compu& c1, const compu& c2) const {
+    assert(computadoras().Pertenece(c1));  // DEBUG - ASSERTION
+    assert(computadoras().Pertenece(c2));  // DEBUG - ASSERTION
     Lista<compu> l = Lista<compu>();
     l.AgregarAtras(c1);
     Lista<compu> vec = pasarConjALista(vecinos(c1));
