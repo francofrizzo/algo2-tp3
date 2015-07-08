@@ -86,6 +86,113 @@ bool Comparar(const T& t, const S& s)
  * definidas en mini_test.h
  */
 
+void test_red(){
+	red re = red();
+    ASSERT_EQ(re.CantidadComputadoras(), 0);
+    Computadora c1 = "Manu";
+    Conj<Interfaz> inter1 = Conj<Interfaz>();
+    inter1.Agregar(1);
+    inter1.Agregar(2);
+    re.AgregarComputadora(c1, inter1);
+    ASSERT_EQ(re.CantidadComputadoras(), 1);
+    Computadora c2 = "Lu";
+    Conj<Interfaz> inter2 = Conj<Interfaz>();
+    inter2.Agregar(5);
+    inter2.Agregar(6);
+    inter2.Agregar(3);
+    re.AgregarComputadora(c2, inter2);
+    ASSERT_EQ(re.CantidadComputadoras(), 2);
+    Computadora c3 = "Fran";
+    Conj<Interfaz> inter3 = Conj<Interfaz>();
+    inter3.Agregar(1);
+    inter3.Agregar(65);
+    inter3.Agregar(7);
+    re.AgregarComputadora(c3, inter3);
+    ASSERT_EQ(re.CantidadComputadoras(), 3);
+    Computadora c4 = "Minion";
+    Conj<Interfaz> inter4 = Conj<Interfaz>();
+    inter2.Agregar(9);
+    re.AgregarComputadora(c4, inter4);
+    ASSERT_EQ(re.CantidadComputadoras(), 4);
+    Computadora c5 = "Uri";
+    Conj<Interfaz> inter5 = Conj<Interfaz>();
+    inter5.Agregar(5);
+    inter5.Agregar(6);
+    inter5.Agregar(45);
+    re.AgregarComputadora(c5, inter5);
+    ASSERT_EQ(re.CantidadComputadoras(), 5);
+    ASSERT_EQ(re.CantidadInterfacesDe(c1), 2);
+    ASSERT_EQ(re.CantidadInterfacesDe(c2), 3);
+    ASSERT_EQ(re.CantidadInterfacesDe(c3), 3);
+    ASSERT_EQ(re.CantidadInterfacesDe(c4), 1);
+    ASSERT_EQ(re.CantidadInterfacesDe(c5), 3);
+    ASSERT_EQ(re.IesimaComputadora(0), c5);
+    ASSERT_EQ(re.IesimaComputadora(1), c4);
+    ASSERT_EQ(re.IesimaComputadora(2), c3);
+    ASSERT_EQ(re.IesimaComputadora(3), c2);
+    ASSERT_EQ(re.IesimaComputadora(4), c1);
+    re.conectar(c1, 1, c2, 5);
+    re.conectar(c3, 65, c2, 3);
+    re.conectar(c1, 2, c3, 7);
+    re.conectar(c3, 1, c4, 9);
+    ASSERT(re.conectadas(c1, c2));
+    ASSERT(re.conectadas(c2, c1));
+    ASSERT(re.conectadas(c2, c3));
+    ASSERT(re.conectadas(c3, c2));
+    ASSERT(re.conectadas(c1, c3));
+    ASSERT(re.conectadas(c3, c1));
+    ASSERT_EQ(re.conectadas(c1, c4), false);
+    ASSERT_EQ(re.conectadas(c2, c5), false);
+    ASSERT_EQ(re.conectadas(c2, c4), false); 
+    ASSERT_EQ(re.InterfazUsada(c1, c2), 1);
+    ASSERT_EQ(re.InterfazUsada(c2, c3), 3);
+    ASSERT_EQ(re.InterfazUsada(c2, c1), 5);
+    ASSERT_EQ(re.InterfazUsada(c3, c2), 65);
+    ASSERT_EQ(re.InterfazUsada(c3, c1), 7);
+    ASSERT_EQ(re.InterfazUsada(c1, c3), 2);
+
+}
+
+
+void test_dcnet(){
+	red re = red();
+    Computadora c1 = "Manu";
+    Conj<Interfaz> inter1 = Conj<Interfaz>();
+    inter1.Agregar(1);
+    inter1.Agregar(2);
+    re.AgregarComputadora(c1, inter1);
+    Computadora c2 = "Lu";
+    Conj<Interfaz> inter2 = Conj<Interfaz>();
+    inter2.Agregar(5);
+    inter2.Agregar(6);
+    inter2.Agregar(3);
+    re.AgregarComputadora(c2, inter2);
+    Computadora c3 = "Fran";
+    Conj<Interfaz> inter3 = Conj<Interfaz>();
+    inter3.Agregar(1);
+    inter3.Agregar(65);
+    inter3.Agregar(7);
+    re.AgregarComputadora(c3, inter3);
+    Computadora c4 = "Minion";
+    Conj<Interfaz> inter4 = Conj<Interfaz>();
+    inter2.Agregar(9);
+    re.AgregarComputadora(c4, inter4);
+    Computadora c5 = "Uri";
+    Conj<Interfaz> inter5 = Conj<Interfaz>();
+    inter5.Agregar(5);
+    inter5.Agregar(6);
+    inter5.Agregar(45);
+    re.AgregarComputadora(c5, inter5);
+    re.conectar(c1, 1, c2, 5);
+    re.conectar(c3, 65, c2, 3);
+    re.conectar(c1, 2, c3, 7);
+    re.conectar(c3, 1, c4, 9);
+
+    // Ya se creo la red
+    // Creamos una nueva DCNet
+
+}
+
 void test_dcnet_ejemplo() {
     Conj<Interfaz> conjIc1;
     Conj<Interfaz> conjIc2;
@@ -127,6 +234,9 @@ void test_dcnet_ejemplo() {
 int main(int argc, char **argv)
 {
     RUN_TEST(test_dcnet_ejemplo);
+    RUN_TEST(test_red);
+    RUN_TEST(test_dcnet);
+
 
     /******************************************************************
      * TODO: escribir casos de test exhaustivos para todas            *
@@ -135,6 +245,7 @@ int main(int argc, char **argv)
      * a través de la interfaz del driver.                            *
     assert(d != NULL);
      ******************************************************************/
+   
 
     return 0;
 }
