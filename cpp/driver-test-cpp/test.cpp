@@ -190,28 +190,33 @@ void test_dcnet(){
 
     // Ya se creo la red
     // Creamos una nueva DCNet
+    
+    cout << "Ya se creo la red" << endl;
 
-    Paquete p1 = 1;
     re.CrearPaquete(c1, c3, 1);
+    Paquete p1 = re.IesimoEnEsperaEn(c1, 0);
     ASSERT(re.CantidadNodosRecorridosPor(p1) == 1);
     re.AvanzarSegundo();
     ASSERT(re.laQueMasEnvio() == c1);
     ASSERT(re.CantidadNodosRecorridosPor(p1) == 2);
     ASSERT(re.CantidadEnEsperaEn(c2) == 1);
     re.AvanzarSegundo();
-    re.AvanzarSegundo();
     ASSERT_EQ(re.CantidadEnviadosPor(c1), 1);
 
-    // // creo paquetes 2, 3 y 4. c1 mando 1 paquete, c2 mando un paquete. No hay paquetes en transito.
 
-    Paquete p2 = 2;
+
+    cout << "creo paquetes 2, 3 y 4. c1 mando 1 paquete, c2 mando un paquete. No hay paquetes en transito. " << endl;
+
     re.CrearPaquete(c2, c3, 2);
-    Paquete p3 = 3;
-    re.CrearPaquete(c3, c1, 3);
-    Paquete p4 = 4;
-    re.CrearPaquete(c3, c1, 4);
+    Paquete p2 = re.IesimoEnEsperaEn(c2, 0);
 
-    // veamos que en c3 estan en espera los dos paquetes que tienen como origen a c3, es decir, p3 y p4.
+    re.CrearPaquete(c3, c1, 4);
+    Paquete p3 = re.IesimoEnEsperaEn(c3, 0);
+    
+    re.CrearPaquete(c3, c1, 3);
+    Paquete p4 = re.IesimoEnEsperaEn(c3, 0);
+
+    cout << "veamos que en c3 estan en espera los dos paquetes que tienen como origen a c3, es decir, p3 y p4." << endl;
 
     ASSERT(re.CantidadEnEsperaEn(c3) == 2);
     bool estaElPaquete3 = false;
@@ -229,15 +234,14 @@ void test_dcnet(){
    
     re.AvanzarSegundo();
 
-    // p2 llego a destino. p4 esta en c2. p3 esta en c3.
-    //c1 mando 1 paquete. c2 mando 2 paquetes.  c3 mando 1 paquete.
+    cout << "p2 llego a destino. p4 esta en c2. p3 esta en c3. c1 mando 1 paquete. c2 mando 2 paquetes.  c3 mando 1 paquete." << endl;
 
 
     ASSERT(re.CantidadNodosRecorridosPor(p3) == 1);
     ASSERT(re.CantidadNodosRecorridosPor(p4) == 2);
 
 
-    // cantidad de paquetes enviados de cada compu
+    cout << "cantidad de paquetes enviados de cada compu" << endl;
     
 
    	ASSERT(re.CantidadEnviadosPor(c1) == 1);
@@ -245,7 +249,7 @@ void test_dcnet(){
     ASSERT(re.CantidadEnviadosPor(c3) == 1);
 
 
-    // quienes son los paquetes en espera de las compus.
+    cout <<" quienes son los paquetes en espera de las compus." << endl;
 
     ASSERT(re.CantidadEnEsperaEn(c1) == 0);
     ASSERT(re.CantidadEnEsperaEn(c2) == 1);
@@ -272,14 +276,13 @@ void test_dcnet(){
 
     ASSERT(estaElPaquete3);
 
-    //la que mas envio es c2.
+    cout << "la que mas envio es c2." << endl;
 
     ASSERT(re.laQueMasEnvio() == c2);
 
     re.AvanzarSegundo();
 
-    // p4 llego a destino. p3 esta en c2
-    // c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes
+    cout << " p4 llego a destino. p3 esta en c2. c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes" << endl;
 
     ASSERT(re.CantidadNodosRecorridosPor(p3) == 2);
 
@@ -308,8 +311,7 @@ void test_dcnet(){
 
     re.AvanzarSegundo();
 
-    // No hay paquetes en transito.
-    // c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes.
+    cout << "No hay paquetes en transito.c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes." << endl;
 
     ASSERT_EQ(re.CantidadEnviadosPor(c1), 1);
     ASSERT_EQ(re.CantidadEnviadosPor(c2), 4);
@@ -321,6 +323,7 @@ void test_dcnet(){
 
     ASSERT(re.laQueMasEnvio() == c2);
 
+    cout << "Fin" << endl;
 
 }
 
