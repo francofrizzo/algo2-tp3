@@ -417,7 +417,7 @@ void test_dcnet() {
     p1.ID = 1;
     p1._prioridad = 1;
     p1.origen = c1;
-    p1.destino = c4;
+    p1.destino = c3;
     d.crearPaquete(p1);
     Lista<compu> l;
     l.AgregarAtras(c1);
@@ -430,12 +430,10 @@ void test_dcnet() {
     Conj<paquete> paqs = Conj<paquete>();
     paqs.Agregar(p1);
     ASSERT(d.enEspera(c2) == paqs);
-    d.avanzarSegundo();
-    l.AgregarAtras(c3);
     ASSERT(d.caminoRecorrido(p1) == l);
     d.avanzarSegundo();
-    d.avanzarSegundo();
     ASSERT_EQ(d.paqueteEnTransito(p1), false);
+    d.avanzarSegundo();
     ASSERT_EQ(d.cantidadEnviados(c1), 1);
 
     // IMPORTANTE
@@ -475,81 +473,81 @@ void test_dcnet() {
     // p2 llego a destino. p4 esta en c2. p3 esta en c3.
     //c1 mando 1 paquete. c2 mando 2 paquetes.  c3 mando 1 paquete.
 
-    // Lista<compu> l3;
-    // l3.AgregarAtras(c3);
-    // ASSERT(d.caminoRecorrido(p3) == l3);
-    // Lista<compu> l4;
-    // l4.AgregarAtras(c3);
-    // l4.AgregarAtras(c2);
-    // ASSERT(d.caminoRecorrido(p4) == l4);
+    Lista<compu> l3;
+    l3.AgregarAtras(c3);
+    ASSERT(d.caminoRecorrido(p3) == l3);
+    Lista<compu> l4;
+    l4.AgregarAtras(c3);
+    l4.AgregarAtras(c2);
+    ASSERT(d.caminoRecorrido(p4) == l4);
 
-    // // cantidad de paquetes enviados de cada compu
+    // cantidad de paquetes enviados de cada compu
 
-    // ASSERT_EQ(d.cantidadEnviados(c1), 1);
-    // ASSERT_EQ(d.cantidadEnviados(c2), 2);
-    // ASSERT_EQ(d.cantidadEnviados(c3), 1);
+    ASSERT_EQ(d.cantidadEnviados(c1), 1);
+    ASSERT_EQ(d.cantidadEnviados(c2), 2);
+    ASSERT_EQ(d.cantidadEnviados(c3), 1);
 
-    // // quienes son los paquetes en espera de las compus.
+    // quienes son los paquetes en espera de las compus.
 
-    // Conj<paquete> paqs1 = Conj<paquete>();
-    // ASSERT(d.enEspera(c1) == paqs1);
-    // Conj<paquete> paqs2 = Conj<paquete> ();
-    // paqs2.Agregar(p4);
-    // ASSERT(d.enEspera(c2) == paqs2);
-    // Conj<paquete> paqs3 = Conj<paquete> ();
-    // paqs2.Agregar(p3);
-    // ASSERT(d.enEspera(c3) == paqs3);
+    Conj<paquete> paqs1 = Conj<paquete>();
+    ASSERT(d.enEspera(c1) == paqs1);
+    Conj<paquete> paqs2 = Conj<paquete> ();
+    paqs2.Agregar(p4);
+    ASSERT(d.enEspera(c2) == paqs2);
+    Conj<paquete> paqs3 = Conj<paquete> ();
+    paqs3.Agregar(p3);
+    ASSERT(d.enEspera(c3) == paqs3);
 
-    // //los paquetes que estan en transito.
+    //los paquetes que estan en transito.
 
-    // ASSERT_EQ(d.paqueteEnTransito(p2), false);
-    // ASSERT(d.paqueteEnTransito(p3));
-    // ASSERT(d.paqueteEnTransito(p4));
+    ASSERT_EQ(d.paqueteEnTransito(p2), false);
+    ASSERT(d.paqueteEnTransito(p3));
+    ASSERT(d.paqueteEnTransito(p4));
 
-    // //la que mas envio es c2.
+    //la que mas envio es c2.
 
-    // ASSERT(d.laQueMasEnvio() == c2);
+    ASSERT(d.laQueMasEnvio() == c2);
 
-    // d.avanzarSegundo();
+    d.avanzarSegundo();
 
-    // // p4 llego a destino. p3 esta en c2
-    // // c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes
+    // p4 llego a destino. p3 esta en c2
+    // c1 envio 1 paq. c2 envio 3 paquetes. c3 envio 2 paquetes
 
-    // l3.AgregarAtras(c2);
-    // ASSERT(d.caminoRecorrido(p3) == l3);
+    l3.AgregarAtras(c2);
+    ASSERT(d.caminoRecorrido(p3) == l3);
 
-    // ASSERT_EQ(d.cantidadEnviados(c1), 1);
-    // ASSERT_EQ(d.cantidadEnviados(c2), 3);
-    // ASSERT_EQ(d.cantidadEnviados(c3), 2);
+    ASSERT_EQ(d.cantidadEnviados(c1), 1);
+    ASSERT_EQ(d.cantidadEnviados(c2), 3);
+    ASSERT_EQ(d.cantidadEnviados(c3), 2);
 
-    // ASSERT(d.enEspera(c1) == paqs1);
-    // paqs2 = Conj<paquete> ();
-    // paqs2.Agregar(p3);
-    // ASSERT(d.enEspera(c2) == paqs2);
-    // Conj<paquete> paqs33 = Conj<paquete> ();
-    // ASSERT(d.enEspera(c3) == paqs33);
+    ASSERT(d.enEspera(c1) == paqs1);
+    paqs2 = Conj<paquete> ();
+    paqs2.Agregar(p3);
+    ASSERT(d.enEspera(c2) == paqs2);
+    Conj<paquete> paqs33 = Conj<paquete> ();
+    ASSERT(d.enEspera(c3) == paqs33);
 
-    // ASSERT_EQ(d.paqueteEnTransito(p4), false);
-    // ASSERT(d.paqueteEnTransito(p3));
+    ASSERT_EQ(d.paqueteEnTransito(p4), false);
+    ASSERT(d.paqueteEnTransito(p3));
 
-    // ASSERT(d.laQueMasEnvio() == c2);
+    ASSERT(d.laQueMasEnvio() == c2);
 
-    // d.avanzarSegundo();
+    d.avanzarSegundo();
 
-    // // No hay paquetes en transito.
-    // // c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes.
+    // No hay paquetes en transito.
+    // c1 envio 1 paq. c2 envio 4 paquetes. c3 envio 2 paquetes.
 
-    // ASSERT_EQ(d.cantidadEnviados(c1), 1);
-    // ASSERT_EQ(d.cantidadEnviados(c2), 4);
-    // ASSERT_EQ(d.cantidadEnviados(c3), 2);
+    ASSERT_EQ(d.cantidadEnviados(c1), 1);
+    ASSERT_EQ(d.cantidadEnviados(c2), 4);
+    ASSERT_EQ(d.cantidadEnviados(c3), 2);
 
-    // ASSERT(d.enEspera(c1) == paqs1);
-    // ASSERT(d.enEspera(c2) == paqs1);
-    // ASSERT(d.enEspera(c3) == paqs1);
+    ASSERT(d.enEspera(c1) == paqs1);
+    ASSERT(d.enEspera(c2) == paqs1);
+    ASSERT(d.enEspera(c3) == paqs1);
 
-    // ASSERT_EQ(d.paqueteEnTransito(p3), false);
+    ASSERT_EQ(d.paqueteEnTransito(p3), false);
 
-    // ASSERT(d.laQueMasEnvio() == c2);
+    ASSERT(d.laQueMasEnvio() == c2);
 }
 
 int main() {

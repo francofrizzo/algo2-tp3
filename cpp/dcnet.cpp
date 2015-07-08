@@ -111,17 +111,12 @@ void dcnet::avanzarSegundo() {
             it = paquetesEnEspera[j].porID.obtener(paq.ID).itPaquete;
             paquetesEnEspera[j].porID.borrar(paq.ID);
             it.EliminarSiguiente();
-            if (dest != j) {
-                cout << "Paquete listo para enviar." << endl;  // DEBUG
-                cantPaqEnviados[j]++;
-                paquetesEnEspera[j].porEnviar.paq = paq;
-                paquetesEnEspera[j].porEnviar.vacio = false;
-                paquetesEnEspera[j].porEnviar.orig = o;  // Lo mismo con esto, hace falta?
-                paquetesEnEspera[j].porEnviar.desti = dest;
-            }
-            else {  // DEBUG
-                cout << "El paquete ya llegó a destino y será eliminado. Será como si jamás hubiera existido. :(" << endl << endl;  // DEBUG
-            }  // DEBUG
+            cout << "Paquete listo para enviar." << endl;  // DEBUG
+            cantPaqEnviados[j]++;
+            paquetesEnEspera[j].porEnviar.paq = paq;
+            paquetesEnEspera[j].porEnviar.vacio = false;
+            paquetesEnEspera[j].porEnviar.orig = o;  // Lo mismo con esto, hace falta?
+            paquetesEnEspera[j].porEnviar.desti = dest;
         }
     }
     cout << endl;  // DEBUG
@@ -129,22 +124,27 @@ void dcnet::avanzarSegundo() {
         if (!(paquetesEnEspera[j].porEnviar.vacio)) {
             Nat sigCompu = siguientesCompus[j]
                 [paquetesEnEspera[j].porEnviar.desti];
-            cout << "Enviando paquete " << paquetesEnEspera[j].porEnviar.paq.ID << ". Próximo paso: " << j << " -> " << sigCompu << "... ";  // DEBUG
-            Conj<paquete>::Iterador it = paquetesEnEspera[sigCompu]
-                .enConjunto.CrearIt();
-            it = paquetesEnEspera[sigCompu].enConjunto
-                .AgregarRapido(paquetesEnEspera[j].porEnviar.paq);
-            paqPorID i;
-            i.itPaquete = it;
-            i.codOrigen = paquetesEnEspera[j].porEnviar.orig;
-            i.codDestino = paquetesEnEspera[j].porEnviar.desti;
-            paquetesEnEspera[sigCompu].porID.definir(it.Siguiente().ID, i);
-            paqPorPrior pi = paqPorPrior();
-            pi._prioridad = paquetesEnEspera[j].porEnviar.paq._prioridad;
-            pi.itPaquete = it;
-            paquetesEnEspera[sigCompu].porPrioridad.encolar(pi);
+            if (sigCompu != paquetesEnEspera[j].porEnviar.desti) {
+                cout << "Enviando paquete " << paquetesEnEspera[j].porEnviar.paq.ID << ". Próximo paso: " << j << " -> " << sigCompu << "... ";  // DEBUG
+                Conj<paquete>::Iterador it = paquetesEnEspera[sigCompu]
+                    .enConjunto.CrearIt();
+                it = paquetesEnEspera[sigCompu].enConjunto
+                    .AgregarRapido(paquetesEnEspera[j].porEnviar.paq);
+                paqPorID i;
+                i.itPaquete = it;
+                i.codOrigen = paquetesEnEspera[j].porEnviar.orig;
+                i.codDestino = paquetesEnEspera[j].porEnviar.desti;
+                paquetesEnEspera[sigCompu].porID.definir(it.Siguiente().ID, i);
+                paqPorPrior pi = paqPorPrior();
+                pi._prioridad = paquetesEnEspera[j].porEnviar.paq._prioridad;
+                pi.itPaquete = it;
+                paquetesEnEspera[sigCompu].porPrioridad.encolar(pi);
+                cout << "Paquete enviado con éxito ✓" << endl;  // DEBUG
+            }
+            else {  // DEBUG
+                cout << "El paquete ya llegó a destino y será eliminado. Será como si jamás hubiera existido. :(" << endl;  // DEBUG
+            }  // DEBUG
             paquetesEnEspera[j].porEnviar.vacio = true;
-            cout << "Paquete enviado con éxito ✓" << endl;  // DEBUG
         }
     }
     cout << endl;  // DEBUG
@@ -162,6 +162,7 @@ const red& dcnet::laRed() const {
 }
 
 Lista<compu> dcnet::caminoRecorrido(const paquete &p) const {
+    assert(paqueteEnTransito(p));  // DEBUG - ASSERTION
     cout << "Analizando el recorrido del paquete " << p.ID << "... " << endl;  // DEBUG
     Lista<compu> res = Lista<compu>();
     Nat j;
